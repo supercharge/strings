@@ -6,6 +6,9 @@
   "bugs": {
     "url": "https://github.com/superchargejs/strings/issues"
   },
+  "dependencies": {
+    "uuid": "~3.3.3"
+  },
   "devDependencies": {
     "@hapi/code": "~7.0.0",
     "@hapi/lab": "~21.0.0",

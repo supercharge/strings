@@ -1,16 +1,19 @@
 'use strict'
 
+const Uuid = require('uuid')
+
 class Strings {
   /**
-   * Create a new String instance providing
-   * various, chainable string operations.
+   * Create a new String instance providing chainable string operations.
+   * This instance clones the original string and works with the clone.
+   * It won’t modify the original string.
    *
    * @param {String} string
    *
    * @returns {Strings}
    */
   constructor (string) {
-    this.string = string
+    this.string = String(string).slice(0)
   }
 
   /**
@@ -31,48 +34,113 @@ class Strings {
     return this.string
   }
 
+  /**
+   * Uppercases the string.
+   *
+   * @returns {Strings}
+   */
   upper () {
     return this.toUpperCase()
   }
 
+  /**
+   * Uppercases the string. Alias for `.upper()`.
+   *
+   * @returns {Strings}
+   */
   toUpperCase () {
-    return this.string.toUpperCase()
+    this.string = this.string.toUpperCase()
+
+    return this
   }
 
+  /**
+   * Determine whether the given string is uppercase.
+   *
+   * @returns {Boolean}
+   */
   isUpperCase () {
     return this.string === this.upper()
   }
 
+  /**
+   * Uppercases the string.
+   *
+   * @returns {Strings}
+   */
   localeUpper () {
     return this.toLocaleUpperCase()
   }
 
+  /**
+   * Uppercases the string. Alias for `.localeUpper()`.
+   *
+   * @returns {Strings}
+   */
   toLocaleUpperCase () {
-    return this.string.toLocaleUpperCase()
+    this.string = this.string.toLocaleUpperCase()
+
+    return this
   }
 
+  /**
+   * Lowercases the string.
+   *
+   * @returns {Strings}
+   */
   lower () {
     return this.toLowerCase()
   }
 
+  /**
+   * Lowercases the string. Alias for `.lower()`.
+   *
+   * @returns {Strings}
+   */
   toLowerCase () {
-    return this.string.toLowerCase()
+    this.string = this.string.toLowerCase()
+
+    return this
   }
 
+  /**
+   * Determine whether the string is lowercase.
+   *
+   * @returns {Boolean}
+   */
   isLowerCase () {
     return this.string === this.lower()
   }
 
+  /**
+   * Lowercases the string.
+   *
+   * @returns {Strings}
+   */
   localeLower () {
     return this.toLocaleLowerCase()
   }
 
+  /**
+   * Lowercases the string. Alias for `.locaseLower()`.
+   *
+   * @returns {Strings}
+   */
   toLocaleLowerCase () {
-    return this.string.toLocaleLowerCase()
+    this.string = this.string.toLocaleLowerCase()
+
+    return this
   }
 
+  /**
+   * Removes whitespace around the string, front and back.
+   *
+   * @returns {Strings}
+   */
   trim () {
-    // TODO
+    this.string = this.string.trim()
+
+    return this
   }
 
   title () {
@@ -87,18 +155,40 @@ class Strings {
     // TODO
   }
 
-  uuid () {
-    // TODO
+  /**
+   * Create a new UUID. Creates a UUID v4 by default.
+   *
+   * @param {String} version
+   *
+   * @returns {String}
+   */
+  uuid (version = 'v4') {
+    return Uuid[version]()
   }
 
+  /**
+   * Determine whether the string contains the given `haystack`.
+   *
+   * @returns {Boolean}
+   */
   contains (haystack) {
     return this.includes(haystack)
   }
 
+  /**
+   * Determine whether the string contains the given `haystack`.
+   *
+   * @returns {Boolean}
+   */
   includes (haystack) {
     return this.string.includes(haystack)
   }
 
+  /**
+   * Returns the lengths of the string.
+   *
+   * @returns {Number}
+   */
   length () {
     return this.string.length
   }
