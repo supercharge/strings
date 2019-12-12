@@ -45,6 +45,12 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE').isLowerCase()).to.be.false()
   })
 
+  it('title()', async () => {
+    expect(Str('supercharge is awesome').title().get()).to.equal('Supercharge Is Awesome')
+    expect(Str('supercharge IS AWesoME').title().get()).to.equal('Supercharge Is Awesome')
+    expect(Str('SUPERCHARGE IS AWESOME').title().get()).to.equal('Supercharge Is Awesome')
+  })
+
   it('trim()', async () => {
     expect(Str('  supercharge').trim().get()).to.equal('supercharge')
     expect(Str(' supercharge ').trim().get()).to.equal('supercharge')

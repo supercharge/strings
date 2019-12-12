@@ -134,8 +134,15 @@ class Strings {
     return this
   }
 
+  /**
+   * Convert the string to title case.
+   *
+   * @returns {Strings}
+   */
   title () {
-    // TODO
+    this.string = this.lowercase().get().replace(/(?:^|\s)\S/g, s => s.toUpperCase())
+
+    return this
   }
 
   slug () {
