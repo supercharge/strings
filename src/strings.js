@@ -86,26 +86,6 @@ class Strings {
   }
 
   /**
-   * Uppercases the string.
-   *
-   * @returns {Strings}
-   */
-  localeUpper () {
-    return this.toLocaleUpperCase()
-  }
-
-  /**
-   * Uppercases the string. Alias for `.localeUpper()`.
-   *
-   * @returns {Strings}
-   */
-  toLocaleUpperCase () {
-    this.string = this.string.toLocaleUpperCase()
-
-    return this
-  }
-
-  /**
    * Lowercases the string. Alias for `.lowercase()`.
    *
    * @returns {Strings}
@@ -141,26 +121,6 @@ class Strings {
    */
   isLowerCase () {
     return this.string === this.lower().get()
-  }
-
-  /**
-   * Lowercases the string.
-   *
-   * @returns {Strings}
-   */
-  localeLowercase () {
-    return this.toLocaleLowerCase()
-  }
-
-  /**
-   * Lowercases the string. Alias for `.locaseLower()`.
-   *
-   * @returns {Strings}
-   */
-  toLocaleLowerCase () {
-    this.string = this.string.toLocaleLowerCase()
-
-    return this
   }
 
   /**
@@ -232,7 +192,9 @@ class Strings {
    * @returns {Boolean}
    */
   includes (haystack) {
-    return this.string.includes(haystack)
+    return haystack === ''
+      ? false
+      : this.string.includes(haystack)
   }
 
   /**

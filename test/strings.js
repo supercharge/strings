@@ -35,14 +35,34 @@ describe('Strings', () => {
   })
 
   it('lowercase()', async () => {
-    expect(Str('SUPERCHARGE').lower().get()).to.equal('supercharge')
-    expect(Str('SuperchargE').lower().get()).to.equal('supercharge')
+    expect(Str('SUPERCHARGE').lowercase().get()).to.equal('supercharge')
+    expect(Str('SuperchargE').lowercase().get()).to.equal('supercharge')
   })
 
   it('isLowerCase()', async () => {
     expect(Str('supercharge').isLowerCase()).to.be.true()
     expect(Str('sUPERCHARGE').isLowerCase()).to.be.false()
     expect(Str('SUPERCHARGE').isLowerCase()).to.be.false()
+  })
+
+  it('trim()', async () => {
+    expect(Str('  supercharge').trim().get()).to.equal('supercharge')
+    expect(Str(' supercharge ').trim().get()).to.equal('supercharge')
+    expect(Str('sUPERCHARGE  ').trim().get()).to.equal('sUPERCHARGE')
+  })
+
+  it('contains()', async () => {
+    expect(Str('supercharge').contains('arge')).to.be.true()
+    expect(Str('supercharge').contains('supercharge')).to.be.true()
+
+    expect(Str('supercharge').contains('abc')).to.be.false()
+    expect(Str('supercharge').contains('')).to.be.false()
+  })
+
+  it('length()', async () => {
+    expect(Str('supercharge').length()).to.equal(11)
+    expect(Str(' 123').length()).to.equal(4)
+    expect(Str('').length()).to.equal(0)
   })
 
   it('uuid()', async () => {
