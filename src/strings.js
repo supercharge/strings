@@ -1,6 +1,7 @@
 'use strict'
 
-const Uuid = require('uuid')
+const Uuid = require('uuid/v4')
+const Crypto = require('crypto')
 
 class Strings {
   /**
@@ -14,6 +15,18 @@ class Strings {
    */
   constructor (string) {
     this.string = String(string).slice(0)
+  }
+
+  /**
+   * Returns a URL-friendly alphabet containing the symbols `a-z A-Z 0-9 _-`.
+   * The symbols order was changed for better gzip compression.
+   *
+   * The alphabet comes from the https://github.com/ai/nanoid package.
+   *
+   * @returns {String}
+   */
+  static get alphabet () {
+    return 'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
   }
 
   /**
@@ -35,11 +48,20 @@ class Strings {
   }
 
   /**
-   * Uppercases the string.
+   * Uppercases the string. Alias for `.uppercase()`.
    *
    * @returns {Strings}
    */
   upper () {
+    return this.toUpperCase()
+  }
+
+  /**
+   * Uppercases the string.
+   *
+   * @returns {Strings}
+   */
+  uppercase () {
     return this.toUpperCase()
   }
 
@@ -60,7 +82,7 @@ class Strings {
    * @returns {Boolean}
    */
   isUpperCase () {
-    return this.string === this.upper()
+    return this.string === this.upper().get()
   }
 
   /**
@@ -84,11 +106,20 @@ class Strings {
   }
 
   /**
-   * Lowercases the string.
+   * Lowercases the string. Alias for `.lowercase()`.
    *
    * @returns {Strings}
    */
   lower () {
+    return this.toLowerCase()
+  }
+
+  /**
+   * Lowercases the string.
+   *
+   * @returns {Strings}
+   */
+  lowercase () {
     return this.toLowerCase()
   }
 
@@ -109,7 +140,7 @@ class Strings {
    * @returns {Boolean}
    */
   isLowerCase () {
-    return this.string === this.lower()
+    return this.string === this.lower().get()
   }
 
   /**
@@ -117,7 +148,7 @@ class Strings {
    *
    * @returns {Strings}
    */
-  localeLower () {
+  localeLowercase () {
     return this.toLocaleLowerCase()
   }
 
@@ -156,18 +187,36 @@ class Strings {
   }
 
   /**
-   * Create a new UUID. Creates a UUID v4 by default.
-   *
-   * @param {String} version
+   * Create a UUID (version 4).
    *
    * @returns {String}
    */
-  uuid (version = 'v4') {
-    return Uuid[version]()
+  static uuid () {
+    return Uuid()
+  }
+
+  /**
+   * Create a random, URL-friendly string. The default length will have 21 symbols.
+   *
+   * @param {Number} [size=21] number of symbols in string
+   *
+   * @returns {String}
+   */
+  static random (size = 21) {
+    const bytes = Crypto.randomBytes(size)
+    let random = ''
+
+    while (size--) {
+      random += Strings.alphabet[bytes[size] & 63]
+    }
+
+    return random
   }
 
   /**
    * Determine whether the string contains the given `haystack`.
+   *
+   * @param {*} haystack
    *
    * @returns {Boolean}
    */
@@ -178,6 +227,8 @@ class Strings {
   /**
    * Determine whether the string contains the given `haystack`.
    *
+   * @param {*} haystack
+   *
    * @returns {Boolean}
    */
   includes (haystack) {
@@ -185,7 +236,7 @@ class Strings {
   }
 
   /**
-   * Returns the lengths of the string.
+   * Returns the string’s length.
    *
    * @returns {Number}
    */

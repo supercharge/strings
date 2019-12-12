@@ -8,3 +8,6 @@ const strings = string => {
 
 module.exports = strings
 module.exports.default = strings
+
+module.exports.uuid = Str.uuid
+module.exports.random = Str.random
