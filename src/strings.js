@@ -48,7 +48,7 @@ class Str {
   }
 
   /**
-   * Uppercases the string. Alias for `.uppercase()`.
+   * Uppercases the string.
    *
    * @returns {Str}
    */
@@ -57,7 +57,7 @@ class Str {
   }
 
   /**
-   * Uppercases the string.
+   * Uppercases the string. Alias for `.upper()`.
    *
    * @returns {Str}
    */
@@ -66,7 +66,8 @@ class Str {
   }
 
   /**
-   * Uppercases the string. Alias for `.upper()`.
+   * Uppercases the string. Alias for `.upper()` and convenience
+   * method to comply with the global String’s `.toUpperCase()`.
    *
    * @returns {Str}
    */
@@ -86,7 +87,7 @@ class Str {
   }
 
   /**
-   * Lowercases the string. Alias for `.lowercase()`.
+   * Lowercases the string.
    *
    * @returns {Str}
    */
@@ -95,7 +96,7 @@ class Str {
   }
 
   /**
-   * Lowercases the string.
+   * Lowercases the string. Alias for `.lower()`.
    *
    * @returns {Str}
    */
@@ -104,7 +105,8 @@ class Str {
   }
 
   /**
-   * Lowercases the string. Alias for `.lower()`.
+   * Lowercases the string. Alias for `.lower()` and convenience
+   * method to comply with the global String’s `.toLowerCase()`.
    *
    * @returns {Str}
    */
@@ -185,16 +187,24 @@ class Str {
     )
   }
 
-  slug () {
-    // TODO
-  }
-
+  /**
+   * Convert the string to camelCase.
+   *
+   * @returns {Str}
+   */
   camel () {
     return new Str(
       this.studly().lcFirst().get()
     )
   }
 
+  /**
+   * Convert the string to StudlyCase. StudlyCase is
+   * similar to camelCase except that the first
+   * character is uppercase instead of lowercase.
+   *
+   * @returns {Str}
+   */
   studly () {
     return new Str(
       this.value.replace(/[_-]+/g, ' ')
