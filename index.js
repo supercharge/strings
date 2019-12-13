@@ -1,6 +1,6 @@
 'use strict'
 
-const Str = require('./src/strings')
+const Str = require('./src/str')
 
 const strings = value => {
   return new Str(value)
