@@ -9,5 +9,5 @@ const strings = value => {
 module.exports = strings
 module.exports.default = strings
 
-module.exports.uuid = () => Str.uuid()
-module.exports.random = () => Str.random()
+module.exports.uuid = Str.uuid
+module.exports.random = Str.random
