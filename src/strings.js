@@ -9,12 +9,12 @@ class Str {
    * This instance clones the original string and works with the clone.
    * It won’t modify the original string.
    *
-   * @param {String} string
+   * @param {String} value
    *
    * @returns {Str}
    */
-  constructor (string) {
-    this.string = String(string).slice(0)
+  constructor (value) {
+    this.value = String(value).slice(0)
   }
 
   /**
@@ -44,7 +44,7 @@ class Str {
    * @returns {String}
    */
   toString () {
-    return this.string
+    return this.value
   }
 
   /**
@@ -72,7 +72,7 @@ class Str {
    */
   toUpperCase () {
     return new Str(
-      this.string.toUpperCase()
+      this.value.toUpperCase()
     )
   }
 
@@ -82,7 +82,7 @@ class Str {
    * @returns {Boolean}
    */
   isUpperCase () {
-    return this.string === this.upper().get()
+    return this.value === this.upper().get()
   }
 
   /**
@@ -110,7 +110,7 @@ class Str {
    */
   toLowerCase () {
     return new Str(
-      this.string.toLowerCase()
+      this.value.toLowerCase()
     )
   }
 
@@ -121,7 +121,7 @@ class Str {
    */
   lcFirst () {
     return new Str(
-      this.string[0].toLowerCase() + this.string.slice(1)
+      this.value[0].toLowerCase() + this.value.slice(1)
     )
   }
 
@@ -131,7 +131,7 @@ class Str {
    * @returns {Boolean}
    */
   isLowerCase () {
-    return this.string === this.lower().get()
+    return this.value === this.lower().get()
   }
 
   /**
@@ -141,7 +141,7 @@ class Str {
    */
   trim () {
     return new Str(
-      this.string.trim()
+      this.value.trim()
     )
   }
 
@@ -152,7 +152,7 @@ class Str {
    */
   strip () {
     return new Str(
-      this.string.replace(/\s+/g, '')
+      this.value.replace(/\s+/g, '')
     )
   }
 
@@ -166,7 +166,7 @@ class Str {
    * @returns {Array}
    */
   split (separator, limit) {
-    return this.string.split(separator, limit)
+    return this.value.split(separator, limit)
   }
 
   /**
@@ -197,7 +197,7 @@ class Str {
 
   studly () {
     return new Str(
-      this.string.replace(/[_-]+/g, ' ')
+      this.value.replace(/[_-]+/g, ' ')
     ).title().strip()
   }
 
@@ -229,27 +229,27 @@ class Str {
   }
 
   /**
-   * Determine whether the string contains the given `haystack`.
+   * Determine whether the haystack contains the given `needle`.
    *
-   * @param {*} haystack
+   * @param {*} needle
    *
    * @returns {Boolean}
    */
-  contains (haystack) {
-    return this.includes(haystack)
+  contains (needle) {
+    return this.includes(needle)
   }
 
   /**
-   * Determine whether the string contains the given `haystack`.
+   * Determine whether the haystack contains the given `needle`.
    *
-   * @param {*} haystack
+   * @param {*} needle
    *
    * @returns {Boolean}
    */
-  includes (haystack) {
-    return haystack === ''
+  includes (needle) {
+    return needle === ''
       ? false
-      : this.string.includes(haystack)
+      : this.value.includes(needle)
   }
 
   /**
@@ -258,7 +258,7 @@ class Str {
    * @returns {Number}
    */
   length () {
-    return this.string.length
+    return this.value.length
   }
 }
 
