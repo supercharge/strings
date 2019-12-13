@@ -117,6 +117,15 @@ class Str {
   }
 
   /**
+   * Determine whether the string is lowercase.
+   *
+   * @returns {Boolean}
+   */
+  isLowerCase () {
+    return this.value === this.lower().get()
+  }
+
+  /**
    * Lowercases the first character in the string.
    *
    * @returns {Str}
@@ -125,15 +134,6 @@ class Str {
     return new Str(
       this.value[0].toLowerCase() + this.value.slice(1)
     )
-  }
-
-  /**
-   * Determine whether the string is lowercase.
-   *
-   * @returns {Boolean}
-   */
-  isLowerCase () {
-    return this.value === this.lower().get()
   }
 
   /**
