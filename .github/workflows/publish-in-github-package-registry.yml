@@ -1,8 +1,9 @@
 name: Publish in GitHub Package Registry
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
