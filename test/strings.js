@@ -45,10 +45,36 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE').isLowerCase()).to.be.false()
   })
 
+  it('lcFirst()', async () => {
+    expect(Str('Supercharge').lcFirst().get()).to.equal('supercharge')
+    expect(Str('SUPERCHARGE').lcFirst().get()).to.equal('sUPERCHARGE')
+    expect(Str('SUPERCHARGE     IS AWESOME').lcFirst().get()).to.equal('sUPERCHARGE     IS AWESOME')
+  })
+
+  it('strip()', async () => {
+    expect(Str('supercharge is awesome').strip().get()).to.equal('superchargeisawesome')
+    expect(Str('    supercharge IS aWesoME').strip().get()).to.equal('superchargeISaWesoME')
+    expect(Str('SUPERCHARGE     IS AWESOME   ').strip().get()).to.equal('SUPERCHARGEISAWESOME')
+  })
+
   it('title()', async () => {
     expect(Str('supercharge is awesome').title().get()).to.equal('Supercharge Is Awesome')
     expect(Str('supercharge IS AWesoME').title().get()).to.equal('Supercharge Is Awesome')
     expect(Str('SUPERCHARGE IS AWESOME').title().get()).to.equal('Supercharge Is Awesome')
+  })
+
+  it('camel()', async () => {
+    expect(Str('supercharge is awesome').camel().get()).to.equal('superchargeIsAwesome')
+    expect(Str('supercharge_IS_AWesoME').camel().get()).to.equal('superchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).to.equal('superchargeIsAwesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).to.equal('superchargeIsAwesome')
+  })
+
+  it('studly()', async () => {
+    expect(Str('supercharge is awesome').studly().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('supercharge_IS_AWesoME').studly().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').studly().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').studly().get()).to.equal('SuperchargeIsAwesome')
   })
 
   it('trim()', async () => {

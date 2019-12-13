@@ -3,7 +3,7 @@
 const Uuid = require('uuid/v4')
 const Crypto = require('crypto')
 
-class Strings {
+class Str {
   /**
    * Create a new String instance providing chainable string operations.
    * This instance clones the original string and works with the clone.
@@ -11,7 +11,7 @@ class Strings {
    *
    * @param {String} string
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   constructor (string) {
     this.string = String(string).slice(0)
@@ -50,7 +50,7 @@ class Strings {
   /**
    * Uppercases the string. Alias for `.uppercase()`.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   upper () {
     return this.toUpperCase()
@@ -59,7 +59,7 @@ class Strings {
   /**
    * Uppercases the string.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   uppercase () {
     return this.toUpperCase()
@@ -68,12 +68,12 @@ class Strings {
   /**
    * Uppercases the string. Alias for `.upper()`.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   toUpperCase () {
-    this.string = this.string.toUpperCase()
-
-    return this
+    return new Str(
+      this.string.toUpperCase()
+    )
   }
 
   /**
@@ -88,7 +88,7 @@ class Strings {
   /**
    * Lowercases the string. Alias for `.lowercase()`.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   lower () {
     return this.toLowerCase()
@@ -97,7 +97,7 @@ class Strings {
   /**
    * Lowercases the string.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   lowercase () {
     return this.toLowerCase()
@@ -106,12 +106,23 @@ class Strings {
   /**
    * Lowercases the string. Alias for `.lower()`.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   toLowerCase () {
-    this.string = this.string.toLowerCase()
+    return new Str(
+      this.string.toLowerCase()
+    )
+  }
 
-    return this
+  /**
+   * Lowercases the first character in the string.
+   *
+   * @returns {Str}
+   */
+  lcFirst () {
+    return new Str(
+      this.string[0].toLowerCase() + this.string.slice(1)
+    )
   }
 
   /**
@@ -126,23 +137,52 @@ class Strings {
   /**
    * Removes whitespace around the string, front and back.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   trim () {
-    this.string = this.string.trim()
+    return new Str(
+      this.string.trim()
+    )
+  }
 
-    return this
+  /**
+   * Removes all whitespace from the string, everywhere.
+   *
+   * @returns {Str}
+   */
+  strip () {
+    return new Str(
+      this.string.replace(/\s+/g, '')
+    )
+  }
+
+  /**
+   * Splits up the string into an array of strings by separating
+   * the string at each of the specified `separator` string.
+   *
+   * @param {String} separator
+   * @param {Number} limit
+   *
+   * @returns {Array}
+   */
+  split (separator, limit) {
+    return this.string.split(separator, limit)
   }
 
   /**
    * Convert the string to title case.
    *
-   * @returns {Strings}
+   * @returns {Str}
    */
   title () {
-    this.string = this.lowercase().get().replace(/(?:^|\s)\S/g, s => s.toUpperCase())
-
-    return this
+    return new Str(
+      this
+        .lowercase()
+        .split(' ')
+        .filter(s => s)
+        .map(s => s[0].toUpperCase() + s.slice(1))
+        .join(' ')
+    )
   }
 
   slug () {
@@ -150,7 +190,15 @@ class Strings {
   }
 
   camel () {
-    // TODO
+    return new Str(
+      this.studly().lcFirst().get()
+    )
+  }
+
+  studly () {
+    return new Str(
+      this.string.replace(/[_-]+/g, ' ')
+    ).title().strip()
   }
 
   /**
@@ -174,7 +222,7 @@ class Strings {
     let random = ''
 
     while (size--) {
-      random += Strings.alphabet[bytes[size] & 63]
+      random += Str.alphabet[bytes[size] & 63]
     }
 
     return random
@@ -214,4 +262,4 @@ class Strings {
   }
 }
 
-module.exports = Strings
+module.exports = Str
