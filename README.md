@@ -29,7 +29,7 @@
 ---
 
 ## Introduction
-The `@superchargejs/strings` package provides chainable string utilities for Node.js and JavaSript. It’s a wrapper around JavaScript’s global `String` class providing a handful of useful methods, like `.title()`, `.strip()`, `.camelCase()`, and so on. Have fun using the package!
+The `@superchargejs/strings` package provides chainable string utilities for Node.js and JavaScript. It’s a wrapper around JavaScript’s global `String` class providing a handful of useful methods, like `.title()`, `.strip()`, `.camelCase()`, and so on. Have fun using the package!
 
 
 ## Installation
@@ -56,7 +56,7 @@ const title = Str('  Supercharge is sweet!').trim().title().get()
 // title: "Supercharge Is Sweet!"
 ```
 
-Every method in the chain that would return a string, the package returns an instance of iteself. This way you can chain further methods. Call `.get()` when you want to get the actual JavaScript string.
+For every method in the chain that would return a string, the package returns an instance of iteself. This way, you can chain further methods. Call `.get()` to retrieve the actual JavaScript string.
 
 
 ## Contributing
