@@ -82,7 +82,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isUpperCase () {
+  isUppercase () {
     return this.value === this.upper().get()
   }
 
@@ -121,7 +121,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isLowerCase () {
+  isLowercase () {
     return this.value === this.lower().get()
   }
 

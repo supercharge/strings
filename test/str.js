@@ -23,10 +23,10 @@ describe('Strings', () => {
     expect(Str('SuperchargE').uppercase().get()).to.equal('SUPERCHARGE')
   })
 
-  it('isUpperCase()', async () => {
-    expect(Str('SUPERCHARGE').isUpperCase()).to.be.true()
-    expect(Str('sUPERCHARGE').isUpperCase()).to.be.false()
-    expect(Str('superchargE').isUpperCase()).to.be.false()
+  it('isUppercase()', async () => {
+    expect(Str('SUPERCHARGE').isUppercase()).to.be.true()
+    expect(Str('sUPERCHARGE').isUppercase()).to.be.false()
+    expect(Str('superchargE').isUppercase()).to.be.false()
   })
 
   it('lower()', async () => {
@@ -40,9 +40,9 @@ describe('Strings', () => {
   })
 
   it('isLowerCase()', async () => {
-    expect(Str('supercharge').isLowerCase()).to.be.true()
-    expect(Str('sUPERCHARGE').isLowerCase()).to.be.false()
-    expect(Str('SUPERCHARGE').isLowerCase()).to.be.false()
+    expect(Str('supercharge').isLowercase()).to.be.true()
+    expect(Str('sUPERCHARGE').isLowercase()).to.be.false()
+    expect(Str('SUPERCHARGE').isLowercase()).to.be.false()
   })
 
   it('lcFirst()', async () => {
