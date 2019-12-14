@@ -82,6 +82,15 @@ class Str {
    *
    * @returns {Boolean}
    */
+  isUpper () {
+    return this.isUppercase()
+  }
+
+  /**
+   * Determine whether the given string is uppercase.
+   *
+   * @returns {Boolean}
+   */
   isUppercase () {
     return this.value === this.upper().get()
   }
@@ -114,6 +123,15 @@ class Str {
     return new Str(
       this.value.toLowerCase()
     )
+  }
+
+  /**
+   * Determine whether the string is lowercase.
+   *
+   * @returns {Boolean}
+   */
+  isLower () {
+    return this.isLowercase()
   }
 
   /**
