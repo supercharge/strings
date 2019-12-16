@@ -5,41 +5,43 @@ on:
     tags:
       - '*'
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm install
-      - run: npm test
+### temporarily disabled because the NPM scope `@supercharge` does not match the GitHub scope `@superchargejs`
 
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Git checkout
-        uses: actions/checkout@v1
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
+#       - run: npm install
+#       - run: npm test
 
-      - name: Set GitHub Package Registry and Scope
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@superchargejs'
+#   publish-gpr:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Git checkout
+#         uses: actions/checkout@v1
 
-      - name: npm install
-        run: npm install
+#       - name: Set GitHub Package Registry and Scope
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
+#           registry-url: https://npm.pkg.github.com/
+#           scope: '@superchargejs'
 
-      - name: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PUBLISH_GPR_TOKEN}}
-        # GitHub doesn’t honor the GitHub Package Registry URL from above (looks like a bug)
-        # Workaround:
-        #   - create a local `.npmrc` file defining the registry URL
-        #   - then go ahead and publish the package
-        run: |
-          echo registry=https://npm.pkg.github.com/superchargejs >> .npmrc
-          npm publish
+#       - name: npm install
+#         run: npm install
+
+#       - name: npm publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{secrets.GITHUB_PUBLISH_GPR_TOKEN}}
+#         # GitHub doesn’t honor the GitHub Package Registry URL from above (looks like a bug)
+#         # Workaround:
+#         #   - create a local `.npmrc` file defining the registry URL
+#         #   - then go ahead and publish the package
+#         run: |
+#           echo registry=https://npm.pkg.github.com/superchargejs >> .npmrc
+#           npm publish
