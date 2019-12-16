@@ -97,6 +97,20 @@ describe('Strings', () => {
     expect(Str('').length()).to.equal(0)
   })
 
+  it('isEmpty()', async () => {
+    expect(Str().isEmpty()).to.be.true()
+    expect(Str('').isEmpty()).to.be.true()
+    expect(Str(null).isEmpty()).to.be.true()
+    expect(Str('Supercharge').isEmpty()).to.be.false()
+  })
+
+  it('isNotEmpty()', async () => {
+    expect(Str().isNotEmpty()).to.be.false()
+    expect(Str('').isNotEmpty()).to.be.false()
+    expect(Str(null).isNotEmpty()).to.be.false()
+    expect(Str('Supercharge').isNotEmpty()).to.be.true()
+  })
+
   it('uuid()', async () => {
     expect(Str.uuid()).to.exist()
     expect(Str.uuid().split('-').length).to.equal(5)

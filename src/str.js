@@ -14,7 +14,7 @@ class Str {
    * @returns {Str}
    */
   constructor (value) {
-    this.value = String(value).slice(0)
+    this.value = String(value || '').slice(0)
   }
 
   /**
@@ -287,6 +287,24 @@ class Str {
    */
   length () {
     return this.value.length
+  }
+
+  /**
+   * Determine whether the given string is empty.
+   *
+   * @returns {Boolean}
+   */
+  isEmpty () {
+    return this.value.length === 0
+  }
+
+  /**
+   * Determine whether the given string is not empty.
+   *
+   * @returns {Boolean}
+   */
+  isNotEmpty () {
+    return !this.isEmpty()
   }
 }
 
