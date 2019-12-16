@@ -7,83 +7,83 @@ const { expect } = require('@hapi/code')
 const { describe, it } = (exports.lab = Lab.script())
 
 describe('Strings', () => {
-  it('tbd', async () => {
+  it('tbd', () => {
     expect(
       Str('supercharge').get()
     ).to.equal('supercharge')
   })
 
-  it('upper()', async () => {
+  it('upper()', () => {
     expect(Str('supercharge').upper().get()).to.equal('SUPERCHARGE')
     expect(Str('SuperchargE').upper().get()).to.equal('SUPERCHARGE')
   })
 
-  it('uppercase()', async () => {
+  it('uppercase()', () => {
     expect(Str('supercharge').uppercase().get()).to.equal('SUPERCHARGE')
     expect(Str('SuperchargE').uppercase().get()).to.equal('SUPERCHARGE')
   })
 
-  it('isUpper()', async () => {
+  it('isUpper()', () => {
     expect(Str('SUPERCHARGE').isUpper()).to.be.true()
     expect(Str('sUPERCHARGE').isUpper()).to.be.false()
     expect(Str('superchargE').isUpper()).to.be.false()
   })
 
-  it('lower()', async () => {
+  it('lower()', () => {
     expect(Str('SUPERCHARGE').lower().get()).to.equal('supercharge')
     expect(Str('SuperchargE').lower().get()).to.equal('supercharge')
   })
 
-  it('lowercase()', async () => {
+  it('lowercase()', () => {
     expect(Str('SUPERCHARGE').lowercase().get()).to.equal('supercharge')
     expect(Str('SuperchargE').lowercase().get()).to.equal('supercharge')
   })
 
-  it('isLower()', async () => {
+  it('isLower()', () => {
     expect(Str('supercharge').isLower()).to.be.true()
     expect(Str('sUPERCHARGE').isLower()).to.be.false()
     expect(Str('SUPERCHARGE').isLower()).to.be.false()
   })
 
-  it('lcFirst()', async () => {
+  it('lcFirst()', () => {
     expect(Str('Supercharge').lcFirst().get()).to.equal('supercharge')
     expect(Str('SUPERCHARGE').lcFirst().get()).to.equal('sUPERCHARGE')
     expect(Str('SUPERCHARGE     IS AWESOME').lcFirst().get()).to.equal('sUPERCHARGE     IS AWESOME')
   })
 
-  it('strip()', async () => {
+  it('strip()', () => {
     expect(Str('supercharge is awesome').strip().get()).to.equal('superchargeisawesome')
     expect(Str('    supercharge IS aWesoME').strip().get()).to.equal('superchargeISaWesoME')
     expect(Str('SUPERCHARGE     IS AWESOME   ').strip().get()).to.equal('SUPERCHARGEISAWESOME')
   })
 
-  it('title()', async () => {
+  it('title()', () => {
     expect(Str('supercharge is awesome').title().get()).to.equal('Supercharge Is Awesome')
     expect(Str('supercharge IS AWesoME').title().get()).to.equal('Supercharge Is Awesome')
     expect(Str('SUPERCHARGE IS AWESOME').title().get()).to.equal('Supercharge Is Awesome')
   })
 
-  it('camel()', async () => {
+  it('camel()', () => {
     expect(Str('supercharge is awesome').camel().get()).to.equal('superchargeIsAwesome')
     expect(Str('supercharge_IS_AWesoME').camel().get()).to.equal('superchargeIsAwesome')
     expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).to.equal('superchargeIsAwesome')
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).to.equal('superchargeIsAwesome')
   })
 
-  it('studly()', async () => {
+  it('studly()', () => {
     expect(Str('supercharge is awesome').studly().get()).to.equal('SuperchargeIsAwesome')
     expect(Str('supercharge_IS_AWesoME').studly().get()).to.equal('SuperchargeIsAwesome')
     expect(Str('SUPERCHARGE_is_AWESOME').studly().get()).to.equal('SuperchargeIsAwesome')
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').studly().get()).to.equal('SuperchargeIsAwesome')
   })
 
-  it('trim()', async () => {
+  it('trim()', () => {
     expect(Str('  supercharge').trim().get()).to.equal('supercharge')
     expect(Str(' supercharge ').trim().get()).to.equal('supercharge')
     expect(Str('sUPERCHARGE  ').trim().get()).to.equal('sUPERCHARGE')
   })
 
-  it('contains()', async () => {
+  it('contains()', () => {
     expect(Str('supercharge').contains('arge')).to.be.true()
     expect(Str('supercharge').contains('supercharge')).to.be.true()
 
@@ -91,32 +91,32 @@ describe('Strings', () => {
     expect(Str('supercharge').contains('')).to.be.false()
   })
 
-  it('length()', async () => {
+  it('length()', () => {
     expect(Str('supercharge').length()).to.equal(11)
     expect(Str(' 123').length()).to.equal(4)
     expect(Str('').length()).to.equal(0)
   })
 
-  it('isEmpty()', async () => {
+  it('isEmpty()', () => {
     expect(Str().isEmpty()).to.be.true()
     expect(Str('').isEmpty()).to.be.true()
     expect(Str(null).isEmpty()).to.be.true()
     expect(Str('Supercharge').isEmpty()).to.be.false()
   })
 
-  it('isNotEmpty()', async () => {
+  it('isNotEmpty()', () => {
     expect(Str().isNotEmpty()).to.be.false()
     expect(Str('').isNotEmpty()).to.be.false()
     expect(Str(null).isNotEmpty()).to.be.false()
     expect(Str('Supercharge').isNotEmpty()).to.be.true()
   })
 
-  it('uuid()', async () => {
+  it('uuid()', () => {
     expect(Str.uuid()).to.exist()
     expect(Str.uuid().split('-').length).to.equal(5)
   })
 
-  it('random()', async () => {
+  it('random()', () => {
     expect(Str.random()).to.exist()
 
     // default length is 21 chars
