@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.1.0](https://github.com/superchargejs/strings/compare/v1.0.1...v1.1.0) - 2019-12-17
+
+### Added
+- `.isEmpty()`: determine whether the string value is empty (`''/undefined/null`)
+- `.isNotEmpty()`:  determine whether the string value has a length of 1 or greater
+
+
 ## [1.0.1](https://github.com/superchargejs/strings/compare/v1.0.0...v1.0.1) - 2019-12-15
 
 ### Updated
