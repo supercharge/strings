@@ -275,7 +275,7 @@ class Str {
    * @returns {Boolean}
    */
   includes (needle) {
-    return needle === ''
+    return new Str(needle).isEmpty()
       ? false
       : this.value.includes(needle)
   }
