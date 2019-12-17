@@ -268,7 +268,7 @@ class Str {
   }
 
   /**
-   * Determine whether the haystack contains the given `needle`.
+   * Determine whether the given string contains the `needle`.
    *
    * @param {*} needle
    *
