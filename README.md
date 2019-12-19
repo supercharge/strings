@@ -29,27 +29,27 @@
 ---
 
 ## Introduction
-The `@superchargejs/strings` package provides chainable string utilities for Node.js and JavaScript. It’s a wrapper around JavaScript’s global `String` class providing a handful of useful methods, like `.title()`, `.strip()`, `.camelCase()`, and so on. Have fun using the package!
+The `@supercharge/strings` package provides chainable string utilities for Node.js and JavaScript. It’s a wrapper around JavaScript’s global `String` class providing a handful of useful methods, like `.title()`, `.strip()`, `.camelCase()`, and so on. Have fun using the package!
 
 
 ## Installation
 
 ```
-npm i @superchargejs/strings
+npm i @supercharge/strings
 ```
 
 
 ## Docs
-Find all the [details for `@superchargejs/strings` in the extensive Supercharge docs](https://superchargejs.com/docs/strings).
+Find all the [details for `@supercharge/strings` in the extensive Supercharge docs](https://superchargejs.com/docs/strings).
 
 
 ## Usage
-Using `@superchargejs/strings` is pretty straightforward. Pass a string to the imported Function and chain your desired methods to transform to string value to your needs.
+Using `@supercharge/strings` is pretty straightforward. Pass a string to the imported Function and chain your desired methods to transform to string value to your needs.
 
 For example, you may want to trim a string and then title-case it:
 
 ```js
-const Str = require('@superchargejs/strings')
+const Str = require('@supercharge/strings')
 
 const title = Str('  Supercharge is sweet!').trim().title().get()
 
