@@ -1,7 +1,10 @@
 # Changelog
 
 
-## [1.1.1](https://github.com/superchargejs/strings/compare/v1.1.0...v1.1.1) - 2019-12-xx
+## [1.2.0](https://github.com/superchargejs/strings/compare/v1.1.0...v1.2.0) - 2020-01-xx
+
+### Added
+- tba.
 
 ### Updated
 - Readme: fix scope in package name (from `@superchargejs` to `@supercharge`)
