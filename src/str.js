@@ -183,7 +183,7 @@ class Str {
    */
   static random (size = 21) {
     const bytes = Crypto.randomBytes(size)
-    const alphabetLength = Str.alphabet.length
+    const alphabetLength = Str.alphabet.length - 1
 
     let random = ''
 
