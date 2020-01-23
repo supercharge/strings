@@ -283,6 +283,17 @@ class Str {
   }
 
   /**
+   * Uppercases the first character in the string.
+   *
+   * @returns {Str}
+   */
+  ucFirst () {
+    return new Str(
+      this.value[0].toUpperCase() + this.value.slice(1)
+    )
+  }
+
+  /**
    * Uppercases the string.
    *
    * @returns {Str}
