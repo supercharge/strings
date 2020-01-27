@@ -139,6 +139,10 @@ describe('Strings', () => {
     ).to.equal('Supercharge-Is-Super-Awesome')
 
     expect(
+      Str('Supercharge is awesome').replaceAll('-', '/').get()
+    ).to.equal('Supercharge is awesome')
+
+    expect(
       Str('Supercharge is awesome')
         .title()
         .replaceAll(' ', '-')
