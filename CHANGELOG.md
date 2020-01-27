@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.2.0](https://github.com/superchargejs/strings/compare/v1.1.0...v1.2.0) - 2020-01-xx
+## [1.2.0](https://github.com/superchargejs/strings/compare/v1.1.0...v1.2.0) - 2020-01-27
 
 ### Added
 - `.ucFirst()`: uppercase the first character in the string
