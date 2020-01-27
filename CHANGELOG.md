@@ -1,24 +1,25 @@
 # Changelog
 
 
-## [1.2.0](https://github.com/superchargejs/strings/compare/v1.1.0...v1.2.0) - 2020-01-27
+## [1.2.0](https://github.com/supercharge/strings/compare/v1.1.0...v1.2.0) - 2020-01-27
 
 ### Added
 - `.ucFirst()`: uppercase the first character in the string
 - `.replaceAll()`: replace all occurences in a string
 
 ### Updated
+- bump deps
 - Readme: fix scope in package name (from `@superchargejs` to `@supercharge`)
 
 
-## [1.1.0](https://github.com/superchargejs/strings/compare/v1.0.1...v1.1.0) - 2019-12-17
+## [1.1.0](https://github.com/supercharge/strings/compare/v1.0.1...v1.1.0) - 2019-12-17
 
 ### Added
 - `.isEmpty()`: determine whether the string value is empty (`''/undefined/null`)
 - `.isNotEmpty()`:  determine whether the string value has a length of 1 or greater
 
 
-## [1.0.1](https://github.com/superchargejs/strings/compare/v1.0.0...v1.0.1) - 2019-12-15
+## [1.0.1](https://github.com/supercharge/strings/compare/v1.0.0...v1.0.1) - 2019-12-15
 
 ### Updated
 - GitHub Workflow publishing this package in the GitHub Package Registry

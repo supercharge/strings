@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "author": "Marcus Pöhls <marcus@superchargejs.com>",
   "bugs": {
-    "url": "https://github.com/superchargejs/strings/issues"
+    "url": "https://github.com/supercharge/strings/issues"
   },
   "dependencies": {
     "uuid": "~3.4.0"
@@ -25,7 +25,7 @@
   "files": [
     "src"
   ],
-  "homepage": "https://github.com/superchargejs/strings",
+  "homepage": "https://github.com/supercharge/strings",
   "keywords": [
     "supercharge",
     "superchargejs",
@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/superchargejs/strings.git"
+    "url": "git+https://github.com/supercharge/strings.git"
   },
   "scripts": {
     "lint": "eslint .",
