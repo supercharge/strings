@@ -5,6 +5,7 @@
 
 ### Added
 - `.ucFirst()`: uppercase the first character in the string
+- `.replaceAll()`: replace all occurences in a string
 
 ### Updated
 - Readme: fix scope in package name (from `@superchargejs` to `@supercharge`)
