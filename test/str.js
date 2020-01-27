@@ -29,6 +29,12 @@ describe('Strings', () => {
     expect(Str('superchargE').isUpper()).to.be.false()
   })
 
+  it('ucFirst()', () => {
+    expect(Str('supercharge').ucFirst().get()).to.equal('Supercharge')
+    expect(Str('sUPERCHARGE').ucFirst().get()).to.equal('SUPERCHARGE')
+    expect(Str('sUPERCHARGE     IS AWESOME').ucFirst().get()).to.equal('SUPERCHARGE     IS AWESOME')
+  })
+
   it('lower()', () => {
     expect(Str('SUPERCHARGE').lower().get()).to.equal('supercharge')
     expect(Str('SuperchargE').lower().get()).to.equal('supercharge')
