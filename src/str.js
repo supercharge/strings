@@ -195,6 +195,22 @@ class Str {
   }
 
   /**
+   * Replace all occurrences of `search` with `replace` in the string.
+   *
+   * @param {*} search
+   * @param {*} replace
+   *
+   * @returns {Str}
+   */
+  replaceAll (search, replace) {
+    const replacer = new RegExp(search, 'g')
+
+    return new Str(
+      this.value.replace(replacer, replace)
+    )
+  }
+
+  /**
    * Splits up the string into an array of strings by separating
    * the string at each of the specified `separator` string.
    *

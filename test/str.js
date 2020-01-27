@@ -126,4 +126,18 @@ describe('Strings', () => {
     expect(Str.random(50)).to.exist()
     expect(Str.random(50).length).to.equal(50)
   })
+
+  it('replaceAll', () => {
+    expect(
+      Str('Supercharge Is Super Awesome').replaceAll(' ', '-').get()
+    ).to.equal('Supercharge-Is-Super-Awesome')
+
+    expect(
+      Str('Supercharge is awesome')
+        .title()
+        .replaceAll(' ', '-')
+        .camel()
+        .get()
+    ).to.equal('superchargeIsAwesome')
+  })
 })
