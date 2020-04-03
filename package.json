@@ -1,6 +1,6 @@
 {
   "name": "@supercharge/strings",
-  "description": "Supercharge Strings",
+  "description": " String utilities for Node.js and JavaScript",
   "version": "1.2.0",
   "author": "Marcus Pöhls <marcus@superchargejs.com>",
   "bugs": {
