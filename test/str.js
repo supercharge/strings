@@ -158,8 +158,15 @@ describe('Strings', () => {
   })
 
   it('equals', () => {
-    expect(Str('Supercharge').equals('Supercharge')).to.be.be.true()
-    expect(Str('Super').equals('super')).to.be.be.false()
-    expect(Str('Super').equals()).to.be.be.false()
+    expect(Str('Supercharge').equals('Supercharge')).to.be.true()
+    expect(Str('Super').equals('super')).to.be.false()
+    expect(Str('Super').equals()).to.be.false()
+  })
+
+  it('startsWith', () => {
+    expect(Str('Supercharge').startsWith('Super')).to.be.true()
+    expect(Str('Supercharge').startsWith('super')).to.be.false()
+    expect(Str('Super').startsWith('Super', 10)).to.be.false()
+    expect(Str('Super').startsWith()).to.be.false()
   })
 })

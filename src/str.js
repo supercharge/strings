@@ -233,6 +233,20 @@ class Str {
   }
 
   /**
+   * Determine whether the string starts with the given `needle`.
+   * Optionally, accepts the position in the string at which
+   * to begin searching for the `needle` (defaults to `0`).
+   *
+   * @param {*} needle
+   * @param {Number} position
+   *
+   * @returns {Boolean}
+   */
+  startsWith (needle, position) {
+    return this.value.startsWith(needle, position)
+  }
+
+  /**
    * Removes all whitespace from the string, everywhere.
    *
    * @returns {Str}
