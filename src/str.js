@@ -53,9 +53,7 @@ class Str {
    * @returns {Str}
    */
   camel () {
-    return new Str(
-      this.studly().lcFirst().get()
-    )
+    return this.studly().lcFirst()
   }
 
   /**
