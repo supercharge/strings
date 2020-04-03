@@ -1,6 +1,6 @@
 'use strict'
 
-const Uuid = require('uuid/v4')
+const Uuid = require('uuid')
 const Crypto = require('crypto')
 
 class Str {
@@ -65,6 +65,17 @@ class Str {
    */
   contains (needle) {
     return this.includes(needle)
+  }
+
+  /**
+   * Determine whether the string equals the given `value`.
+   *
+   * @param {String} value
+   *
+   * @returns {Boolean}
+   */
+  equals (value) {
+    return this.value === (value)
   }
 
   /**
@@ -331,7 +342,7 @@ class Str {
    * @returns {String}
    */
   static uuid () {
-    return Uuid()
+    return Uuid.v4()
   }
 }
 
