@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [1.3.0](https://github.com/supercharge/strings/compare/v1.2.0...v1.3.0) - 2020-04-03
+
+### Added
+- `.split(separator)`: split the string into an ordered set of substrings where the `separator` occurs
+- `.equals(value)`: determine whether the string equals the given `value`
+- `.startsWith(needle, position)`: determine whether the string starts with the `needle`
+- `.endsWith(needle, length)`: determine whether the string ends with the `needle`
+
+
 ## [1.2.0](https://github.com/supercharge/strings/compare/v1.1.0...v1.2.0) - 2020-01-27
 
 ### Added
