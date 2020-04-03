@@ -169,4 +169,14 @@ describe('Strings', () => {
     expect(Str('Super').startsWith('Super', 10)).to.be.false()
     expect(Str('Super').startsWith()).to.be.false()
   })
+
+  it('endsWith', () => {
+    expect(Str('Supercharge').endsWith('charge')).to.be.true()
+    expect(Str('Supercharge').endsWith('Chare')).to.be.false()
+
+    expect(Str('abc').endsWith('abc', 3)).to.be.true()
+    expect(Str('abc').endsWith('abc', 4)).to.be.true()
+    expect(Str('Supercharge').endsWith('charge', 5)).to.be.false()
+    expect(Str('Super').endsWith()).to.be.false()
+  })
 })

@@ -68,6 +68,19 @@ class Str {
   }
 
   /**
+   * Determine whether the string ends with the given `needle`.
+   * Optionally, accepts a `length` used as the string length.
+   *
+   * @param {*} needle
+   * @param {Number} length
+   *
+   * @returns {Boolean}
+   */
+  endsWith (needle, length) {
+    return this.value.endsWith(needle, length)
+  }
+
+  /**
    * Determine whether the string equals the given `value`.
    *
    * @param {String} value
