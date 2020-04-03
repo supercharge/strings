@@ -122,6 +122,12 @@ describe('Strings', () => {
     expect(Str.uuid().split('-').length).to.equal(5)
   })
 
+  it('split()', () => {
+    expect(Str('Supercharge-is-awesome').split('-')).to.equal(['Supercharge', 'is', 'awesome'])
+    expect(Str('Supercharge-is-awesome').split()).to.equal(['Supercharge-is-awesome'])
+    expect(Str('Supercharge').split('-')).to.equal(['Supercharge'])
+  })
+
   it('random()', () => {
     expect(Str.random()).to.exist()
 
@@ -149,5 +155,11 @@ describe('Strings', () => {
         .camel()
         .get()
     ).to.equal('superchargeIsAwesome')
+  })
+
+  it('equals', () => {
+    expect(Str('Supercharge').equals('Supercharge')).to.be.be.true()
+    expect(Str('Super').equals('super')).to.be.be.false()
+    expect(Str('Super').equals()).to.be.be.false()
   })
 })
