@@ -197,13 +197,22 @@ class Str {
   }
 
   /**
+   * Removes the whitespace from the front.
+   *
+   * @returns {String}
+   */
+  ltrim () {
+    return this.value.trimLeft()
+  }
+
+  /**
    * Create a random, URL-friendly string. The default length will have 21 symbols.
    *
    * @param {Number} [size=21] number of symbols in string
    *
    * @returns {String}
    */
-  static random (size = 21) {
+  random (size = 21) {
     const bytes = Crypto.randomBytes(size)
     const alphabetLength = Str.alphabet.length - 1
 
@@ -230,6 +239,15 @@ class Str {
     return new Str(
       this.value.replace(replacer, replace)
     )
+  }
+
+  /**
+   * Removes the whitespace from the end.
+   *
+   * @returns {String}
+   */
+  rtrim () {
+    return this.value.trimRight()
   }
 
   /**
@@ -368,7 +386,7 @@ class Str {
    *
    * @returns {String}
    */
-  static uuid () {
+  uuid () {
     return Uuid.v4()
   }
 }
