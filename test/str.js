@@ -189,4 +189,9 @@ describe('Strings', () => {
     expect(Str('Supercharge  ').rtrim('Supercharge').get()).to.equal('Supercharge')
     expect(Str('   Supercharge').rtrim('Supercharge').get()).to.equal('   Supercharge')
   })
+
+  it('concat', () => {
+    expect(Str('Supercharge').concat('-is', '-great').get()).to.equal('Supercharge-is-great')
+    expect(Str('Supercharge').concat([' is', ' great']).get()).to.equal('Supercharge is great')
+  })
 })

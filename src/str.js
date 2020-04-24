@@ -57,6 +57,21 @@ class Str {
   }
 
   /**
+   * Returns a string that contains the concatenation of two or more strings.
+   *
+   * @param {String|Array} strings
+   *
+   * @returns {Str}
+   */
+  concat (...strings) {
+    strings = [].concat(...strings)
+
+    return new Str(
+      this.value.concat(...strings)
+    )
+  }
+
+  /**
    * Determine whether the haystack contains the given `needle`.
    *
    * @param {*} needle
