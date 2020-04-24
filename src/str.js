@@ -197,12 +197,14 @@ class Str {
   }
 
   /**
-   * Removes the whitespace from the front.
+   * Removes the whitespace from the front of the string.
    *
-   * @returns {String}
+   * @returns {Str}
    */
   ltrim () {
-    return this.value.trimLeft()
+    return new Str(
+      this.value.trimLeft()
+    )
   }
 
   /**
@@ -242,12 +244,14 @@ class Str {
   }
 
   /**
-   * Removes the whitespace from the end.
+   * Removes the whitespace from the end of the string.
    *
-   * @returns {String}
+   * @returns {Str}
    */
   rtrim () {
-    return this.value.trimRight()
+    return new Str(
+      this.value.trimRight()
+    )
   }
 
   /**

@@ -179,4 +179,14 @@ describe('Strings', () => {
     expect(Str('Supercharge').endsWith('charge', 5)).to.be.false()
     expect(Str('Super').endsWith()).to.be.false()
   })
+
+  it('ltrim', () => {
+    expect(Str('   Supercharge').ltrim('Supercharge').get()).to.equal('Supercharge')
+    expect(Str('Supercharge  ').ltrim('Supercharge').get()).to.equal('Supercharge  ')
+  })
+
+  it('rtrim', () => {
+    expect(Str('Supercharge  ').rtrim('Supercharge').get()).to.equal('Supercharge')
+    expect(Str('   Supercharge').rtrim('Supercharge').get()).to.equal('   Supercharge')
+  })
 })
