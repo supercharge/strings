@@ -2,6 +2,15 @@
 
 const Str = require('./str')
 
+/**
+ * Create a new String instance providing chainable string operations.
+ * This instance clones the original string and works with the clone.
+ * It won’t modify the original string.
+ *
+ * @param {String} value
+ *
+ * @returns {Str}
+ */
 const strings = value => {
   return new Str(value)
 }
