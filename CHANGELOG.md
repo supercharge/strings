@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.4.0](https://github.com/supercharge/strings/compare/v1.3.0...v1.4.0) - 2020-xx-xx
+## [1.4.0](https://github.com/supercharge/strings/compare/v1.3.0...v1.4.0) - 2020-04-24
 
 ### Added
 - `.ltrim()`: remove all whitespace from the left of the string
