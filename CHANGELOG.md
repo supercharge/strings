@@ -1,11 +1,12 @@
 # Changelog
 
 
-## [1.4.0](https://github.com/supercharge/strings/compare/v1.3.0...v1.4.0) - 2020-05-xx
+## [1.4.0](https://github.com/supercharge/strings/compare/v1.3.0...v1.4.0) - 2020-xx-xx
 
 ### Added
 - `.ltrim()`: remove all whitespace from the left of the string
 - `.rtrim()`: remove all whitespace from the rigth of the string
+- `.concat()`: returns a string that contains the concatenation of two or more strings
 
 
 ## [1.3.0](https://github.com/supercharge/strings/compare/v1.2.0...v1.3.0) - 2020-04-03
