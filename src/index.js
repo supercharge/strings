@@ -41,6 +41,8 @@ module.exports.random = size => {
 /**
  * Determine whether the given `input` is a string.
  *
+ * @param {*} input - the value to check if it’s a string
+ *
  * @returns {Boolean}
  */
 module.exports.isString = input => {
