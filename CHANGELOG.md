@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.5.0](https://github.com/supercharge/strings/compare/v1.4.0...v1.5.0) - 2020-05-xx
+
+### Added
+- `Str.isString(value)`: determine whether the given `value` is a string
+
+
 ## [1.4.0](https://github.com/supercharge/strings/compare/v1.3.0...v1.4.0) - 2020-04-24
 
 ### Added
