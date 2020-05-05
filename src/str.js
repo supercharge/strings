@@ -1,7 +1,7 @@
 'use strict'
 
-const Uuid = require('uuid')
 const Crypto = require('crypto')
+const { v4: uuidv4 } = require('uuid')
 
 class Str {
   /**
@@ -417,7 +417,7 @@ class Str {
    * @returns {String}
    */
   uuid () {
-    return Uuid.v4()
+    return uuidv4()
   }
 }
 
