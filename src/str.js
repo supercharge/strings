@@ -156,6 +156,17 @@ class Str {
   }
 
   /**
+   * Determine whether the given `input` is a string.
+   *
+   * @param {*} input
+   *
+   * @returns {Boolean}
+   */
+  isString (input) {
+    return typeof input === 'string' && Object.prototype.toString.call(input) === '[object String]'
+  }
+
+  /**
    * Determine whether the given string is uppercase.
    *
    * @returns {Boolean}

@@ -37,3 +37,12 @@ module.exports.uuid = () => {
 module.exports.random = size => {
   return strings().random(size)
 }
+
+/**
+ * Determine whether the given `input` is a string.
+ *
+ * @returns {Boolean}
+ */
+module.exports.isString = input => {
+  return strings().isString(input)
+}

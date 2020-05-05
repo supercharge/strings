@@ -194,4 +194,13 @@ describe('Strings', () => {
     expect(Str('Supercharge').concat('-is', '-great').get()).to.equal('Supercharge-is-great')
     expect(Str('Supercharge').concat([' is', ' great']).get()).to.equal('Supercharge is great')
   })
+
+  it('isString', () => {
+    expect(Str.isString('')).to.be.true()
+    expect(Str.isString(String())).to.be.true()
+    expect(Str.isString('Supercharge')).to.be.true()
+
+    expect(Str.isString(1)).to.be.false()
+    expect(Str.isString({})).to.be.false()
+  })
 })
