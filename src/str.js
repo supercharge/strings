@@ -103,7 +103,7 @@ class Str {
    * @returns {Boolean}
    */
   equals (value) {
-    return this.value === (value)
+    return this.value === value
   }
 
   /**
