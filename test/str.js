@@ -206,4 +206,12 @@ describe('Strings', () => {
     expect(Str.isString(1)).to.be.false()
     expect(Str.isString({})).to.be.false()
   })
+
+  it('limit', () => {
+    expect(Str('Supercharge').limit(5, ' ->').get()).to.equal('Super ->')
+    expect(Str('Supercharge').limit(5).get()).to.equal('Super')
+    expect(Str('Supercharge').limit(0).get()).to.equal('')
+    expect(Str('Supercharge').limit(0, ' ->').get()).to.equal(' ->')
+    expect(Str('Supercharge').limit().get()).to.equal('')
+  })
 })
