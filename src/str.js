@@ -214,9 +214,9 @@ class Str {
    * @returns {Str}
    */
   limit (limit = 0, end = '') {
-    return new Str(
-      this.value.substring(0, limit).concat(end)
-    )
+    return limit > this.length()
+      ? this
+      : new Str(this.value.substring(0, limit).concat(end))
   }
 
   /**
