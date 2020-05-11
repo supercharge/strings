@@ -215,7 +215,7 @@ class Str {
    */
   limit (limit = 0, end = '') {
     return new Str(
-      this.value.substr(0, limit).concat(end)
+      this.value.substring(0, limit).concat(end)
     )
   }
 
