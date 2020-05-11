@@ -1,6 +1,6 @@
 'use strict'
 
-const Str = require('./str')
+import { Str as Strings } from './str'
 
 /**
  * Create a new String instance providing chainable string operations.
@@ -11,19 +11,20 @@ const Str = require('./str')
  *
  * @returns {Str}
  */
-const strings = value => {
-  return new Str(value)
+const strings = (value?: any): Strings => {
+  return new Strings(value)
 }
 
-module.exports = strings
-module.exports.default = strings
+const Str = strings
+
+export { Str }
 
 /**
  * Create a UUID (version 4).
  *
  * @returns {String}
  */
-module.exports.uuid = () => {
+export function uuid (): string {
   return strings().uuid()
 }
 
@@ -34,7 +35,7 @@ module.exports.uuid = () => {
  *
  * @returns {String}
  */
-module.exports.random = size => {
+export function random (size?: number): string {
   return strings().random(size)
 }
 
@@ -45,6 +46,6 @@ module.exports.random = size => {
  *
  * @returns {Boolean}
  */
-module.exports.isString = input => {
+export function isString (input?: any): boolean {
   return strings().isString(input)
 }

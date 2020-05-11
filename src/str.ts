@@ -1,9 +1,14 @@
 'use strict'
 
-const Crypto = require('crypto')
-const { v4: uuidv4 } = require('uuid')
+import Crypto from 'crypto'
+import { v4 as uuidv4 } from 'uuid'
 
-class Str {
+export class Str {
+  /**
+   * The string value to work with.
+   */
+  private readonly value: string
+
   /**
    * Create a new String instance providing chainable string operations.
    * This instance clones the original string and works with the clone.
@@ -13,7 +18,7 @@ class Str {
    *
    * @returns {Str}
    */
-  constructor (value) {
+  constructor (value: any) {
     this.value = String(value || '').slice(0)
   }
 
@@ -25,7 +30,7 @@ class Str {
    *
    * @returns {String}
    */
-  static get alphabet () {
+  static get alphabet (): string {
     return 'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
   }
 
@@ -34,7 +39,7 @@ class Str {
    *
    * @returns {String}
    */
-  get () {
+  get (): string {
     return this.toString()
   }
 
@@ -43,7 +48,7 @@ class Str {
    *
    * @returns {String}
    */
-  toString () {
+  toString (): string {
     return this.value
   }
 
@@ -52,7 +57,7 @@ class Str {
    *
    * @returns {Str}
    */
-  camel () {
+  camel (): Str {
     return this.studly().lcFirst()
   }
 
@@ -63,8 +68,8 @@ class Str {
    *
    * @returns {Str}
    */
-  concat (...strings) {
-    strings = [].concat(...strings)
+  concat (...strings: string[]): Str {
+    strings = ([] as string[]).concat(...strings)
 
     return new Str(
       this.value.concat(...strings)
@@ -78,7 +83,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  contains (needle) {
+  contains (needle: string): boolean {
     return this.includes(needle)
   }
 
@@ -91,7 +96,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  endsWith (needle, length) {
+  endsWith (needle: string, length?: number): boolean {
     return this.value.endsWith(needle, length)
   }
 
@@ -102,7 +107,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  equals (value) {
+  equals (value: string): boolean {
     return this.value === value
   }
 
@@ -113,7 +118,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  includes (needle) {
+  includes (needle: any): boolean {
     return new Str(needle).isEmpty()
       ? false
       : this.value.includes(needle)
@@ -124,7 +129,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isEmpty () {
+  isEmpty (): boolean {
     return this.value.length === 0
   }
 
@@ -133,7 +138,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isLower () {
+  isLower (): boolean {
     return this.isLowercase()
   }
 
@@ -142,7 +147,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isLowercase () {
+  isLowercase (): boolean {
     return this.value === this.lower().get()
   }
 
@@ -151,7 +156,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isNotEmpty () {
+  isNotEmpty (): boolean {
     return !this.isEmpty()
   }
 
@@ -162,7 +167,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isString (input) {
+  isString (input: any): boolean {
     return typeof input === 'string' && Object.prototype.toString.call(input) === '[object String]'
   }
 
@@ -171,7 +176,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isUpper () {
+  isUpper (): boolean {
     return this.isUppercase()
   }
 
@@ -180,7 +185,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  isUppercase () {
+  isUppercase (): boolean {
     return this.value === this.upper().get()
   }
 
@@ -189,7 +194,7 @@ class Str {
    *
    * @returns {Str}
    */
-  lcFirst () {
+  lcFirst (): Str {
     return new Str(
       this.value[0].toLowerCase() + this.value.slice(1)
     )
@@ -200,7 +205,7 @@ class Str {
    *
    * @returns {Number}
    */
-  length () {
+  length (): number {
     return this.value.length
   }
 
@@ -209,7 +214,7 @@ class Str {
    *
    * @returns {Str}
    */
-  lower () {
+  lower (): Str {
     return this.toLowerCase()
   }
 
@@ -218,7 +223,7 @@ class Str {
    *
    * @returns {Str}
    */
-  lowercase () {
+  lowercase (): Str {
     return this.toLowerCase()
   }
 
@@ -227,7 +232,7 @@ class Str {
    *
    * @returns {Str}
    */
-  ltrim () {
+  ltrim (): Str {
     return new Str(
       this.value.trimLeft()
     )
@@ -240,7 +245,7 @@ class Str {
    *
    * @returns {String}
    */
-  random (size = 21) {
+  random (size = 21): string {
     const bytes = Crypto.randomBytes(size)
     const alphabetLength = Str.alphabet.length - 1
 
@@ -261,7 +266,7 @@ class Str {
    *
    * @returns {Str}
    */
-  replaceAll (search, replace) {
+  replaceAll (search: string, replace: string): Str {
     const replacer = new RegExp(search, 'g')
 
     return new Str(
@@ -274,7 +279,7 @@ class Str {
    *
    * @returns {Str}
    */
-  rtrim () {
+  rtrim (): Str {
     return new Str(
       this.value.trimRight()
     )
@@ -289,7 +294,7 @@ class Str {
    *
    * @returns {Array}
    */
-  split (separator, limit) {
+  split (separator: string, limit?: number): string[] {
     return this.value.split(separator, limit)
   }
 
@@ -303,7 +308,7 @@ class Str {
    *
    * @returns {Boolean}
    */
-  startsWith (needle, position) {
+  startsWith (needle: string, position?: number): boolean {
     return this.value.startsWith(needle, position)
   }
 
@@ -312,7 +317,7 @@ class Str {
    *
    * @returns {Str}
    */
-  strip () {
+  strip (): Str {
     return new Str(
       this.value.replace(/\s+/g, '')
     )
@@ -325,10 +330,12 @@ class Str {
    *
    * @returns {Str}
    */
-  studly () {
+  studly (): Str {
     return new Str(
       this.value.replace(/[_-]+/g, ' ')
-    ).title().strip()
+    )
+      .title()
+      .strip()
   }
 
   /**
@@ -336,7 +343,7 @@ class Str {
    *
    * @returns {Str}
    */
-  title () {
+  title (): Str {
     return new Str(
       this
         .lowercase()
@@ -353,7 +360,7 @@ class Str {
    *
    * @returns {Str}
    */
-  toLowerCase () {
+  toLowerCase (): Str {
     return new Str(
       this.value.toLowerCase()
     )
@@ -365,7 +372,7 @@ class Str {
    *
    * @returns {Str}
    */
-  toUpperCase () {
+  toUpperCase (): Str {
     return new Str(
       this.value.toUpperCase()
     )
@@ -376,7 +383,7 @@ class Str {
    *
    * @returns {Str}
    */
-  trim () {
+  trim (): Str {
     return new Str(
       this.value.trim()
     )
@@ -387,7 +394,7 @@ class Str {
    *
    * @returns {Str}
    */
-  ucFirst () {
+  ucFirst (): Str {
     return new Str(
       this.value[0].toUpperCase() + this.value.slice(1)
     )
@@ -398,7 +405,7 @@ class Str {
    *
    * @returns {Str}
    */
-  upper () {
+  upper (): Str {
     return this.toUpperCase()
   }
 
@@ -407,7 +414,7 @@ class Str {
    *
    * @returns {Str}
    */
-  uppercase () {
+  uppercase (): Str {
     return this.toUpperCase()
   }
 
@@ -416,9 +423,7 @@ class Str {
    *
    * @returns {String}
    */
-  uuid () {
+  uuid (): string {
     return uuidv4()
   }
 }
-
-module.exports = Str
