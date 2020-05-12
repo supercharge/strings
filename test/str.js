@@ -210,10 +210,12 @@ describe('Strings', () => {
   it('limit', () => {
     expect(Str('Supercharge').limit(5, ' ->').get()).to.equal('Super ->')
     expect(Str('Supercharge').limit(5).get()).to.equal('Super')
+
+    expect(Str('Supercharge').limit().get()).to.equal('')
     expect(Str('Supercharge').limit(0).get()).to.equal('')
     expect(Str('Supercharge').limit(0, ' ->').get()).to.equal(' ->')
-    expect(Str('Supercharge').limit().get()).to.equal('')
-    expect(Str('Supercharge').limit(11, ' ->').get()).to.equal('Supercharge ->')
+
+    expect(Str('Supercharge').limit(11, ' ->').get()).to.equal('Supercharge')
     expect(Str('Supercharge').limit(12, ' ->').get()).to.equal('Supercharge')
   })
 })
