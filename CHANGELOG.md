@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [1.7.0](https://github.com/supercharge/strings/compare/v1.6.0...v1.7.0) - 2020-05-12
+
+### Added
+- type definitions
+
+### Updated
+- move codebase to TypeScript to automatically generate type definitions
+
+
 ## [1.6.0](https://github.com/supercharge/strings/compare/v1.5.0...v1.6.0) - 2020-05-12
 
 ### Added
