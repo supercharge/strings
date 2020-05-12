@@ -217,7 +217,7 @@ export class Str {
    *
    * @returns {Str}
    */
-  limit (limit = 0, end = '') {
+  limit (limit: number = 0, end: string = ''): Str {
     return limit >= this.length()
       ? this
       : new Str(this.value.substring(0, limit).concat(end))
