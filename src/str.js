@@ -205,6 +205,21 @@ class Str {
   }
 
   /**
+   * Returns the first limit characters and ends the limited string with end.
+   *
+   *
+   * @param {Number} limit
+   * @param {String} end
+   *
+   * @returns {Str}
+   */
+  limit (limit = 0, end = '') {
+    return limit > this.length()
+      ? this
+      : new Str(this.value.substring(0, limit).concat(end))
+  }
+
+  /**
    * Lowercases the string.
    *
    * @returns {Str}
