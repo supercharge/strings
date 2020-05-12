@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.6.0](https://github.com/supercharge/strings/compare/v1.5.0...v1.6.0) - 2020-05-12
+
+### Added
+- `.limit(limit, end)`: returns the first `limit` characters and ends the limited string with `end`
+
+
 ## [1.5.0](https://github.com/supercharge/strings/compare/v1.4.0...v1.5.0) - 2020-05-05
 
 ### Added
