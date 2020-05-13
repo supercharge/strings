@@ -18,7 +18,7 @@ export class Str {
    *
    * @returns {Str}
    */
-  constructor (value: any) {
+  constructor (value?: any) {
     this.value = String(value || '').slice(0)
   }
 
