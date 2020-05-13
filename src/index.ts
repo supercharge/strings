@@ -1,49 +1,42 @@
 'use strict'
 
 import { Str } from './str'
+import { StrContract } from './str-contract'
 
 /**
- * Create a new String instance providing chainable string operations.
- * This instance clones the original string and works with the clone.
- * It won’t modify the original string.
+ * Creates a new  providing chainable string operations. This new
+ * instance clones the original string and works with the clone.
+ * It won’t modify the original string value.
  *
- * @param {String} value
- *
- * @returns {Str}
+ * @param value - `value` is the value being wrapped into an `Str` instance
  */
-const strings = (value?: any): Str => {
+const strings: StrContract = function (value?: any): Str {
   return new Str(value)
 }
 
-export default strings
-
 /**
  * Create a UUID (version 4).
- *
- * @returns {String}
  */
-export function uuid (): string {
+strings.uuid = (): string => {
   return strings().uuid()
 }
 
 /**
  * Create a random, URL-friendly string. The default length will have 21 symbols.
  *
- * @param {Number} [size=21] number of symbols in string
- *
- * @returns {String}
+ * @param size - `[size=21]` defines the number of symbols in the random string
  */
-export function random (size?: number): string {
+strings.random = (size?: number): string => {
   return strings().random(size)
 }
 
 /**
  * Determine whether the given `input` is a string.
  *
- * @param {*} input - the value to check if it’s a string
- *
- * @returns {Boolean}
+ * @param input - the `input` value to check whether it’s a string
  */
-export function isString (input?: any): boolean {
+strings.isString = (input?: any): boolean => {
   return strings().isString(input)
 }
+
+export = strings
