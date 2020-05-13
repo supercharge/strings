@@ -49,6 +49,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --ext .js,.ts --fix",
     "list:tests": "lab --assert @hapi/code --dry --verbose",
