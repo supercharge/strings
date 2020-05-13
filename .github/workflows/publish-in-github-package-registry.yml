@@ -32,8 +32,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@supercharge'
 
       - name: Install dependencies
         run: npm install
@@ -41,10 +39,6 @@ jobs:
       - name: Publish to GitHub Package Registry
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_PUBLISH_GPR_TOKEN}}
-        # GitHub doesn’t honor the GitHub Package Registry URL from above (looks like a bug)
-        # Workaround:
-        #   - create a local `.npmrc` file defining the registry URL
-        #   - then go ahead and publish the package
         run: |
           echo registry=https://npm.pkg.github.com/supercharge >> .npmrc
           npm publish
