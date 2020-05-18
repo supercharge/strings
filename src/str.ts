@@ -373,9 +373,8 @@ export class Str {
   }
 
   /**
-   * Convert the string to StudlyCase. StudlyCase is
-   * similar to camelCase except that the first
-   * character is uppercase instead of lowercase.
+   * Convert the string to StudlyCase. StudlyCase is similar to camelCase
+   * except that the first character is uppercase instead of lowercase.
    *
    * @returns {Str}
    */
