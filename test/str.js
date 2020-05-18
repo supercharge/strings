@@ -7,10 +7,8 @@ const { expect } = require('@hapi/code')
 const { describe, it } = (exports.lab = Lab.script())
 
 describe('Strings', () => {
-  it('tbd', () => {
-    expect(
-      Str('supercharge').get()
-    ).to.equal('supercharge')
+  it('get', () => {
+    expect(Str('supercharge').get()).to.equal('supercharge')
   })
 
   it('upper()', () => {
