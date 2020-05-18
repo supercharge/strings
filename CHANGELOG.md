@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [1.8.0](https://github.com/supercharge/strings/compare/v1.7.0...v1.8.0) - 2020-05-18
+
+### Added
+- `snake()`: converts a string to snake_case
+- `kebab()`: converts a string to kebab-case
+- `pascal()`: converts a string to PascalCase or also known as StudlyCase
+
+### Fixed
+- GitHub Action to publish this package in the GitHub Package Registry
+
+
 ## [1.7.0](https://github.com/supercharge/strings/compare/v1.6.0...v1.7.0) - 2020-05-13
 
 ### Added
