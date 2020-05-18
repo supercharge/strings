@@ -32,9 +32,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+          registry-url: https://npm.pkg.github.com/
 
-      - name: Install dependencies
-        run: npm install
+      - name: Build package files
+        run: npm run build
 
       - name: Publish to GitHub Package Registry
         env:
