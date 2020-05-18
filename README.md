@@ -30,7 +30,7 @@
 ---
 
 ## Introduction
-The `@supercharge/strings` package provides chainable string utilities for Node.js and JavaScript. It’s a wrapper around JavaScript’s global `String` class providing a handful of useful methods, like `.title()`, `.strip()`, `.camelCase()`, and so on. Have fun using the package!
+The `@supercharge/strings` package provides chainable string utilities for Node.js and JavaScript. It’s a wrapper around JavaScript’s global `String` class providing a handful of useful methods, like `.title()`, `.strip()`, `.camel()`, and so on. Have fun using the package!
 
 
 ## Installation
