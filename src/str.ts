@@ -190,6 +190,19 @@ export class Str {
   }
 
   /**
+   * Convert the string to kebab-case.
+   *
+   * @returns {Str}
+   */
+  kebab (): Str {
+    return new Str(
+      this.value.replace(/[_-\s]+/g, '-')
+    )
+      .strip()
+      .toLowerCase()
+  }
+
+  /**
    * Lowercases the first character in the string.
    *
    * @returns {Str}
@@ -253,6 +266,15 @@ export class Str {
   }
 
   /**
+   * Convert the string to PascalCase (same as StudlyCase). Alias for `.studly()`.
+   *
+   * @returns {Str}
+   */
+  pascal (): Str {
+    return this.studly()
+  }
+
+  /**
    * Create a random, URL-friendly string. The default length will have 21 symbols.
    *
    * @param {Number} [size=21] number of symbols in string
@@ -297,6 +319,19 @@ export class Str {
     return new Str(
       this.value.trimRight()
     )
+  }
+
+  /**
+   * Convert the string to snake_case.
+   *
+   * @returns {Str}
+   */
+  snake (): Str {
+    return new Str(
+      this.value.replace(/[_-\s]+/g, '_')
+    )
+      .strip()
+      .toLowerCase()
   }
 
   /**

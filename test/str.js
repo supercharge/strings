@@ -218,4 +218,27 @@ describe('Strings', () => {
     expect(Str('Supercharge').limit(11, ' ->').get()).to.equal('Supercharge')
     expect(Str('Supercharge').limit(12, ' ->').get()).to.equal('Supercharge')
   })
+  
+  it('kebab', () => {
+    expect(Str('super charge').kebab().get()).to.equal('super-charge')
+    expect(Str('supercharge is awesome').kebab().get()).to.equal('supercharge-is-awesome')
+    expect(Str('supercharge_IS_AWesoME').kebab().get()).to.equal('supercharge-is-awesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').kebab().get()).to.equal('supercharge-is-awesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').kebab().get()).to.equal('supercharge-is-awesome')
+  })
+
+  it('snake', () => {
+    expect(Str('super charge').snake().get()).to.equal('super_charge')
+    expect(Str('supercharge is awesome').snake().get()).to.equal('supercharge_is_awesome')
+    expect(Str('supercharge_IS_AWesoME').snake().get()).to.equal('supercharge_is_awesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').snake().get()).to.equal('supercharge_is_awesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).to.equal('supercharge_is_awesome')
+  })
+
+  it('pascal', () => {
+    expect(Str('supercharge is awesome').pascal().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('supercharge_IS_AWesoME').pascal().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).to.equal('SuperchargeIsAwesome')
+  })
 })
