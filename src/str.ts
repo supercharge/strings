@@ -387,6 +387,20 @@ export class Str {
   }
 
   /**
+   * Returns the substring.
+   *
+   * @param {Number} start
+   * @param {Number} length
+   *
+   * @returns {Str}
+   */
+  substr (start: number, length: number): Str {
+    return new Str(
+      this.value.substring(start, length)
+    )
+  }
+
+  /**
    * Convert the string to title case.
    *
    * @returns {Str}
