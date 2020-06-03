@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [1.9.0](https://github.com/supercharge/strings/compare/v1.8.0...v1.9.0) - 2020-06-03
+
+### Added
+- `ltrim(characters)`, `rtrim(characters)` and `trim(characters)`: support a `characters` parameter allowing you to trim a specific string value from the beginning, end, or both of a value:
+    - `Str('/supercharge/').trim('/').get()` => `'supercharge'`
+    - `Str('/supercharge/').ltrim('/').get()` => `'supercharge/'`
+    - `Str('/supercharge/').rtrim('/').get()` => `'/supercharge'`
+
+### Fixed
+- GitHub Action to publish this package in the GitHub Package Registry
+
+
 ## [1.8.0](https://github.com/supercharge/strings/compare/v1.7.0...v1.8.0) - 2020-05-18
 
 ### Added
