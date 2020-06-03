@@ -255,14 +255,28 @@ export class Str {
   }
 
   /**
-   * Removes the whitespace from the front of the string.
+   * Removes the whitespace from the front of the string when
+   * no argument is present. It trims the given `characters`
+   * from the left of the string if you pass along a value.
+   *
+   * @param {String} characters
    *
    * @returns {Str}
    */
-  ltrim (): Str {
-    return new Str(
-      this.value.trimLeft()
-    )
+  ltrim (characters: string = ''): Str {
+    if (!characters) {
+      return new Str(
+        this.value.trimLeft()
+      )
+    }
+
+    if (this.value.startsWith(characters)) {
+      return new Str(
+        this.value.substring(characters.length)
+      )
+    }
+
+    return new Str(this.value)
   }
 
   /**
@@ -311,14 +325,28 @@ export class Str {
   }
 
   /**
-   * Removes the whitespace from the end of the string.
+   * Removes the whitespace from the end of the string when
+   * no argument is present. It trims the given `characters`
+   * from the left of the string if you pass along a value.
+   *
+   * @param {String} characters
    *
    * @returns {Str}
    */
-  rtrim (): Str {
-    return new Str(
-      this.value.trimRight()
-    )
+  rtrim (characters: string = ''): Str {
+    if (!characters) {
+      return new Str(
+        this.value.trimRight()
+      )
+    }
+
+    if (this.value.endsWith(characters)) {
+      return new Str(
+        this.value.substring(-characters.length, this.value.length - characters.length)
+      )
+    }
+
+    return new Str(this.value)
   }
 
   /**
@@ -441,14 +469,18 @@ export class Str {
   }
 
   /**
-   * Removes whitespace around the string, front and back.
+   * Removes whitespace around the string, front and back when no argument
+   * is present. It trims the given `characters` from the left and right
+   * of the string if you pass along a value.
+   *
+   * @param {String} characters
    *
    * @returns {Str}
    */
-  trim (): Str {
-    return new Str(
-      this.value.trim()
-    )
+  trim (characters: string = ''): Str {
+    return this
+      .ltrim(characters)
+      .rtrim(characters)
   }
 
   /**
