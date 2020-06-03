@@ -9,9 +9,6 @@
     - `Str('/supercharge/').ltrim('/').get()` => `'supercharge/'`
     - `Str('/supercharge/').rtrim('/').get()` => `'/supercharge'`
 
-### Fixed
-- GitHub Action to publish this package in the GitHub Package Registry
-
 
 ## [1.8.0](https://github.com/supercharge/strings/compare/v1.7.0...v1.8.0) - 2020-05-18
 
