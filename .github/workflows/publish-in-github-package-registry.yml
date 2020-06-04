@@ -41,7 +41,7 @@ jobs:
 
       - name: Publish to GitHub Package Registry
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PUBLISH_GPR_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PUBLISH_GPR_TOKEN }}
         run: |
           echo registry=https://npm.pkg.github.com/supercharge >> .npmrc
           npm publish
