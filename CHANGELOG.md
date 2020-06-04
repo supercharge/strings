@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.9.0](https://github.com/supercharge/strings/compare/v1.8.0...v1.9.0) - 2020-06-03
+## [1.9.0](https://github.com/supercharge/strings/compare/v1.8.0...v1.9.0) - 2020-06-04
 
 ### Added
 - `ltrim(characters)`, `rtrim(characters)` and `trim(characters)`: support a `characters` parameter allowing you to trim a specific string value from the beginning, end, or both of a value:
