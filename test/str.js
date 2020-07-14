@@ -97,6 +97,14 @@ describe('Strings', () => {
     expect(Str('supercharge').contains('')).to.be.false()
   })
 
+  it('notContains()', () => {
+    expect(Str('supercharge').notContains('')).to.be.true()
+    expect(Str('supercharge').notContains('sub')).to.be.true()
+    expect(Str('supercharge').notContains('charger')).to.be.true()
+
+    expect(Str('supercharge').notContains('super')).to.be.false()
+  })
+
   it('length()', () => {
     expect(Str('supercharge').length()).to.equal(11)
     expect(Str(' 123').length()).to.equal(4)

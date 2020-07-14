@@ -79,7 +79,7 @@ export class Str {
   /**
    * Determine whether the haystack contains the given `needle`.
    *
-   * @param {*} needle
+   * @param {String} needle
    *
    * @returns {Boolean}
    */
@@ -88,10 +88,21 @@ export class Str {
   }
 
   /**
+   * Determine whether the haystack does not contain the given `needle`.
+   *
+   * @param {String} needle
+   *
+   * @returns {Boolean}
+   */
+  notContains (needle: string): boolean {
+    return !this.contains(needle)
+  }
+
+  /**
    * Determine whether the string ends with the given `needle`.
    * Optionally, accepts a `length` used as the string length.
    *
-   * @param {*} needle
+   * @param {String} needle
    * @param {Number} length
    *
    * @returns {Boolean}
