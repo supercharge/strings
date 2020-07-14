@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [1.10.0](https://github.com/supercharge/strings/compare/v1.9.0...v1.10.0) - 2020-07-14
+
+### Added
+- `notContains(needle)`: determine whether the given string does not contain the given `needle`
+
+### Updated
+- bump dependencies
+
+
 ## [1.9.0](https://github.com/supercharge/strings/compare/v1.8.0...v1.9.0) - 2020-06-04
 
 ### Added
