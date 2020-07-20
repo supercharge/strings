@@ -28,7 +28,7 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
 
-      - name: Set GitHub Package Registry and Scope
+      - name: Set Node.js Version
         uses: actions/setup-node@v1
         with:
           node-version: 12
@@ -39,9 +39,13 @@ jobs:
       - name: Build package files
         run: npm run build
 
+      - name: Configure GitHub Package Registry as Publish Target
+        uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@supercharge'
+
       - name: Publish to GitHub Package Registry
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PUBLISH_GPR_TOKEN }}
-        run: |
-          echo registry=https://npm.pkg.github.com/supercharge >> .npmrc
-          npm publish
