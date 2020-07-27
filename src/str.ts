@@ -88,6 +88,23 @@ export class Str {
   }
 
   /**
+   * Determine whether the haystack contains all items if the `needles` array.
+   *
+   * @param {String} needle
+   *
+   * @returns {Boolean}
+   */
+  containsAll (needles: string[]): boolean {
+    for (const needle of ([] as string[]).concat(needles)) {
+      if (this.notContains(needle)) {
+        return false
+      }
+    }
+
+    return true
+  }
+
+  /**
    * Determine whether the haystack does not contain the given `needle`.
    *
    * @param {String} needle

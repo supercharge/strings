@@ -97,6 +97,14 @@ describe('Strings', () => {
     expect(Str('supercharge').contains('')).to.be.false()
   })
 
+  it('containsAll', () => {
+    expect(Str('supercharge is awesome').containsAll('supercharge')).to.be.true()
+    expect(Str('supercharge is awesome').containsAll(['supercharge'])).to.be.true()
+    expect(Str('supercharge is awesome').containsAll(['is', 'awesome'])).to.be.true()
+
+    expect(Str('supercharge is awesome').containsAll(['supercharge', 'bad'])).to.be.false()
+  })
+
   it('notContains()', () => {
     expect(Str('supercharge').notContains('')).to.be.true()
     expect(Str('supercharge').notContains('sub')).to.be.true()
