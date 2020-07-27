@@ -1,6 +1,15 @@
 # Changelog
 
 
+## [1.11.0](https://github.com/supercharge/strings/compare/v1.10.0...v1.11.0) - 2020-07-27
+
+### Added
+- `containsAll(needles)`: determine whether all items in the `needles` array are part of the string
+
+### Updated
+- bump dependencies
+
+
 ## [1.10.0](https://github.com/supercharge/strings/compare/v1.9.0...v1.10.0) - 2020-07-14
 
 ### Added
