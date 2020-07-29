@@ -1,29 +1,41 @@
 name: Run tests
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [8.x, 10.x, 12.x, 14.x]
 
-    name: Node ${{ matrix.node-version }}
-   
+    name: Node.js ${{ matrix.node-version }}
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Git checkout
+      uses: actions/checkout@v2
+
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm/cache/files
+        key: dependencies-nodejs-${{ matrix.node-version }}-package-${{ hashFiles('package.json') }}
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
 
-    - run: npm install
+    - name: Install dependencies
+      run: npm install
       env:
         CI: true
 
-    - run: npm test
+    - name: Run tests
+      run: npm test
       env:
         CI: true
