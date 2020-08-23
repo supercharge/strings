@@ -10,9 +10,8 @@
     "uuid": "~8.2.0"
   },
   "devDependencies": {
-    "@hapi/code": "~7.0.0",
-    "@hapi/lab": "~21.0.0",
     "@supercharge/tsconfig": "~1.0.0",
+    "@types/jest": "~26.0.10",
     "@types/uuid": "~8.0.0",
     "@typescript-eslint/eslint-plugin": "~2.34.0",
     "eslint": "~6.8.0",
@@ -22,10 +21,8 @@
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-promise": "~4.2.1",
     "eslint-plugin-standard": "~4.0.1",
+    "jest": "~26.4.2",
     "typescript": "~3.9.7"
-  },
-  "engines": {
-    "node": ">=8"
   },
   "files": [
     "dist",
@@ -51,11 +48,9 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
-    "list:tests": "lab --assert @hapi/code --dry --verbose",
+    "lint:fix": "npm run lint -- --fix",
     "test": "npm run build && npm run lint && npm run test:run",
-    "test:run": "lab --assert @hapi/code --leaks --coverage --reporter console --output stdout --reporter html --output ./coverage/coverage.html",
-    "test:single": "lab --assert @hapi/code --leaks --lint --id"
+    "test:run": "jest"
   },
   "types": "dist"
 }

@@ -1,168 +1,164 @@
 'use strict'
 
 const Str = require('..')
-const Lab = require('@hapi/lab')
-const { expect } = require('@hapi/code')
-
-const { describe, it } = (exports.lab = Lab.script())
 
 describe('Strings', () => {
   it('get', () => {
-    expect(Str('supercharge').get()).to.equal('supercharge')
+    expect(Str('supercharge').get()).toEqual('supercharge')
   })
 
   it('upper()', () => {
-    expect(Str('supercharge').upper().get()).to.equal('SUPERCHARGE')
-    expect(Str('SuperchargE').upper().get()).to.equal('SUPERCHARGE')
+    expect(Str('supercharge').upper().get()).toEqual('SUPERCHARGE')
+    expect(Str('SuperchargE').upper().get()).toEqual('SUPERCHARGE')
   })
 
   it('uppercase()', () => {
-    expect(Str('supercharge').uppercase().get()).to.equal('SUPERCHARGE')
-    expect(Str('SuperchargE').uppercase().get()).to.equal('SUPERCHARGE')
+    expect(Str('supercharge').uppercase().get()).toEqual('SUPERCHARGE')
+    expect(Str('SuperchargE').uppercase().get()).toEqual('SUPERCHARGE')
   })
 
   it('isUpper()', () => {
-    expect(Str('SUPERCHARGE').isUpper()).to.be.true()
-    expect(Str('sUPERCHARGE').isUpper()).to.be.false()
-    expect(Str('superchargE').isUpper()).to.be.false()
+    expect(Str('SUPERCHARGE').isUpper()).toBe(true)
+    expect(Str('sUPERCHARGE').isUpper()).toBe(false)
+    expect(Str('superchargE').isUpper()).toBe(false)
   })
 
   it('ucFirst()', () => {
-    expect(Str('supercharge').ucFirst().get()).to.equal('Supercharge')
-    expect(Str('sUPERCHARGE').ucFirst().get()).to.equal('SUPERCHARGE')
-    expect(Str('sUPERCHARGE     IS AWESOME').ucFirst().get()).to.equal('SUPERCHARGE     IS AWESOME')
+    expect(Str('supercharge').ucFirst().get()).toEqual('Supercharge')
+    expect(Str('sUPERCHARGE').ucFirst().get()).toEqual('SUPERCHARGE')
+    expect(Str('sUPERCHARGE     IS AWESOME').ucFirst().get()).toEqual('SUPERCHARGE     IS AWESOME')
   })
 
   it('lower()', () => {
-    expect(Str('SUPERCHARGE').lower().get()).to.equal('supercharge')
-    expect(Str('SuperchargE').lower().get()).to.equal('supercharge')
+    expect(Str('SUPERCHARGE').lower().get()).toEqual('supercharge')
+    expect(Str('SuperchargE').lower().get()).toEqual('supercharge')
   })
 
   it('lowercase()', () => {
-    expect(Str('SUPERCHARGE').lowercase().get()).to.equal('supercharge')
-    expect(Str('SuperchargE').lowercase().get()).to.equal('supercharge')
+    expect(Str('SUPERCHARGE').lowercase().get()).toEqual('supercharge')
+    expect(Str('SuperchargE').lowercase().get()).toEqual('supercharge')
   })
 
   it('isLower()', () => {
-    expect(Str('supercharge').isLower()).to.be.true()
-    expect(Str('sUPERCHARGE').isLower()).to.be.false()
-    expect(Str('SUPERCHARGE').isLower()).to.be.false()
+    expect(Str('supercharge').isLower()).toBe(true)
+    expect(Str('sUPERCHARGE').isLower()).toBe(false)
+    expect(Str('SUPERCHARGE').isLower()).toBe(false)
   })
 
   it('lcFirst()', () => {
-    expect(Str('Supercharge').lcFirst().get()).to.equal('supercharge')
-    expect(Str('SUPERCHARGE').lcFirst().get()).to.equal('sUPERCHARGE')
-    expect(Str('SUPERCHARGE     IS AWESOME').lcFirst().get()).to.equal('sUPERCHARGE     IS AWESOME')
+    expect(Str('Supercharge').lcFirst().get()).toEqual('supercharge')
+    expect(Str('SUPERCHARGE').lcFirst().get()).toEqual('sUPERCHARGE')
+    expect(Str('SUPERCHARGE     IS AWESOME').lcFirst().get()).toEqual('sUPERCHARGE     IS AWESOME')
   })
 
   it('strip()', () => {
-    expect(Str('supercharge is awesome').strip().get()).to.equal('superchargeisawesome')
-    expect(Str('    supercharge IS aWesoME').strip().get()).to.equal('superchargeISaWesoME')
-    expect(Str('SUPERCHARGE     IS AWESOME   ').strip().get()).to.equal('SUPERCHARGEISAWESOME')
+    expect(Str('supercharge is awesome').strip().get()).toEqual('superchargeisawesome')
+    expect(Str('    supercharge IS aWesoME').strip().get()).toEqual('superchargeISaWesoME')
+    expect(Str('SUPERCHARGE     IS AWESOME   ').strip().get()).toEqual('SUPERCHARGEISAWESOME')
   })
 
   it('title()', () => {
-    expect(Str('supercharge is awesome').title().get()).to.equal('Supercharge Is Awesome')
-    expect(Str('supercharge IS AWesoME').title().get()).to.equal('Supercharge Is Awesome')
-    expect(Str('SUPERCHARGE IS AWESOME').title().get()).to.equal('Supercharge Is Awesome')
+    expect(Str('supercharge is awesome').title().get()).toEqual('Supercharge Is Awesome')
+    expect(Str('supercharge IS AWesoME').title().get()).toEqual('Supercharge Is Awesome')
+    expect(Str('SUPERCHARGE IS AWESOME').title().get()).toEqual('Supercharge Is Awesome')
   })
 
   it('camel()', () => {
-    expect(Str('supercharge is awesome').camel().get()).to.equal('superchargeIsAwesome')
-    expect(Str('supercharge_IS_AWesoME').camel().get()).to.equal('superchargeIsAwesome')
-    expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).to.equal('superchargeIsAwesome')
-    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).to.equal('superchargeIsAwesome')
+    expect(Str('supercharge is awesome').camel().get()).toEqual('superchargeIsAwesome')
+    expect(Str('supercharge_IS_AWesoME').camel().get()).toEqual('superchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).toEqual('superchargeIsAwesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).toEqual('superchargeIsAwesome')
   })
 
   it('studly()', () => {
-    expect(Str('supercharge is awesome').studly().get()).to.equal('SuperchargeIsAwesome')
-    expect(Str('supercharge_IS_AWesoME').studly().get()).to.equal('SuperchargeIsAwesome')
-    expect(Str('SUPERCHARGE_is_AWESOME').studly().get()).to.equal('SuperchargeIsAwesome')
-    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').studly().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('supercharge is awesome').studly().get()).toEqual('SuperchargeIsAwesome')
+    expect(Str('supercharge_IS_AWesoME').studly().get()).toEqual('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').studly().get()).toEqual('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').studly().get()).toEqual('SuperchargeIsAwesome')
   })
 
   it('trim()', () => {
-    expect(Str('  supercharge').trim().get()).to.equal('supercharge')
-    expect(Str(' supercharge ').trim().get()).to.equal('supercharge')
-    expect(Str('sUPERCHARGE  ').trim().get()).to.equal('sUPERCHARGE')
-    expect(Str('/supercharge/').trim('/').get()).to.equal('supercharge')
-    expect(Str('/supercharge/').trim('abc').get()).to.equal('/supercharge/')
+    expect(Str('  supercharge').trim().get()).toEqual('supercharge')
+    expect(Str(' supercharge ').trim().get()).toEqual('supercharge')
+    expect(Str('sUPERCHARGE  ').trim().get()).toEqual('sUPERCHARGE')
+    expect(Str('/supercharge/').trim('/').get()).toEqual('supercharge')
+    expect(Str('/supercharge/').trim('abc').get()).toEqual('/supercharge/')
   })
 
   it('contains()', () => {
-    expect(Str('supercharge').contains('arge')).to.be.true()
-    expect(Str('supercharge').contains('supercharge')).to.be.true()
+    expect(Str('supercharge').contains('arge')).toBe(true)
+    expect(Str('supercharge').contains('supercharge')).toBe(true)
 
-    expect(Str('supercharge').contains('abc')).to.be.false()
-    expect(Str('supercharge').contains('')).to.be.false()
+    expect(Str('supercharge').contains('abc')).toBe(false)
+    expect(Str('supercharge').contains('')).toBe(false)
   })
 
   it('containsAll', () => {
-    expect(Str('supercharge is awesome').containsAll('supercharge')).to.be.true()
-    expect(Str('supercharge is awesome').containsAll(['supercharge'])).to.be.true()
-    expect(Str('supercharge is awesome').containsAll(['is', 'awesome'])).to.be.true()
+    expect(Str('supercharge is awesome').containsAll('supercharge')).toBe(true)
+    expect(Str('supercharge is awesome').containsAll(['supercharge'])).toBe(true)
+    expect(Str('supercharge is awesome').containsAll(['is', 'awesome'])).toBe(true)
 
-    expect(Str('supercharge is awesome').containsAll(['supercharge', 'bad'])).to.be.false()
+    expect(Str('supercharge is awesome').containsAll(['supercharge', 'bad'])).toBe(false)
   })
 
   it('notContains()', () => {
-    expect(Str('supercharge').notContains('')).to.be.true()
-    expect(Str('supercharge').notContains('sub')).to.be.true()
-    expect(Str('supercharge').notContains('charger')).to.be.true()
+    expect(Str('supercharge').notContains('')).toBe(true)
+    expect(Str('supercharge').notContains('sub')).toBe(true)
+    expect(Str('supercharge').notContains('charger')).toBe(true)
 
-    expect(Str('supercharge').notContains('super')).to.be.false()
+    expect(Str('supercharge').notContains('super')).toBe(false)
   })
 
   it('length()', () => {
-    expect(Str('supercharge').length()).to.equal(11)
-    expect(Str(' 123').length()).to.equal(4)
-    expect(Str('').length()).to.equal(0)
+    expect(Str('supercharge').length()).toEqual(11)
+    expect(Str(' 123').length()).toEqual(4)
+    expect(Str('').length()).toEqual(0)
   })
 
   it('isEmpty()', () => {
-    expect(Str().isEmpty()).to.be.true()
-    expect(Str('').isEmpty()).to.be.true()
-    expect(Str(null).isEmpty()).to.be.true()
-    expect(Str('Supercharge').isEmpty()).to.be.false()
+    expect(Str().isEmpty()).toBe(true)
+    expect(Str('').isEmpty()).toBe(true)
+    expect(Str(null).isEmpty()).toBe(true)
+    expect(Str('Supercharge').isEmpty()).toBe(false)
   })
 
   it('isNotEmpty()', () => {
-    expect(Str().isNotEmpty()).to.be.false()
-    expect(Str('').isNotEmpty()).to.be.false()
-    expect(Str(null).isNotEmpty()).to.be.false()
-    expect(Str('Supercharge').isNotEmpty()).to.be.true()
+    expect(Str().isNotEmpty()).toBe(false)
+    expect(Str('').isNotEmpty()).toBe(false)
+    expect(Str(null).isNotEmpty()).toBe(false)
+    expect(Str('Supercharge').isNotEmpty()).toBe(true)
   })
 
   it('uuid()', () => {
-    expect(Str.uuid()).to.exist()
-    expect(Str.uuid().split('-').length).to.equal(5)
+    expect(Str.uuid).toBeInstanceOf(Function)
+    expect(Str.uuid().split('-').length).toEqual(5)
   })
 
   it('split()', () => {
-    expect(Str('Supercharge-is-awesome').split('-')).to.equal(['Supercharge', 'is', 'awesome'])
-    expect(Str('Supercharge-is-awesome').split()).to.equal(['Supercharge-is-awesome'])
-    expect(Str('Supercharge').split('-')).to.equal(['Supercharge'])
+    expect(Str('Supercharge-is-awesome').split('-')).toEqual(['Supercharge', 'is', 'awesome'])
+    expect(Str('Supercharge-is-awesome').split()).toEqual(['Supercharge-is-awesome'])
+    expect(Str('Supercharge').split('-')).toEqual(['Supercharge'])
   })
 
   it('random()', () => {
-    expect(Str.random()).to.exist()
+    expect(Str.random())
 
     // default length is 21 chars
-    expect(Str.random().length).to.equal(21)
+    expect(Str.random().length).toEqual(21)
 
     // supports a custom length
-    expect(Str.random(50)).to.exist()
-    expect(Str.random(50).length).to.equal(50)
+    expect(Str.random(50))
+    expect(Str.random(50).length).toEqual(50)
   })
 
   it('replaceAll', () => {
     expect(
       Str('Supercharge Is Super Awesome').replaceAll(' ', '-').get()
-    ).to.equal('Supercharge-Is-Super-Awesome')
+    ).toEqual('Supercharge-Is-Super-Awesome')
 
     expect(
       Str('Supercharge is awesome').replaceAll('-', '/').get()
-    ).to.equal('Supercharge is awesome')
+    ).toEqual('Supercharge is awesome')
 
     expect(
       Str('Supercharge is awesome')
@@ -170,111 +166,111 @@ describe('Strings', () => {
         .replaceAll(' ', '-')
         .camel()
         .get()
-    ).to.equal('superchargeIsAwesome')
+    ).toEqual('superchargeIsAwesome')
   })
 
   it('equals', () => {
-    expect(Str('Supercharge').equals('Supercharge')).to.be.true()
+    expect(Str('Supercharge').equals('Supercharge')).toBe(true)
 
-    expect(Str('Super').equals('super')).to.be.false()
-    expect(Str('Super').equals()).to.be.false()
+    expect(Str('Super').equals('super')).toBe(false)
+    expect(Str('Super').equals()).toBe(false)
   })
 
   it('startsWith', () => {
-    expect(Str('Supercharge').startsWith('Super')).to.be.true()
-    expect(Str('Supercharge').startsWith('charge', 5)).to.be.true()
+    expect(Str('Supercharge').startsWith('Super')).toBe(true)
+    expect(Str('Supercharge').startsWith('charge', 5)).toBe(true)
 
-    expect(Str('Supercharge').startsWith('super')).to.be.false()
-    expect(Str('Super').startsWith('Super', 10)).to.be.false()
-    expect(Str('Super').startsWith()).to.be.false()
+    expect(Str('Supercharge').startsWith('super')).toBe(false)
+    expect(Str('Super').startsWith('Super', 10)).toBe(false)
+    expect(Str('Super').startsWith()).toBe(false)
   })
 
   it('endsWith', () => {
-    expect(Str('Supercharge').endsWith('charge')).to.be.true()
-    expect(Str('Supercharge').endsWith('Chare')).to.be.false()
+    expect(Str('Supercharge').endsWith('charge')).toBe(true)
+    expect(Str('Supercharge').endsWith('Chare')).toBe(false)
 
-    expect(Str('abc').endsWith('abc', 3)).to.be.true()
-    expect(Str('abc').endsWith('abc', 4)).to.be.true()
-    expect(Str('Supercharge').endsWith('charge', 5)).to.be.false()
-    expect(Str('Super').endsWith()).to.be.false()
+    expect(Str('abc').endsWith('abc', 3)).toBe(true)
+    expect(Str('abc').endsWith('abc', 4)).toBe(true)
+    expect(Str('Supercharge').endsWith('charge', 5)).toBe(false)
+    expect(Str('Super').endsWith()).toBe(false)
   })
 
   it('ltrim', () => {
-    expect(Str('   Supercharge').ltrim().get()).to.equal('Supercharge')
-    expect(Str('   Supercharge').ltrim(null).get()).to.equal('Supercharge')
-    expect(Str('   Supercharge').ltrim('').get()).to.equal('Supercharge')
-    expect(Str('Supercharge').ltrim('abc').get()).to.equal('Supercharge')
-    expect(Str('/supercharge/').ltrim('/').get()).to.equal('supercharge/')
-    expect(Str('   Supercharge').ltrim('Supercharge').get()).to.equal('   Supercharge')
-    expect(Str('   supercharge   ').ltrim('Supercharge').get()).to.equal('   supercharge   ')
+    expect(Str('   Supercharge').ltrim().get()).toEqual('Supercharge')
+    expect(Str('   Supercharge').ltrim(null).get()).toEqual('Supercharge')
+    expect(Str('   Supercharge').ltrim('').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').ltrim('abc').get()).toEqual('Supercharge')
+    expect(Str('/supercharge/').ltrim('/').get()).toEqual('supercharge/')
+    expect(Str('   Supercharge').ltrim('Supercharge').get()).toEqual('   Supercharge')
+    expect(Str('   supercharge   ').ltrim('Supercharge').get()).toEqual('   supercharge   ')
   })
 
   it('rtrim', () => {
-    expect(Str('Supercharge   ').rtrim().get()).to.equal('Supercharge')
-    expect(Str('Supercharge   ').rtrim(null).get()).to.equal('Supercharge')
-    expect(Str('Supercharge   ').rtrim('').get()).to.equal('Supercharge')
-    expect(Str('Supercharge').rtrim('abc').get()).to.equal('Supercharge')
-    expect(Str('/supercharge/').rtrim('/').get()).to.equal('/supercharge')
-    expect(Str('Supercharge   ').rtrim('Supercharge').get()).to.equal('Supercharge   ')
+    expect(Str('Supercharge   ').rtrim().get()).toEqual('Supercharge')
+    expect(Str('Supercharge   ').rtrim(null).get()).toEqual('Supercharge')
+    expect(Str('Supercharge   ').rtrim('').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').rtrim('abc').get()).toEqual('Supercharge')
+    expect(Str('/supercharge/').rtrim('/').get()).toEqual('/supercharge')
+    expect(Str('Supercharge   ').rtrim('Supercharge').get()).toEqual('Supercharge   ')
   })
 
   it('concat', () => {
-    expect(Str('Supercharge').concat('-is', '-great').get()).to.equal('Supercharge-is-great')
-    expect(Str('Supercharge').concat([' is', ' great']).get()).to.equal('Supercharge is great')
+    expect(Str('Supercharge').concat('-is', '-great').get()).toEqual('Supercharge-is-great')
+    expect(Str('Supercharge').concat([' is', ' great']).get()).toEqual('Supercharge is great')
   })
 
   it('isString', () => {
-    expect(Str.isString('')).to.be.true()
-    expect(Str.isString(String())).to.be.true()
-    expect(Str.isString('Supercharge')).to.be.true()
+    expect(Str.isString('')).toBe(true)
+    expect(Str.isString(String())).toBe(true)
+    expect(Str.isString('Supercharge')).toBe(true)
 
-    expect(Str.isString(1)).to.be.false()
-    expect(Str.isString({})).to.be.false()
+    expect(Str.isString(1)).toBe(false)
+    expect(Str.isString({})).toBe(false)
   })
 
   it('limit', () => {
-    expect(Str('Supercharge').limit(5, ' ->').get()).to.equal('Super ->')
-    expect(Str('Supercharge').limit(5).get()).to.equal('Super')
+    expect(Str('Supercharge').limit(5, ' ->').get()).toEqual('Super ->')
+    expect(Str('Supercharge').limit(5).get()).toEqual('Super')
 
-    expect(Str('Supercharge').limit().get()).to.equal('')
-    expect(Str('Supercharge').limit(0).get()).to.equal('')
-    expect(Str('Supercharge').limit(0, ' ->').get()).to.equal(' ->')
+    expect(Str('Supercharge').limit().get()).toEqual('')
+    expect(Str('Supercharge').limit(0).get()).toEqual('')
+    expect(Str('Supercharge').limit(0, ' ->').get()).toEqual(' ->')
 
-    expect(Str('Supercharge').limit(11, ' ->').get()).to.equal('Supercharge')
-    expect(Str('Supercharge').limit(12, ' ->').get()).to.equal('Supercharge')
+    expect(Str('Supercharge').limit(11, ' ->').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').limit(12, ' ->').get()).toEqual('Supercharge')
   })
 
   it('kebab', () => {
-    expect(Str('super charge').kebab().get()).to.equal('super-charge')
-    expect(Str('supercharge is awesome').kebab().get()).to.equal('supercharge-is-awesome')
-    expect(Str('supercharge_IS_AWesoME').kebab().get()).to.equal('supercharge-is-awesome')
-    expect(Str('SUPERCHARGE_is_AWESOME').kebab().get()).to.equal('supercharge-is-awesome')
-    expect(Str('supercharge_IS_AWesoME!').kebab().get()).to.equal('supercharge-is-awesome!')
-    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').kebab().get()).to.equal('supercharge-is-awesome')
+    expect(Str('super charge').kebab().get()).toEqual('super-charge')
+    expect(Str('supercharge is awesome').kebab().get()).toEqual('supercharge-is-awesome')
+    expect(Str('supercharge_IS_AWesoME').kebab().get()).toEqual('supercharge-is-awesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').kebab().get()).toEqual('supercharge-is-awesome')
+    expect(Str('supercharge_IS_AWesoME!').kebab().get()).toEqual('supercharge-is-awesome!')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').kebab().get()).toEqual('supercharge-is-awesome')
   })
 
   it('snake', () => {
-    expect(Str('super charge').snake().get()).to.equal('super_charge')
-    expect(Str('supercharge is awesome').snake().get()).to.equal('supercharge_is_awesome')
-    expect(Str('supercharge_IS_AWesoME').snake().get()).to.equal('supercharge_is_awesome')
-    expect(Str('SUPERCHARGE_is_AWESOME').snake().get()).to.equal('supercharge_is_awesome')
-    expect(Str('SUPERCHARGE_is_AWESOME!').snake().get()).to.equal('supercharge_is_awesome!')
-    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).to.equal('supercharge_is_awesome')
+    expect(Str('super charge').snake().get()).toEqual('super_charge')
+    expect(Str('supercharge is awesome').snake().get()).toEqual('supercharge_is_awesome')
+    expect(Str('supercharge_IS_AWesoME').snake().get()).toEqual('supercharge_is_awesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').snake().get()).toEqual('supercharge_is_awesome')
+    expect(Str('SUPERCHARGE_is_AWESOME!').snake().get()).toEqual('supercharge_is_awesome!')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).toEqual('supercharge_is_awesome')
   })
 
   it('pascal', () => {
-    expect(Str('supercharge is awesome').pascal().get()).to.equal('SuperchargeIsAwesome')
-    expect(Str('supercharge_IS_AWesoME').pascal().get()).to.equal('SuperchargeIsAwesome')
-    expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).to.equal('SuperchargeIsAwesome')
-    expect(Str('SUPERCHARGE_is_AWESOME!').pascal().get()).to.equal('SuperchargeIsAwesome!')
-    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).to.equal('SuperchargeIsAwesome')
+    expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
+    expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
+    expect(Str('SUPERCHARGE_is_AWESOME!').pascal().get()).toEqual('SuperchargeIsAwesome!')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
   })
 
   it('substr', () => {
-    expect(Str('Supercharge').substr(0, 5).get()).to.equal('Super')
-    expect(Str('Supercharge').substr(5, 0).get()).to.equal('Super')
-    expect(Str('Supercharge').substr(5).get()).to.equal('charge')
-    expect(Str('Supercharge').substr().get()).to.equal('Supercharge')
-    expect(Str('Supercharge is awesome').substr(0, 11).get()).to.equal('Supercharge')
+    expect(Str('Supercharge').substr(0, 5).get()).toEqual('Super')
+    expect(Str('Supercharge').substr(5, 0).get()).toEqual('Super')
+    expect(Str('Supercharge').substr(5).get()).toEqual('charge')
+    expect(Str('Supercharge').substr().get()).toEqual('Supercharge')
+    expect(Str('Supercharge is awesome').substr(0, 11).get()).toEqual('Supercharge')
   })
 })
