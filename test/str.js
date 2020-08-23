@@ -1,6 +1,6 @@
 'use strict'
 
-const Str = require('..')
+const Str = require('../dist')
 
 describe('Strings', () => {
   it('get', () => {
