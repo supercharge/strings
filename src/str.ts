@@ -462,7 +462,7 @@ export class Str {
    * @returns {Str}
    */
   stripNums (): Str {
-    return this.replaceAll(/[0-9]/, '')
+    return this.replaceAll(/\d+/, '')
   }
 
   /**
