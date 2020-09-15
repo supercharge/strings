@@ -55,6 +55,8 @@ export class Str {
   /**
    * Returns the portion of the string after the first occurrence of the given `delimiter`.
    *
+   * @param {String} delimiter
+   *
    * @returns {Str}
    */
   after (delimiter: string): Str {
@@ -71,6 +73,8 @@ export class Str {
 
   /**
    * Returns the portion of the string before the first occurrence of the given `delimiter`.
+   *
+   * @param {String} delimiter
    *
    * @returns {Str}
    */
