@@ -1,7 +1,12 @@
 # Changelog
 
 
-## [1.12.0](https://github.com/supercharge/strings/compare/v1.11.0...v1.12.0) - 2020-08-xx
+## [1.12.0](https://github.com/supercharge/strings/compare/v1.11.0...v1.12.0) - 2020-09-15
+
+### Added
+- `before(delimiter)`: returns the portion of the string before the first occurrence of the given `delimiter`
+- `after(delimiter)`: returns the portion of the string after the first occurrence of the given `delimiter`
+- `stripNums()`: removes all numbers from the string
 
 ### Updated
 - bump dependencies
