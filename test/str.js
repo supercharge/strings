@@ -7,6 +7,32 @@ describe('Strings', () => {
     expect(Str('supercharge').get()).toEqual('supercharge')
   })
 
+  it('after', () => {
+    expect(Str('marcus').after('mar').get()).toEqual('cus')
+    expect(Str('super-charge').after('-').get()).toEqual('charge')
+    expect(Str('su-per-charge').after('-').get()).toEqual('per-charge')
+
+    expect(Str('supercharge').after('xxx').get()).toEqual('supercharge')
+    expect(Str('supercharge').after('').get()).toEqual('supercharge')
+
+    expect(Str('super0charge').after('0').get()).toEqual('charge')
+    expect(Str('super0charge').after(0).get()).toEqual('charge')
+    expect(Str('super2charge').after(2).get()).toEqual('charge')
+  })
+
+  it('before', () => {
+    expect(Str('marcus').before('cus').get()).toEqual('mar')
+    expect(Str('super-charge').before('-').get()).toEqual('super')
+    expect(Str('su-per-charge').before('-').get()).toEqual('su')
+
+    expect(Str('supercharge').before('xxx').get()).toEqual('supercharge')
+    expect(Str('supercharge').before('').get()).toEqual('supercharge')
+
+    expect(Str('super0charge').before('0').get()).toEqual('super')
+    expect(Str('super0charge').before(0).get()).toEqual('super')
+    expect(Str('super2charge').before(2).get()).toEqual('super')
+  })
+
   it('upper()', () => {
     expect(Str('supercharge').upper().get()).toEqual('SUPERCHARGE')
     expect(Str('SuperchargE').upper().get()).toEqual('SUPERCHARGE')
@@ -51,10 +77,15 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE     IS AWESOME').lcFirst().get()).toEqual('sUPERCHARGE     IS AWESOME')
   })
 
-  it('strip()', () => {
+  it('strip', () => {
     expect(Str('supercharge is awesome').strip().get()).toEqual('superchargeisawesome')
     expect(Str('    supercharge IS aWesoME').strip().get()).toEqual('superchargeISaWesoME')
     expect(Str('SUPERCHARGE     IS AWESOME   ').strip().get()).toEqual('SUPERCHARGEISAWESOME')
+  })
+
+  it('stripNums', () => {
+    expect(Str('supercharge 123 is awesome').stripNums().get()).toEqual('supercharge  is awesome')
+    expect(Str('5up3rch4rge 12 awes0me 6789').stripNums().get()).toEqual('uprchrge  awesme ')
   })
 
   it('title()', () => {

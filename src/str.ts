@@ -53,6 +53,34 @@ export class Str {
   }
 
   /**
+   * Returns the portion of the string after the first occurrence of the given `delimiter`.
+   *
+   * @returns {Str}
+   */
+  after (delimiter: string): Str {
+    if (delimiter === '') {
+      return this
+    }
+
+    const substrings = this.split(delimiter)
+
+    return substrings.length === 1
+      ? this // delimiter not part of the string
+      : new Str(substrings.slice(1).join(delimiter))
+  }
+
+  /**
+   * Returns the portion of the string before the first occurrence of the given `delimiter`.
+   *
+   * @returns {Str}
+   */
+  before (delimiter: string): Str {
+    return delimiter === ''
+      ? this
+      : new Str(this.split(delimiter).shift())
+  }
+
+  /**
    * Convert the string to camelCase.
    *
    * @returns {Str}
@@ -344,7 +372,7 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceAll (search: string, replace: string): Str {
+  replaceAll (search: string|RegExp, replace: string): Str {
     const replacer = new RegExp(search, 'g')
 
     return new Str(
@@ -426,6 +454,15 @@ export class Str {
     return new Str(
       this.value.replace(/\s+/g, '')
     )
+  }
+
+  /**
+   * Removes all numbers from the string.
+   *
+   * @returns {Str}
+   */
+  stripNums (): Str {
+    return this.replaceAll(/[0-9]/, '')
   }
 
   /**
