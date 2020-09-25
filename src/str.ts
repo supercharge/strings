@@ -67,7 +67,7 @@ export class Str {
     const substrings = this.split(delimiter)
 
     return substrings.length === 1
-      ? this // delimiter not part of the string
+      ? this // delimiter is not part of the string
       : new Str(substrings.slice(1).join(delimiter))
   }
 
