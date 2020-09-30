@@ -98,6 +98,25 @@ export class Str {
   }
 
   /**
+   * Returns the portion of the string before the last occurrence of the given `delimiter`.
+   *
+   * @param {String} delimiter
+   *
+   * @return {Str}
+   */
+  beforeLast (delimiter: string): Str {
+    if (delimiter === '') {
+      return this
+    }
+
+    const substrings = this.split(delimiter)
+
+    return substrings.length === 1
+      ? this // delimiter is not part of the string
+      : new Str(substrings.slice(0, -1).join(delimiter))
+  }
+
+  /**
    * Convert the string to camelCase.
    *
    * @returns {Str}
