@@ -20,6 +20,19 @@ describe('Strings', () => {
     expect(Str('super2charge').after(2).get()).toEqual('charge')
   })
 
+  it('afterLast', () => {
+    expect(Str('marcus').afterLast('c').get()).toEqual('us')
+    expect(Str('super-charge').afterLast('-').get()).toEqual('charge')
+    expect(Str('su-per-charge').afterLast('-').get()).toEqual('charge')
+
+    expect(Str('supercharge').afterLast('xxx').get()).toEqual('supercharge')
+    expect(Str('supercharge').afterLast('').get()).toEqual('supercharge')
+
+    expect(Str('super0charge').afterLast('0').get()).toEqual('charge')
+    expect(Str('super0charge').afterLast(0).get()).toEqual('charge')
+    expect(Str('super2charge').afterLast(2).get()).toEqual('charge')
+  })
+
   it('before', () => {
     expect(Str('marcus').before('cus').get()).toEqual('mar')
     expect(Str('super-charge').before('-').get()).toEqual('super')

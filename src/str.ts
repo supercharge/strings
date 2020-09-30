@@ -72,6 +72,19 @@ export class Str {
   }
 
   /**
+   * Returns the portion of the string after the last occurrence of the given `delimiter`.
+   *
+   * @param {String} delimiter
+   *
+   * @return {Str}
+   */
+  afterLast (delimiter: string): Str {
+    return delimiter === ''
+      ? this
+      : new Str(this.split(delimiter).pop())
+  }
+
+  /**
    * Returns the portion of the string before the first occurrence of the given `delimiter`.
    *
    * @param {String} delimiter
