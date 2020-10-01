@@ -1,13 +1,13 @@
-'use strict'
+"use strict";
 
-import Crypto from 'crypto'
-import { v4 as uuidv4 } from 'uuid'
+import Crypto from "crypto";
+import { v4 as uuidv4 } from "uuid";
 
 export class Str {
   /**
    * The string value to work with.
    */
-  private readonly value: string
+  private readonly value: string;
 
   /**
    * Create a new String instance providing chainable string operations.
@@ -18,8 +18,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  constructor (value?: any) {
-    this.value = String(value || '').slice(0)
+  constructor(value?: any) {
+    this.value = String(value || "").slice(0);
   }
 
   /**
@@ -30,8 +30,8 @@ export class Str {
    *
    * @returns {String}
    */
-  static get alphabet (): string {
-    return 'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
+  static get alphabet(): string {
+    return "ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW";
   }
 
   /**
@@ -39,8 +39,8 @@ export class Str {
    *
    * @returns {String}
    */
-  get (): string {
-    return this.toString()
+  get(): string {
+    return this.toString();
   }
 
   /**
@@ -48,8 +48,8 @@ export class Str {
    *
    * @returns {String}
    */
-  toString (): string {
-    return this.value
+  toString(): string {
+    return this.value;
   }
 
   /**
@@ -59,16 +59,16 @@ export class Str {
    *
    * @returns {Str}
    */
-  after (delimiter: string): Str {
-    if (delimiter === '') {
-      return this
+  after(delimiter: string): Str {
+    if (delimiter === "") {
+      return this;
     }
 
-    const substrings = this.split(delimiter)
+    const substrings = this.split(delimiter);
 
     return substrings.length === 1
       ? this // delimiter is not part of the string
-      : new Str(substrings.slice(1).join(delimiter))
+      : new Str(substrings.slice(1).join(delimiter));
   }
 
   /**
@@ -78,10 +78,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  before (delimiter: string): Str {
-    return delimiter === ''
-      ? this
-      : new Str(this.split(delimiter).shift())
+  before(delimiter: string): Str {
+    return delimiter === "" ? this : new Str(this.split(delimiter).shift());
   }
 
   /**
@@ -89,8 +87,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  camel (): Str {
-    return this.studly().lcFirst()
+  camel(): Str {
+    return this.studly().lcFirst();
   }
 
   /**
@@ -100,12 +98,10 @@ export class Str {
    *
    * @returns {Str}
    */
-  concat (...strings: string[]): Str {
-    strings = ([] as string[]).concat(...strings)
+  concat(...strings: string[]): Str {
+    strings = ([] as string[]).concat(...strings);
 
-    return new Str(
-      this.value.concat(...strings)
-    )
+    return new Str(this.value.concat(...strings));
   }
 
   /**
@@ -115,8 +111,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  contains (needle: string): boolean {
-    return this.includes(needle)
+  contains(needle: string): boolean {
+    return this.includes(needle);
   }
 
   /**
@@ -126,14 +122,14 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  containsAll (needles: string[]): boolean {
+  containsAll(needles: string[]): boolean {
     for (const needle of ([] as string[]).concat(needles)) {
       if (this.notContains(needle)) {
-        return false
+        return false;
       }
     }
 
-    return true
+    return true;
   }
 
   /**
@@ -143,8 +139,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  notContains (needle: string): boolean {
-    return !this.contains(needle)
+  notContains(needle: string): boolean {
+    return !this.contains(needle);
   }
 
   /**
@@ -156,8 +152,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  endsWith (needle: string, length?: number): boolean {
-    return this.value.endsWith(needle, length)
+  endsWith(needle: string, length?: number): boolean {
+    return this.value.endsWith(needle, length);
   }
 
   /**
@@ -167,8 +163,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  equals (value: string): boolean {
-    return this.value === value
+  equals(value: string): boolean {
+    return this.value === value;
   }
 
   /**
@@ -178,10 +174,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  includes (needle: any): boolean {
-    return new Str(needle).isEmpty()
-      ? false
-      : this.value.includes(needle)
+  includes(needle: any): boolean {
+    return new Str(needle).isEmpty() ? false : this.value.includes(needle);
   }
 
   /**
@@ -189,8 +183,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isEmpty (): boolean {
-    return this.value.length === 0
+  isEmpty(): boolean {
+    return this.value.length === 0;
   }
 
   /**
@@ -198,8 +192,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isLower (): boolean {
-    return this.isLowercase()
+  isLower(): boolean {
+    return this.isLowercase();
   }
 
   /**
@@ -207,8 +201,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isLowercase (): boolean {
-    return this.value === this.lower().get()
+  isLowercase(): boolean {
+    return this.value === this.lower().get();
   }
 
   /**
@@ -216,8 +210,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isNotEmpty (): boolean {
-    return !this.isEmpty()
+  isNotEmpty(): boolean {
+    return !this.isEmpty();
   }
 
   /**
@@ -227,8 +221,11 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isString (input: any): boolean {
-    return typeof input === 'string' && Object.prototype.toString.call(input) === '[object String]'
+  isString(input: any): boolean {
+    return (
+      typeof input === "string" &&
+      Object.prototype.toString.call(input) === "[object String]"
+    );
   }
 
   /**
@@ -236,8 +233,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isUpper (): boolean {
-    return this.isUppercase()
+  isUpper(): boolean {
+    return this.isUppercase();
   }
 
   /**
@@ -245,8 +242,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isUppercase (): boolean {
-    return this.value === this.upper().get()
+  isUppercase(): boolean {
+    return this.value === this.upper().get();
   }
 
   /**
@@ -254,12 +251,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  kebab (): Str {
-    return new Str(
-      this.value.replace(/[_-\s]+/g, '-')
-    )
-      .strip()
-      .toLowerCase()
+  kebab(): Str {
+    return new Str(this.value.replace(/[_-\s]+/g, "-")).strip().toLowerCase();
   }
 
   /**
@@ -267,10 +260,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  lcFirst (): Str {
-    return new Str(
-      this.value[0].toLowerCase() + this.value.slice(1)
-    )
+  lcFirst(): Str {
+    return new Str(this.value[0].toLowerCase() + this.value.slice(1));
   }
 
   /**
@@ -278,8 +269,8 @@ export class Str {
    *
    * @returns {Number}
    */
-  length (): number {
-    return this.value.length
+  length(): number {
+    return this.value.length;
   }
 
   /**
@@ -290,10 +281,10 @@ export class Str {
    *
    * @returns {Str}
    */
-  limit (limit: number = 0, end: string = ''): Str {
+  limit(limit: number = 0, end: string = ""): Str {
     return limit >= this.length()
       ? this
-      : new Str(this.value.substring(0, limit).concat(end))
+      : new Str(this.value.substring(0, limit).concat(end));
   }
 
   /**
@@ -301,8 +292,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  lower (): Str {
-    return this.toLowerCase()
+  lower(): Str {
+    return this.toLowerCase();
   }
 
   /**
@@ -310,8 +301,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  lowercase (): Str {
-    return this.toLowerCase()
+  lowercase(): Str {
+    return this.toLowerCase();
   }
 
   /**
@@ -323,20 +314,16 @@ export class Str {
    *
    * @returns {Str}
    */
-  ltrim (characters: string = ''): Str {
+  ltrim(characters: string = ""): Str {
     if (!characters) {
-      return new Str(
-        this.value.trimLeft()
-      )
+      return new Str(this.value.trimLeft());
     }
 
     if (this.value.startsWith(characters)) {
-      return new Str(
-        this.value.substring(characters.length)
-      )
+      return new Str(this.value.substring(characters.length));
     }
 
-    return new Str(this.value)
+    return new Str(this.value);
   }
 
   /**
@@ -344,8 +331,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  pascal (): Str {
-    return this.studly()
+  pascal(): Str {
+    return this.studly();
   }
 
   /**
@@ -355,17 +342,17 @@ export class Str {
    *
    * @returns {String}
    */
-  random (size = 21): string {
-    const bytes = Crypto.randomBytes(size)
-    const alphabetLength = Str.alphabet.length - 1
+  random(size = 21): string {
+    const bytes = Crypto.randomBytes(size);
+    const alphabetLength = Str.alphabet.length - 1;
 
-    let random = ''
+    let random = "";
 
     while (size--) {
-      random += Str.alphabet[bytes[size] & alphabetLength]
+      random += Str.alphabet[bytes[size] & alphabetLength];
     }
 
-    return random
+    return random;
   }
 
   /**
@@ -376,12 +363,21 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceAll (search: string|RegExp, replace: string): Str {
-    const replacer = new RegExp(search, 'g')
+  replaceAll(search: string | RegExp, replace: string): Str {
+    const replacer = new RegExp(search, "g");
 
-    return new Str(
-      this.value.replace(replacer, replace)
-    )
+    return new Str(this.value.replace(replacer, replace));
+  }
+
+  /**
+   * Replace the first occurence of `search` with `replace` in a string.
+   * @param {*} search
+   * @param {*} replace
+   *
+   * @returns {Str}
+   */
+  replace(search: string | RegExp, replace: string): Str {
+    return new Str(this.value.replace(search, replace));
   }
 
   /**
@@ -393,20 +389,21 @@ export class Str {
    *
    * @returns {Str}
    */
-  rtrim (characters: string = ''): Str {
+  rtrim(characters: string = ""): Str {
     if (!characters) {
-      return new Str(
-        this.value.trimRight()
-      )
+      return new Str(this.value.trimRight());
     }
 
     if (this.value.endsWith(characters)) {
       return new Str(
-        this.value.substring(-characters.length, this.value.length - characters.length)
-      )
+        this.value.substring(
+          -characters.length,
+          this.value.length - characters.length
+        )
+      );
     }
 
-    return new Str(this.value)
+    return new Str(this.value);
   }
 
   /**
@@ -414,12 +411,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  snake (): Str {
-    return new Str(
-      this.value.replace(/[_-\s]+/g, '_')
-    )
-      .strip()
-      .toLowerCase()
+  snake(): Str {
+    return new Str(this.value.replace(/[_-\s]+/g, "_")).strip().toLowerCase();
   }
 
   /**
@@ -431,8 +424,8 @@ export class Str {
    *
    * @returns {Array}
    */
-  split (separator: string, limit?: number): string[] {
-    return this.value.split(separator, limit)
+  split(separator: string, limit?: number): string[] {
+    return this.value.split(separator, limit);
   }
 
   /**
@@ -445,8 +438,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  startsWith (needle: string, position?: number): boolean {
-    return this.value.startsWith(needle, position)
+  startsWith(needle: string, position?: number): boolean {
+    return this.value.startsWith(needle, position);
   }
 
   /**
@@ -454,10 +447,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  strip (): Str {
-    return new Str(
-      this.value.replace(/\s+/g, '')
-    )
+  strip(): Str {
+    return new Str(this.value.replace(/\s+/g, ""));
   }
 
   /**
@@ -465,8 +456,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  stripNums (): Str {
-    return this.replaceAll(/\d+/, '')
+  stripNums(): Str {
+    return this.replaceAll(/\d+/, "");
   }
 
   /**
@@ -475,12 +466,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  studly (): Str {
-    return new Str(
-      this.value.replace(/[_-]+/g, ' ')
-    )
-      .title()
-      .strip()
+  studly(): Str {
+    return new Str(this.value.replace(/[_-]+/g, " ")).title().strip();
   }
 
   /**
@@ -491,10 +478,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  substr (start: number, length: number): Str {
-    return new Str(
-      this.value.substring(start, length)
-    )
+  substr(start: number, length: number): Str {
+    return new Str(this.value.substring(start, length));
   }
 
   /**
@@ -502,15 +487,14 @@ export class Str {
    *
    * @returns {Str}
    */
-  title (): Str {
+  title(): Str {
     return new Str(
-      this
-        .lowercase()
-        .split(' ')
-        .filter(s => s)
-        .map(s => s[0].toUpperCase() + s.slice(1))
-        .join(' ')
-    )
+      this.lowercase()
+        .split(" ")
+        .filter((s) => s)
+        .map((s) => s[0].toUpperCase() + s.slice(1))
+        .join(" ")
+    );
   }
 
   /**
@@ -519,10 +503,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  toLowerCase (): Str {
-    return new Str(
-      this.value.toLowerCase()
-    )
+  toLowerCase(): Str {
+    return new Str(this.value.toLowerCase());
   }
 
   /**
@@ -531,10 +513,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  toUpperCase (): Str {
-    return new Str(
-      this.value.toUpperCase()
-    )
+  toUpperCase(): Str {
+    return new Str(this.value.toUpperCase());
   }
 
   /**
@@ -546,10 +526,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  trim (characters: string = ''): Str {
-    return this
-      .ltrim(characters)
-      .rtrim(characters)
+  trim(characters: string = ""): Str {
+    return this.ltrim(characters).rtrim(characters);
   }
 
   /**
@@ -557,10 +535,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  ucFirst (): Str {
-    return new Str(
-      this.value[0].toUpperCase() + this.value.slice(1)
-    )
+  ucFirst(): Str {
+    return new Str(this.value[0].toUpperCase() + this.value.slice(1));
   }
 
   /**
@@ -568,8 +544,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  upper (): Str {
-    return this.toUpperCase()
+  upper(): Str {
+    return this.toUpperCase();
   }
 
   /**
@@ -577,8 +553,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  uppercase (): Str {
-    return this.toUpperCase()
+  uppercase(): Str {
+    return this.toUpperCase();
   }
 
   /**
@@ -586,7 +562,7 @@ export class Str {
    *
    * @returns {String}
    */
-  uuid (): string {
-    return uuidv4()
+  uuid(): string {
+    return uuidv4();
   }
 }
