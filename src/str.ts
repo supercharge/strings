@@ -621,4 +621,18 @@ export class Str {
   uuid (): string {
     return uuidv4()
   }
+
+  /**
+   * Replace the first occurence of the string.
+   *
+   * @param {String} search
+   * @param {String} replace
+   *
+   * @returns {Str}
+   */
+  replace (search: string, replace: string): Str {
+    return new Str(
+      this.value.replace(search, replace)
+    )
+  }
 }

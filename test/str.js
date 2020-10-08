@@ -330,4 +330,11 @@ describe('Strings', () => {
     expect(Str('Supercharge').substr().get()).toEqual('Supercharge')
     expect(Str('Supercharge is awesome').substr(0, 11).get()).toEqual('Supercharge')
   })
+
+  it('replace()', () => {
+    expect(Str('  supercharge').replace(" " , "awesome").get()).toEqual('awesome supercharge')
+    expect(Str('supercharge has a blue house and a blue car').replace(/blue/g, "red").get()).toEqual('supercharge has a red house and a red car')
+    expect(Str('Supercharge is nice').replace('nice', 'sweet').get()).toEqual('Supercharge is sweet')
+    expect(Str('Apples are round, and apples are juicy.').replace('are' , 'is').get()).toEqual('Apples is round, and apples are juicy.')
+  })
 })
