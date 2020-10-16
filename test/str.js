@@ -323,6 +323,12 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
   })
 
+  it('prepend()', () => {
+    expect(Str('is awesome').prepend('supercharge ').get()).toEqual('supercharge is awesome')
+    expect(Str(' awesome').prepend('supercharge', ' is').get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge').prepend().get()).toEqual('supercharge')
+  })
+
   it('substr', () => {
     expect(Str('Supercharge').substr(0, 5).get()).toEqual('Super')
     expect(Str('Supercharge').substr(5, 0).get()).toEqual('Super')

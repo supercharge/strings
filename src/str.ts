@@ -381,6 +381,17 @@ export class Str {
   }
 
   /**
+   * Prepend the string(s) supplied in the argument.
+   *
+   * @param {String|Array} values
+   *
+   * @return {Str}
+   */
+  prepend (...values: string[]): Str {
+    return new Str(values.join('') + this.value)
+  }
+
+  /**
    * Create a random, URL-friendly string. The default length will have 21 symbols.
    *
    * @param {Number} [size=21] number of symbols in string
