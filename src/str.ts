@@ -87,12 +87,12 @@ export class Str {
   /**
    * Appends the string(s) supplied in the argument.
    *
-   * @param {String|Array} delimiter
+   * @param {String|Array} values
    *
    * @return {Str}
    */
-  append (...str: string[]): Str {
-    return new Str(this.value + str.join(''))
+  append (...values: string[]): Str {
+    return new Str(this.value + values.join(''))
   }
 
   /**

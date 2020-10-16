@@ -34,7 +34,8 @@ describe('Strings', () => {
   })
   
   it('append()', () => {
-    expect(Str('supercharge ').append('is', " awesome").get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge is ').append('awesome').get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge ').append('is', ' awesome').get()).toEqual('supercharge is awesome')
     expect(Str('supercharge').append().get()).toEqual('supercharge')
   })
 
