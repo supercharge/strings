@@ -85,9 +85,9 @@ export class Str {
   }
 
   /**
-   * Appends the string(s) supplied in the argument.
+   * Append the given values to the string.
    *
-   * @param {String|Array} values
+   * @param {String|String[]} values
    *
    * @return {Str}
    */
@@ -392,9 +392,9 @@ export class Str {
   }
 
   /**
-   * Prepend the string(s) supplied in the argument.
+   * Prepend the given values to the string.
    *
-   * @param {String|Array} values
+   * @param {String|String[]} values
    *
    * @return {Str}
    */
