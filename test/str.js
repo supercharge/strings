@@ -337,4 +337,10 @@ describe('Strings', () => {
     expect(Str('Supercharge is nice').replace('nice', 'sweet').get()).toEqual('Supercharge is sweet')
     expect(Str('Apples are round, and apples are juicy.').replace('are' , 'is').get()).toEqual('Apples is round, and apples are juicy.')
   })
+
+  it("replaceLast()", () => {
+    expect(Str("supercharge is supercharge").replaceLast("supercharge", "awesome indeed").get()).toEqual("supercharge is awesome indeed");
+    expect(Str("supercharge has a blue house and a red car").replaceLast("green", "red").get()).toEqual("supercharge has a blue house and a red car");
+    expect(Str("supercharge has a blue house and a red car").replaceLast("super", "red").get()).toEqual("redcharge has a blue house and a red car");
+  });
 })
