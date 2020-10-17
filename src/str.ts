@@ -85,6 +85,17 @@ export class Str {
   }
 
   /**
+   * Appends the string(s) supplied in the argument.
+   *
+   * @param {String|Array} values
+   *
+   * @return {Str}
+   */
+  append (...values: string[]): Str {
+    return new Str(this.value + values.join(''))
+  }
+
+  /**
    * Returns the portion of the string before the first occurrence of the given `delimiter`.
    *
    * @param {String} delimiter

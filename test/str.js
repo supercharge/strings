@@ -32,6 +32,12 @@ describe('Strings', () => {
     expect(Str('super0charge').afterLast(0).get()).toEqual('charge')
     expect(Str('super2charge').afterLast(2).get()).toEqual('charge')
   })
+  
+  it('append()', () => {
+    expect(Str('supercharge is ').append('awesome').get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge ').append('is', ' awesome').get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge').append().get()).toEqual('supercharge')
+  })
 
   it('before', () => {
     expect(Str('marcus').before('cus').get()).toEqual('mar')
