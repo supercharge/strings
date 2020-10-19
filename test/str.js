@@ -354,4 +354,9 @@ describe('Strings', () => {
     expect(Str('repos/supercharge').start('/').get()).toEqual('/repos/supercharge')
     expect(Str('/repos/supercharge').start('/').get()).toEqual('/repos/supercharge')
   })
+  
+  it('finish', () => {
+    expect(Str('repos/supercharge').finish('/startMethod/').get()).toEqual('repos/supercharge/startMethod/');
+    expect(Str('repos/supercharge').finish('/').get()).toEqual('repos/supercharge/');
+  })
 })

@@ -215,6 +215,19 @@ export class Str {
   }
 
   /**
+   * Return a new Str with the suffix if not exist.
+   *
+   * @param {String} suffix
+   *
+   * @returns {Str}
+   */
+
+  finish (suffix: string): Str {
+    if (this.value.endsWith(suffix)) return this
+    return new Str([this.value.toString(), suffix].join(''))
+  }
+
+  /**
    * Determine whether the given string contains the `needle`.
    *
    * @param {*} needle
