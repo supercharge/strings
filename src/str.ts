@@ -398,8 +398,17 @@ export class Str {
    * @returns {Str}
    */
   padLeft (length: number, pad: string): Str {
-    const curStr = this.value
-    return new Str(length > curStr.length ? pad.repeat(length - curStr.length) + curStr : curStr)
+    let curStr = this.value
+    const gap = length - curStr.length
+    
+    if (gap > 0 && pad.length) {
+      const mod = Math.ceil(gap / pad.length)
+      pad = pad.repeat(mod)
+
+      // select pad string from the last till required length
+      curStr = pad.substring(pad.length - gap) + curStr
+    }
+    return new Str(curStr)
   }
 
   /**
