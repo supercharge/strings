@@ -400,7 +400,7 @@ export class Str {
   padLeft (length: number, pad: string): Str {
     let curStr = this.value
     const gap = length - curStr.length
-    
+
     if (gap > 0 && pad.length) {
       const mod = Math.ceil(gap / pad.length)
       pad = pad.repeat(mod)
