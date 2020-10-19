@@ -349,4 +349,9 @@ describe('Strings', () => {
     expect(Str('Supercharge is nice').replace('nice', 'sweet').get()).toEqual('Supercharge is sweet')
     expect(Str('Apples are round, and apples are juicy.').replace('are', 'is').get()).toEqual('Apples is round, and apples are juicy.')
   })
+
+  it('start', () => {
+    expect(Str('repos/supercharge').start('/startMethod/').get()).toEqual('/startMethod/repos/supercharge');
+    expect(Str('/repos/supercharge').start('/').get()).toEqual('/repos/supercharge');
+  })
 })
