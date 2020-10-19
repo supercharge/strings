@@ -321,6 +321,13 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).toEqual('supercharge_is_awesome')
   })
 
+  it('padLeft', () => {
+    expect(Str('Marcus').padLeft(10, ".").get()).toEqual('....Marcus')
+    expect(Str('Marcus').padLeft(5, ".").get()).toEqual('Marcus')
+    expect(Str('Marcus').padLeft(-1, ".").get()).toEqual('Marcus')
+    expect(Str('Marcus').padLeft(10, "").get()).toEqual('Marcus')
+  })
+
   it('pascal', () => {
     expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
     expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAwesome')
