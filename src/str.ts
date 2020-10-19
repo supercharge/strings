@@ -383,14 +383,23 @@ export class Str {
   }
 
   /**
-   * Pads the current string till it reaches the given length
+   * Right pad the current string till it reaches the given length
    * @param {Number} length
    * @param {String} pad
    * @returns {Str}
    */
   padRight (length: number, pad: string): Str {
-    const curStr = this.value
-    return new Str(length > curStr.length ? curStr + pad.repeat(length - curStr.length) : curStr)
+    let curStr = this.value
+    const gap = length - curStr.length
+
+    if (gap > 0 && pad.length) {
+      const mod = Math.ceil(gap / pad.length)
+      pad = pad.repeat(mod)
+
+      // select pad string from the last till required length
+      curStr += pad.substr(0, gap)
+    }
+    return new Str(curStr)
   }
 
   /**
