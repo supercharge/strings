@@ -327,7 +327,7 @@ describe('Strings', () => {
     expect(Str('Marcus').padLeft(-1, ".").get()).toEqual('Marcus')
     expect(Str('Marcus').padLeft(10, "").get()).toEqual('Marcus')
     expect(Str('Marcus').padLeft(9, "abc").get()).toEqual('abcMarcus')
-    expect(Str('Marcus').padLeft(10, "abc").get()).toEqual('cabcMarcus')
+    expect(Str('Marcus').padLeft(10, "abc").get()).toEqual('abcaMarcus')
   })
 
   it('pascal', () => {
