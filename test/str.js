@@ -322,10 +322,11 @@ describe('Strings', () => {
   })
 
   it('padLeft', () => {
-    expect(Str('Marcus').padLeft(10, ".").get()).toEqual('....Marcus')
-    expect(Str('Marcus').padLeft(5, ".").get()).toEqual('Marcus')
     expect(Str('Marcus').padLeft(-1, ".").get()).toEqual('Marcus')
     expect(Str('Marcus').padLeft(10, "").get()).toEqual('Marcus')
+    expect(Str('Marcus').padLeft(5, ".").get()).toEqual('Marcus')
+    expect(Str('Marcus').padLeft(10, ".").get()).toEqual('....Marcus')
+    expect(Str('Marcus').padLeft(8, "abc").get()).toEqual('abMarcus')
     expect(Str('Marcus').padLeft(9, "abc").get()).toEqual('abcMarcus')
     expect(Str('Marcus').padLeft(10, "abc").get()).toEqual('abcaMarcus')
   })
