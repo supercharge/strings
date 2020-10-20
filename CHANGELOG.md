@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [1.13.0](https://github.com/supercharge/strings/compare/v1.12.0...v1.13.0) - 2020-10-20
+
+### Added
+- `afterLast(delimiter)`: returns the portion of the string after the last occurrance of `delimiter`
+- `append(...values)`: appends the given `values` to the string
+- `beforeLast(delimiter)`: returns the portion of the string before the last occurrance of `delimiter`
+- `prepend(...values)`: prepends the given `values` to the string
+- `start(prefix)`: ensures the string starts with the given `prefix`
+- `replace(search, value)`: replaces the first occurrance of `search` with `value` in the string
+
+### Updated
+- bump dependencies
+
+
 ## [1.12.0](https://github.com/supercharge/strings/compare/v1.11.0...v1.12.0) - 2020-09-15
 
 ### Added
