@@ -320,6 +320,16 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE_is_AWESOME!').snake().get()).toEqual('supercharge_is_awesome!')
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).toEqual('supercharge_is_awesome')
   })
+  
+  it('padRight', () => {
+    expect(Str('Marcus').padRight(-1, ".").get()).toEqual('Marcus')
+    expect(Str('Marcus').padRight(10, "").get()).toEqual('Marcus')
+    expect(Str('Marcus').padRight(5, ".").get()).toEqual('Marcus')
+    expect(Str('Marcus').padRight(10, ".").get()).toEqual('Marcus....')
+    expect(Str('Marcus').padRight(8, "abc").get()).toEqual('Marcusab')
+    expect(Str('Marcus').padRight(9, "abc").get()).toEqual('Marcusabc')
+    expect(Str('Marcus').padRight(10, "abc").get()).toEqual('Marcusabca')
+  })
 
   it('padLeft', () => {
     expect(Str('Marcus').padLeft(-1, ".").get()).toEqual('Marcus')

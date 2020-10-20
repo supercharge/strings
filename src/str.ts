@@ -383,6 +383,16 @@ export class Str {
   }
 
   /**
+   * Right pad the current string till it reaches the given length
+   * @param {Number} length
+   * @param {String} pad
+   * @returns {Str}
+   */
+  padRight (length: number, pad: string): Str {
+    return new Str(this.value.padEnd(length, pad))
+  }
+
+  /**
    * Convert the string to PascalCase (same as StudlyCase). Alias for `.studly()`.
    *
    * @returns {Str}
