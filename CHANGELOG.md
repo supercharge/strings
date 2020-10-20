@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [1.14.0](https://github.com/supercharge/strings/compare/v1.13.0...v1.14.0) - 2020-10-xx
+
+### Added
+- `finish(suffix)`: ensures the string ends with the given `suffix`
+- `padLeft(length, pad)`: pads the string on the left side until the length is reached
+- `padRight(length, pad)`:  pads the string on the right side until the length is reached
+
+
 ## [1.13.0](https://github.com/supercharge/strings/compare/v1.12.0...v1.13.0) - 2020-10-20
 
 ### Added
