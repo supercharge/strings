@@ -356,7 +356,7 @@ describe('Strings', () => {
   })
   
   it('finish', () => {
-    expect(Str('repos/supercharge').finish('/startMethod/').get()).toEqual('repos/supercharge/startMethod/');
-    expect(Str('repos/supercharge').finish('/').get()).toEqual('repos/supercharge/');
+    expect(Str('repos/supercharge').finish('/finishMethod/').get()).toEqual('repos/supercharge/finishMethod/');
+    expect(Str('repos/supercharge/finishMethod').finish('/finishMethod').get()).toEqual('repos/supercharge/finishMethod');
   })
 })
