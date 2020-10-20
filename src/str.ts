@@ -373,7 +373,7 @@ export class Str {
       )
     }
 
-    if (this.value.startsWith(characters)) {
+    if (this.startsWith(characters)) {
       return new Str(
         this.value.substring(characters.length)
       )
@@ -420,6 +420,20 @@ export class Str {
     }
 
     return random
+  }
+
+  /**
+   * Replace the first occurence of the string.
+   *
+   * @param {String} search
+   * @param {String} replace
+   *
+   * @returns {Str}
+   */
+  replace (search: string, replace: string): Str {
+    return new Str(
+      this.value.replace(search, replace)
+    )
   }
 
   /**
@@ -487,6 +501,20 @@ export class Str {
    */
   split (separator: string, limit?: number): string[] {
     return this.value.split(separator, limit)
+  }
+
+  /**
+   * Prepends a single instance of the given `prefix` to the start of
+   * the string if it doesn’t already start with the given prefix.
+   *
+   * @param {String} prefix
+   *
+   * @returns {Str}
+   */
+  start (prefix: string): Str {
+    return this.startsWith(prefix)
+      ? this
+      : this.prepend(prefix)
   }
 
   /**
@@ -642,32 +670,5 @@ export class Str {
    */
   uuid (): string {
     return uuidv4()
-  }
-
-  /**
-   * Replace the first occurence of the string.
-   *
-   * @param {String} search
-   * @param {String} replace
-   *
-   * @returns {Str}
-   */
-  replace (search: string, replace: string): Str {
-    return new Str(
-      this.value.replace(search, replace)
-    )
-  }
-
-  /**
-   * Return a new Str with the prefix if not exist.
-   *
-   * @param {String} prefix
-   *
-   * @returns {Str}
-   */
-
-  start (prefix: string): Str {
-    if (this.value.startsWith(prefix)) return this
-    return new Str([prefix, this.value.toString()].join(''))
   }
 }
