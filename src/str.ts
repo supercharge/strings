@@ -657,4 +657,17 @@ export class Str {
       this.value.replace(search, replace)
     )
   }
+
+  /**
+   * Return a new Str with the prefix if not exist.
+   *
+   * @param {String} prefix
+   *
+   * @returns {Str}
+   */
+
+  start (prefix: string): Str {
+    if (this.value.startsWith(prefix)) return this
+    return new Str([prefix, this.value.toString()].join(''))
+  }
 }
