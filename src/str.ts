@@ -392,6 +392,16 @@ export class Str {
   }
 
   /**
+   * Left pad the current string till it reaches the given length
+   * @param {Number} length
+   * @param {String} pad
+   * @returns {Str}
+   */
+  padLeft (length: number, pad: string): Str {
+    return new Str(this.value.padStart(length, pad))
+  }
+
+  /**
    * Prepend the given values to the string.
    *
    * @param {String|String[]} values
