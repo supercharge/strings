@@ -215,16 +215,17 @@ export class Str {
   }
 
   /**
-   * Return a new Str with the suffix if not exist.
+   * Append a single instance of the given `suffix` to the end of
+   * the string if it doesn’t already ends with the given suffix.
    *
    * @param {String} suffix
    *
    * @returns {Str}
    */
-
   finish (suffix: string): Str {
-    if (this.value.endsWith(suffix)) return this
-    return new Str([this.value.toString(), suffix].join(''))
+    return this.endsWith(suffix)
+      ? this
+      : this.append(suffix)
   }
 
   /**
@@ -396,13 +397,33 @@ export class Str {
   }
 
   /**
-   * Right pad the current string till it reaches the given length
+   * Pad the left side of the string with the given `pad` string (repeatedly
+   * if needed) so that the resulting string reaches a given `length`.
+   *
    * @param {Number} length
    * @param {String} pad
+   *
    * @returns {Str}
    */
-  padRight (length: number, pad: string): Str {
-    return new Str(this.value.padEnd(length, pad))
+  padLeft (length: number, pad: string = ' '): Str {
+    return new Str(
+      this.value.padStart(length, pad)
+    )
+  }
+
+  /**
+   * Pad the right side of the string with the given `pad` string (repeatedly
+   * if needed) so that the resulting string reaches a given `length`.
+   *
+   * @param {Number} length
+   * @param {String} pad
+   *
+   * @returns {Str}
+   */
+  padRight (length: number, pad: string = ' '): Str {
+    return new Str(
+      this.value.padEnd(length, pad)
+    )
   }
 
   /**
@@ -412,16 +433,6 @@ export class Str {
    */
   pascal (): Str {
     return this.studly()
-  }
-
-  /**
-   * Left pad the current string till it reaches the given length
-   * @param {Number} length
-   * @param {String} pad
-   * @returns {Str}
-   */
-  padLeft (length: number, pad: string): Str {
-    return new Str(this.value.padStart(length, pad))
   }
 
   /**
