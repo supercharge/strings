@@ -320,25 +320,33 @@ describe('Strings', () => {
     expect(Str('SUPERCHARGE_is_AWESOME!').snake().get()).toEqual('supercharge_is_awesome!')
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).toEqual('supercharge_is_awesome')
   })
-  
-  it('padRight', () => {
-    expect(Str('Marcus').padRight(-1, ".").get()).toEqual('Marcus')
-    expect(Str('Marcus').padRight(10, "").get()).toEqual('Marcus')
-    expect(Str('Marcus').padRight(5, ".").get()).toEqual('Marcus')
-    expect(Str('Marcus').padRight(10, ".").get()).toEqual('Marcus....')
-    expect(Str('Marcus').padRight(8, "abc").get()).toEqual('Marcusab')
-    expect(Str('Marcus').padRight(9, "abc").get()).toEqual('Marcusabc')
-    expect(Str('Marcus').padRight(10, "abc").get()).toEqual('Marcusabca')
-  })
 
   it('padLeft', () => {
-    expect(Str('Marcus').padLeft(-1, ".").get()).toEqual('Marcus')
-    expect(Str('Marcus').padLeft(10, "").get()).toEqual('Marcus')
-    expect(Str('Marcus').padLeft(5, ".").get()).toEqual('Marcus')
-    expect(Str('Marcus').padLeft(10, ".").get()).toEqual('....Marcus')
-    expect(Str('Marcus').padLeft(8, "abc").get()).toEqual('abMarcus')
-    expect(Str('Marcus').padLeft(9, "abc").get()).toEqual('abcMarcus')
-    expect(Str('Marcus').padLeft(10, "abc").get()).toEqual('abcaMarcus')
+    expect(Str('Supercharge').padLeft().get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padLeft(1).get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padLeft(15).get()).toEqual('    Supercharge')
+
+    expect(Str('Supercharge').padLeft(-1, '.').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padLeft(10, '').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padLeft(5, '.').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padLeft(15, '.').get()).toEqual('....Supercharge')
+    expect(Str('Supercharge').padLeft(13, '-=-').get()).toEqual('-=Supercharge')
+    expect(Str('Supercharge').padLeft(14, '-=-').get()).toEqual('-=-Supercharge')
+    expect(Str('Supercharge').padLeft(15, '-=-').get()).toEqual('-=--Supercharge')
+  })
+
+  it('padRight', () => {
+    expect(Str('Supercharge').padRight().get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padRight(1).get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padRight(15).get()).toEqual('Supercharge    ')
+
+    expect(Str('Supercharge').padRight(-1, '.').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padRight(10, '').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padRight(5, '.').get()).toEqual('Supercharge')
+    expect(Str('Supercharge').padRight(15, '.').get()).toEqual('Supercharge....')
+    expect(Str('Supercharge').padRight(13, '-=-').get()).toEqual('Supercharge-=')
+    expect(Str('Supercharge').padRight(14, '-=-').get()).toEqual('Supercharge-=-')
+    expect(Str('Supercharge').padRight(15, '-=-').get()).toEqual('Supercharge-=--')
   })
 
   it('pascal', () => {
@@ -374,9 +382,9 @@ describe('Strings', () => {
     expect(Str('repos/supercharge').start('/').get()).toEqual('/repos/supercharge')
     expect(Str('/repos/supercharge').start('/').get()).toEqual('/repos/supercharge')
   })
-  
+
   it('finish', () => {
-    expect(Str('repos/supercharge').finish('/finishMethod/').get()).toEqual('repos/supercharge/finishMethod/');
-    expect(Str('repos/supercharge/finishMethod').finish('/finishMethod').get()).toEqual('repos/supercharge/finishMethod');
+    expect(Str('/repos/supercharge').finish('/').get()).toEqual('/repos/supercharge/')
+    expect(Str('/repos/supercharge/').finish('/').get()).toEqual('/repos/supercharge/')
   })
 })
