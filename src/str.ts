@@ -507,17 +507,9 @@ export class Str {
    * @returns {Str}
    */
   replaceLast (search: string, replace: string): Str {
-    let newString = this.value
-    const index = this.value.lastIndexOf(search)
-
-    if (index !== -1) {
-      newString =
-        newString.substr(0, index) +
-        replace +
-        newString.substr(index + search.length)
-    }
-
-    return new Str(newString)
+    return new Str(
+      this.beforeLast(search).get() + replace + this.afterLast(search).get()
+    )
   }
 
   /**
@@ -537,7 +529,7 @@ export class Str {
     }
 
     while (this.value.endsWith(characters)) {
-      this.value = this.value.substring(-characters.length, this.length() - characters.length)
+      this.value = this.replaceLast(characters, '').get()
     }
 
     return new Str(this.value)
