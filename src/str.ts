@@ -497,7 +497,7 @@ export class Str {
       this.value.replace(replacer, replace)
     )
   }
-  
+
   /**
    * Replace the last occurence of the string.
    *
