@@ -396,4 +396,10 @@ describe('Strings', () => {
     expect(Str('/repos/supercharge').finish('/').get()).toEqual('/repos/supercharge/')
     expect(Str('/repos/supercharge/').finish('/').get()).toEqual('/repos/supercharge/')
   })
+
+  it("replaceLast()", () => {
+    expect(Str("supercharge is supercharge").replaceLast("supercharge", "awesome indeed").get()).toEqual("supercharge is awesome indeed");
+    expect(Str("supercharge has a blue house and a red car").replaceLast("green", "red").get()).toEqual("supercharge has a blue house and a red car");
+    expect(Str("supercharge has a blue house and a red car").replaceLast("super", "red").get()).toEqual("redcharge has a blue house and a red car");
+  });
 })

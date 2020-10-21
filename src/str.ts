@@ -499,6 +499,28 @@ export class Str {
   }
 
   /**
+   * Replace the last occurence of the string.
+   *
+   * @param {String} search
+   * @param {String} replace
+   *
+   * @returns {Str}
+   */
+  replaceLast (search: string, replace: string): Str {
+    let newString = this.value
+    const index = this.value.lastIndexOf(search)
+
+    if (index !== -1) {
+      newString =
+        newString.substr(0, index) +
+        replace +
+        newString.substr(index + search.length)
+    }
+
+    return new Str(newString)
+  }
+
+  /**
    * Removes the whitespace from the end of the string when
    * no argument is present. It trims the given `characters`
    * from the left of the string if you pass along a value.
