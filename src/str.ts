@@ -7,7 +7,7 @@ export class Str {
   /**
    * The string value to work with.
    */
-  private readonly value: string
+  private value: string
 
   /**
    * Create a new String instance providing chainable string operations.
@@ -91,8 +91,10 @@ export class Str {
    *
    * @return {Str}
    */
-  append (...values: string[]): Str {
-    return new Str(this.value + values.join(''))
+  append (...values: string[] | string[][]): Str {
+    return new Str(
+      this.value + ([] as string[]).concat(...values).join('')
+    )
   }
 
   /**
@@ -169,8 +171,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  containsAll (needles: string[]): boolean {
-    for (const needle of ([] as string[]).concat(needles)) {
+  containsAll (...needles: string[] | string[][]): boolean {
+    for (const needle of ([] as string[]).concat(...needles)) {
       if (this.notContains(needle)) {
         return false
       }
@@ -247,7 +249,7 @@ export class Str {
    * @returns {Boolean}
    */
   isEmpty (): boolean {
-    return this.value.length === 0
+    return this.length() === 0
   }
 
   /**
@@ -387,10 +389,8 @@ export class Str {
       )
     }
 
-    if (this.startsWith(characters)) {
-      return new Str(
-        this.value.substring(characters.length)
-      )
+    while (this.startsWith(characters)) {
+      this.value = this.replace(characters, '').get()
     }
 
     return new Str(this.value)
@@ -442,8 +442,10 @@ export class Str {
    *
    * @return {Str}
    */
-  prepend (...values: string[]): Str {
-    return new Str(values.join('') + this.value)
+  prepend (...values: string[] | string[][]): Str {
+    return new Str(
+      ([] as string[]).concat(...values).join('') + this.value
+    )
   }
 
   /**
@@ -512,10 +514,8 @@ export class Str {
       )
     }
 
-    if (this.value.endsWith(characters)) {
-      return new Str(
-        this.value.substring(-characters.length, this.value.length - characters.length)
-      )
+    while (this.value.endsWith(characters)) {
+      this.value = this.value.substring(-characters.length, this.length() - characters.length)
     }
 
     return new Str(this.value)

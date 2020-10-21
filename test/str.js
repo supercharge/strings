@@ -34,9 +34,10 @@ describe('Strings', () => {
   })
 
   it('append', () => {
-    expect(Str('supercharge is ').append('awesome').get()).toEqual('supercharge is awesome')
-    expect(Str('supercharge ').append('is', ' awesome').get()).toEqual('supercharge is awesome')
     expect(Str('supercharge').append().get()).toEqual('supercharge')
+    expect(Str('supercharge is').append(' awesome').get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge').append(' is', ' awesome').get()).toEqual('supercharge is awesome')
+    expect(Str('supercharge').append([' is', ' awesome']).get()).toEqual('supercharge is awesome')
   })
 
   it('before', () => {
@@ -159,6 +160,7 @@ describe('Strings', () => {
   it('containsAll', () => {
     expect(Str('supercharge is awesome').containsAll('supercharge')).toBe(true)
     expect(Str('supercharge is awesome').containsAll(['supercharge'])).toBe(true)
+    expect(Str('supercharge is awesome').containsAll('is', 'awesome')).toBe(true)
     expect(Str('supercharge is awesome').containsAll(['is', 'awesome'])).toBe(true)
 
     expect(Str('supercharge is awesome').containsAll(['supercharge', 'bad'])).toBe(false)
@@ -262,8 +264,11 @@ describe('Strings', () => {
     expect(Str('   Supercharge').ltrim().get()).toEqual('Supercharge')
     expect(Str('   Supercharge').ltrim(null).get()).toEqual('Supercharge')
     expect(Str('   Supercharge').ltrim('').get()).toEqual('Supercharge')
+
     expect(Str('Supercharge').ltrim('abc').get()).toEqual('Supercharge')
-    expect(Str('/supercharge/').ltrim('/').get()).toEqual('supercharge/')
+    expect(Str('/supercharge').ltrim('/').get()).toEqual('supercharge')
+    expect(Str('///supercharge').ltrim('/').get()).toEqual('supercharge')
+
     expect(Str('   Supercharge').ltrim('Supercharge').get()).toEqual('   Supercharge')
     expect(Str('   supercharge   ').ltrim('Supercharge').get()).toEqual('   supercharge   ')
   })
@@ -272,8 +277,11 @@ describe('Strings', () => {
     expect(Str('Supercharge   ').rtrim().get()).toEqual('Supercharge')
     expect(Str('Supercharge   ').rtrim(null).get()).toEqual('Supercharge')
     expect(Str('Supercharge   ').rtrim('').get()).toEqual('Supercharge')
+
     expect(Str('Supercharge').rtrim('abc').get()).toEqual('Supercharge')
     expect(Str('/supercharge/').rtrim('/').get()).toEqual('/supercharge')
+    expect(Str('/supercharge///').rtrim('/').get()).toEqual('/supercharge')
+
     expect(Str('Supercharge   ').rtrim('Supercharge').get()).toEqual('Supercharge   ')
   })
 
@@ -358,9 +366,10 @@ describe('Strings', () => {
   })
 
   it('prepend', () => {
+    expect(Str('supercharge').prepend().get()).toEqual('supercharge')
     expect(Str('is awesome').prepend('supercharge ').get()).toEqual('supercharge is awesome')
     expect(Str(' awesome').prepend('supercharge', ' is').get()).toEqual('supercharge is awesome')
-    expect(Str('supercharge').prepend().get()).toEqual('supercharge')
+    expect(Str(' awesome').prepend(['supercharge', ' is']).get()).toEqual('supercharge is awesome')
   })
 
   it('substr', () => {
