@@ -7,7 +7,7 @@ export class Str {
   /**
    * The string value to work with.
    */
-  private readonly value: string
+  private value: string
 
   /**
    * Create a new String instance providing chainable string operations.
@@ -85,6 +85,19 @@ export class Str {
   }
 
   /**
+   * Append the given values to the string.
+   *
+   * @param {String|String[]} values
+   *
+   * @return {Str}
+   */
+  append (...values: string[] | string[][]): Str {
+    return new Str(
+      this.value + ([] as string[]).concat(...values).join('')
+    )
+  }
+
+  /**
    * Returns the portion of the string before the first occurrence of the given `delimiter`.
    *
    * @param {String} delimiter
@@ -158,8 +171,8 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  containsAll (needles: string[]): boolean {
-    for (const needle of ([] as string[]).concat(needles)) {
+  containsAll (...needles: string[] | string[][]): boolean {
+    for (const needle of ([] as string[]).concat(...needles)) {
       if (this.notContains(needle)) {
         return false
       }
@@ -204,6 +217,20 @@ export class Str {
   }
 
   /**
+   * Append a single instance of the given `suffix` to the end of
+   * the string if it doesn’t already ends with the given suffix.
+   *
+   * @param {String} suffix
+   *
+   * @returns {Str}
+   */
+  finish (suffix: string): Str {
+    return this.endsWith(suffix)
+      ? this
+      : this.append(suffix)
+  }
+
+  /**
    * Determine whether the given string contains the `needle`.
    *
    * @param {*} needle
@@ -222,7 +249,7 @@ export class Str {
    * @returns {Boolean}
    */
   isEmpty (): boolean {
-    return this.value.length === 0
+    return this.length() === 0
   }
 
   /**
@@ -362,13 +389,41 @@ export class Str {
       )
     }
 
-    if (this.value.startsWith(characters)) {
-      return new Str(
-        this.value.substring(characters.length)
-      )
+    while (this.startsWith(characters)) {
+      this.value = this.replace(characters, '').get()
     }
 
     return new Str(this.value)
+  }
+
+  /**
+   * Pad the left side of the string with the given `pad` string (repeatedly
+   * if needed) so that the resulting string reaches a given `length`.
+   *
+   * @param {Number} length
+   * @param {String} pad
+   *
+   * @returns {Str}
+   */
+  padLeft (length: number, pad: string = ' '): Str {
+    return new Str(
+      this.value.padStart(length, pad)
+    )
+  }
+
+  /**
+   * Pad the right side of the string with the given `pad` string (repeatedly
+   * if needed) so that the resulting string reaches a given `length`.
+   *
+   * @param {Number} length
+   * @param {String} pad
+   *
+   * @returns {Str}
+   */
+  padRight (length: number, pad: string = ' '): Str {
+    return new Str(
+      this.value.padEnd(length, pad)
+    )
   }
 
   /**
@@ -378,6 +433,19 @@ export class Str {
    */
   pascal (): Str {
     return this.studly()
+  }
+
+  /**
+   * Prepend the given values to the string.
+   *
+   * @param {String|String[]} values
+   *
+   * @return {Str}
+   */
+  prepend (...values: string[] | string[][]): Str {
+    return new Str(
+      ([] as string[]).concat(...values).join('') + this.value
+    )
   }
 
   /**
@@ -401,6 +469,20 @@ export class Str {
   }
 
   /**
+   * Replace the first occurence of the string.
+   *
+   * @param {String} search
+   * @param {String} replace
+   *
+   * @returns {Str}
+   */
+  replace (search: string, replace: string): Str {
+    return new Str(
+      this.value.replace(search, replace)
+    )
+  }
+
+  /**
    * Replace all occurrences of `search` with `replace` in the string.
    *
    * @param {*} search
@@ -414,6 +496,28 @@ export class Str {
     return new Str(
       this.value.replace(replacer, replace)
     )
+  }
+  
+  /**
+   * Replace the last occurence of the string.
+   *
+   * @param {String} search
+   * @param {String} replace
+   *
+   * @returns {Str}
+   */
+  replaceLast (search: string, replace: string): Str {
+    let newString = this.value
+    const index = this.value.lastIndexOf(search)
+
+    if (index !== -1) {
+      newString =
+        newString.substr(0, index) +
+        replace +
+        newString.substr(index + search.length)
+    }
+
+    return new Str(newString)
   }
 
   /**
@@ -432,10 +536,8 @@ export class Str {
       )
     }
 
-    if (this.value.endsWith(characters)) {
-      return new Str(
-        this.value.substring(-characters.length, this.value.length - characters.length)
-      )
+    while (this.value.endsWith(characters)) {
+      this.value = this.value.substring(-characters.length, this.length() - characters.length)
     }
 
     return new Str(this.value)
@@ -465,6 +567,20 @@ export class Str {
    */
   split (separator: string, limit?: number): string[] {
     return this.value.split(separator, limit)
+  }
+
+  /**
+   * Prepends a single instance of the given `prefix` to the start of
+   * the string if it doesn’t already start with the given prefix.
+   *
+   * @param {String} prefix
+   *
+   * @returns {Str}
+   */
+  start (prefix: string): Str {
+    return this.startsWith(prefix)
+      ? this
+      : this.prepend(prefix)
   }
 
   /**
@@ -620,41 +736,5 @@ export class Str {
    */
   uuid (): string {
     return uuidv4()
-  }
-
-  /**
-   * Replace the first occurence of the string.
-   *
-   * @param {String} search
-   * @param {String} replace
-   *
-   * @returns {Str}
-   */
-  replace (search: string, replace: string): Str {
-    return new Str(
-      this.value.replace(search, replace)
-    )
-  }
-
-  /**
-   * Replace the last occurence of the string.
-   *
-   * @param {String} search
-   * @param {String} replace
-   *
-   * @returns {Str}
-   */
-  replaceLast (search: string, replace: string): Str {
-    let newString = this.value
-    const index = this.value.lastIndexOf(search)
-
-    if (index !== -1) {
-      newString =
-        newString.substr(0, index) +
-        replace +
-        newString.substr(index + search.length)
-    }
-
-    return new Str(newString)
   }
 }

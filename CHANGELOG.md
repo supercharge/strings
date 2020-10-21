@@ -1,6 +1,36 @@
 # Changelog
 
 
+## [1.14.0](https://github.com/supercharge/strings/compare/v1.13.0...v1.14.0) - 2020-10-21
+
+### Added
+- `finish(suffix)`: ensures the string ends with the given `suffix`
+- `padLeft(length, pad)`: pads the string on the left side until the length is reached
+- `padRight(length, pad)`:  pads the string on the right side until the length is reached
+
+### Updated
+- bump dependencies
+- allow array as an argument for `append`, `prepend`, and `containsAll`
+
+### Fixed
+- `ltrim(char)` removes every occurrance of `char` from the beginning of the string, not just the first
+- `rtrim(char)` removes every occurrance of `char` from the end of the string, not just the last
+
+
+## [1.13.0](https://github.com/supercharge/strings/compare/v1.12.0...v1.13.0) - 2020-10-20
+
+### Added
+- `afterLast(delimiter)`: returns the portion of the string after the last occurrance of `delimiter`
+- `append(...values)`: appends the given `values` to the string
+- `beforeLast(delimiter)`: returns the portion of the string before the last occurrance of `delimiter`
+- `prepend(...values)`: prepends the given `values` to the string
+- `start(prefix)`: ensures the string starts with the given `prefix`
+- `replace(search, value)`: replaces the first occurrance of `search` with `value` in the string
+
+### Updated
+- bump dependencies
+
+
 ## [1.12.0](https://github.com/supercharge/strings/compare/v1.11.0...v1.12.0) - 2020-09-15
 
 ### Added
