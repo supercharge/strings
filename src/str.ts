@@ -513,6 +513,17 @@ export class Str {
   }
 
   /**
+   * Returns the reversed string.
+   *
+   * @returns {Str}
+   */
+  reverse (): Str {
+    return new Str(
+      this.value.split('').reverse().join('')
+    )
+  }
+
+  /**
    * Removes the whitespace from the end of the string when
    * no argument is present. It trims the given `characters`
    * from the left of the string if you pass along a value.
