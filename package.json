@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@supercharge/tsconfig": "~1.0.0",
-    "@types/jest": "~26.0.14",
+    "@types/jest": "~26.0.15",
     "@types/uuid": "~8.3.0",
     "@typescript-eslint/eslint-plugin": "~4.5.0",
     "eslint": "~7.11.0",
