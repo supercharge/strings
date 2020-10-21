@@ -528,7 +528,7 @@ export class Str {
       )
     }
 
-    while (this.value.endsWith(characters)) {
+    while (this.endsWith(characters)) {
       this.value = this.replaceLast(characters, '').get()
     }
 
