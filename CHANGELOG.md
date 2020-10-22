@@ -7,6 +7,10 @@
 - `reverse()`: reverses the string
 - `replaceLast(search, replacement)`: replaces the last occurrence of the given `search` string with the `replacement`
 
+### Updated
+- bump dependencies
+- `contains(...needles)`: determine whether the given string contains any of the given needles. Before, you could only check for one needle (`contains(needle)`)
+
 
 ## [1.14.0](https://github.com/supercharge/strings/compare/v1.13.0...v1.14.0) - 2020-10-21
 
