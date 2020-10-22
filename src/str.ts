@@ -154,14 +154,20 @@ export class Str {
   }
 
   /**
-   * Determine whether the haystack contains the given `needle`.
+   * Determine whether the haystack contains any of the given `needles`.
    *
    * @param {String} needle
    *
    * @returns {Boolean}
    */
-  contains (needle: string): boolean {
-    return this.includes(needle)
+  contains (...needles: string[] | string[][]): boolean {
+    for (const needle of ([] as string[]).concat(...needles)) {
+      if (this.includes(needle)) {
+        return true
+      }
+    }
+
+    return false
   }
 
   /**

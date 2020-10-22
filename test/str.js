@@ -152,6 +152,17 @@ describe('Strings', () => {
   it('contains', () => {
     expect(Str('supercharge').contains('arge')).toBe(true)
     expect(Str('supercharge').contains('supercharge')).toBe(true)
+    expect(Str('Supercharge is awesome').contains('is', 'awesome')).toBe(true)
+    expect(Str('Supercharge is awesome').contains(['is', 'awesome'])).toBe(true)
+
+    expect(Str('supercharge').contains('')).toBe(false)
+    expect(Str('supercharge').contains('abc')).toBe(false)
+    expect(Str('supercharge').contains('Supercharge')).toBe(false)
+  })
+
+  it('containsOne', () => {
+    expect(Str('supercharge').contains('arge')).toBe(true)
+    expect(Str('supercharge').contains('supercharge')).toBe(true)
 
     expect(Str('supercharge').contains('abc')).toBe(false)
     expect(Str('supercharge').contains('')).toBe(false)
