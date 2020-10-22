@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.15.0](https://github.com/supercharge/strings/compare/v1.14.0...v1.15.0) - 2020-10-xx
+## [1.15.0](https://github.com/supercharge/strings/compare/v1.14.0...v1.15.0) - 2020-10-22
 
 ### Added
 - `reverse()`: reverses the string
