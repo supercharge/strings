@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.15.1](https://github.com/supercharge/strings/compare/v1.15.0...v1.15.1) - 2020-10-23
+
+### Fixed
+- `replaceLast(search, replacement)` now returns the original string if the searched value isn’t part of the string
+
+
 ## [1.15.0](https://github.com/supercharge/strings/compare/v1.14.0...v1.15.0) - 2020-10-22
 
 ### Added
