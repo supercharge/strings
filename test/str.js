@@ -160,20 +160,14 @@ describe('Strings', () => {
     expect(Str('supercharge').contains('Supercharge')).toBe(false)
   })
 
-  it('containsOne', () => {
-    expect(Str('supercharge').contains('arge')).toBe(true)
-    expect(Str('supercharge').contains('supercharge')).toBe(true)
-
-    expect(Str('supercharge').contains('abc')).toBe(false)
-    expect(Str('supercharge').contains('')).toBe(false)
-  })
-
   it('containsAll', () => {
     expect(Str('supercharge is awesome').containsAll('supercharge')).toBe(true)
     expect(Str('supercharge is awesome').containsAll(['supercharge'])).toBe(true)
     expect(Str('supercharge is awesome').containsAll('is', 'awesome')).toBe(true)
     expect(Str('supercharge is awesome').containsAll(['is', 'awesome'])).toBe(true)
 
+    expect(Str('supercharge is awesome').containsAll('')).toBe(false)
+    expect(Str('supercharge is awesome').containsAll(['', 'is'])).toBe(false)
     expect(Str('supercharge is awesome').containsAll(['supercharge', 'bad'])).toBe(false)
   })
 

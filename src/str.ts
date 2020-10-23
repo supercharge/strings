@@ -161,13 +161,7 @@ export class Str {
    * @returns {Boolean}
    */
   contains (...needles: string[] | string[][]): boolean {
-    for (const needle of ([] as string[]).concat(...needles)) {
-      if (this.includes(needle)) {
-        return true
-      }
-    }
-
-    return false
+    return this.includes(...needles)
   }
 
   /**
@@ -178,13 +172,7 @@ export class Str {
    * @returns {Boolean}
    */
   containsAll (...needles: string[] | string[][]): boolean {
-    for (const needle of ([] as string[]).concat(...needles)) {
-      if (this.notContains(needle)) {
-        return false
-      }
-    }
-
-    return true
+    return this.includesAll(...needles)
   }
 
   /**
@@ -243,10 +231,35 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  includes (needle: any): boolean {
-    return new Str(needle).isEmpty()
-      ? false
-      : this.value.includes(needle)
+  includes (...needles: string[] | string[][]): boolean {
+    for (const needle of ([] as string[]).concat(...needles)) {
+      if (new Str(needle).isEmpty()) {
+        continue
+      }
+
+      if (this.value.includes(needle)) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  /**
+   * Determine whether the haystack contains all items if the `needles` array.
+   *
+   * @param {String} needle
+   *
+   * @returns {Boolean}
+   */
+  includesAll (...needles: string[] | string[][]): boolean {
+    for (const needle of ([] as string[]).concat(...needles)) {
+      if (this.notContains(needle)) {
+        return false
+      }
+    }
+
+    return true
   }
 
   /**
