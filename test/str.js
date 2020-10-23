@@ -415,5 +415,7 @@ describe('Strings', () => {
   it('replaceLast()', () => {
     expect(Str('super-super').replaceLast('super', 'sweet').get()).toEqual('super-sweet')
     expect(Str('Supercharge is supercharge').replaceLast('supercharge', 'awesome indeed').get()).toEqual('Supercharge is awesome indeed')
+
+    expect(Str('supercharge').replaceLast('sweet', 'awesome').get()).toEqual('supercharge')
   })
 })

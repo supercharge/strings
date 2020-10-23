@@ -513,9 +513,11 @@ export class Str {
    * @returns {Str}
    */
   replaceLast (search: string, replace: string): Str {
-    return new Str(
-      this.beforeLast(search).get() + replace + this.afterLast(search).get()
-    )
+    return this.notContains(search)
+      ? this
+      : new Str(
+        this.beforeLast(search).get() + replace + this.afterLast(search).get()
+      )
   }
 
   /**
