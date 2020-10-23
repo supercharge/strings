@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.16.0](https://github.com/supercharge/strings/compare/v1.15.1...v1.16.0) - 2020-10-xx
+
+### Added
+- `includesAll(...needles)`: determine whether the string contains all of the given needles
+
+
 ## [1.15.1](https://github.com/supercharge/strings/compare/v1.15.0...v1.15.1) - 2020-10-23
 
 ### Fixed
