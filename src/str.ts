@@ -232,11 +232,11 @@ export class Str {
    * @returns {Boolean}
    */
   includes (...needles: string[] | string[][]): boolean {
-    for (const needle of ([] as string[]).concat(...needles)) {
-      if (new Str(needle).isEmpty()) {
-        continue
-      }
+    needles = ([] as string[]).concat(...needles).filter(needle => {
+      return new Str(needle).isNotEmpty()
+    })
 
+    for (const needle of needles) {
       if (this.value.includes(needle)) {
         return true
       }
