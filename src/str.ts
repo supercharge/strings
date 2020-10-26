@@ -232,17 +232,12 @@ export class Str {
    * @returns {Boolean}
    */
   includes (...needles: string[] | string[][]): boolean {
-    needles = ([] as string[]).concat(...needles).filter(needle => {
-      return new Str(needle).isNotEmpty()
-    })
+    const includes = ([] as string[])
+      .concat(...needles)
+      .filter(needle => needle !== '')
+      .find(needle => this.value.includes(needle))
 
-    for (const needle of needles) {
-      if (this.value.includes(needle)) {
-        return true
-      }
-    }
-
-    return false
+    return !!includes
   }
 
   /**
@@ -253,13 +248,11 @@ export class Str {
    * @returns {Boolean}
    */
   includesAll (...needles: string[] | string[][]): boolean {
-    for (const needle of ([] as string[]).concat(...needles)) {
-      if (this.notContains(needle)) {
-        return false
-      }
-    }
-
-    return true
+    return ([] as string[])
+      .concat(...needles)
+      .every(needle => {
+        return this.includes(needle)
+      })
   }
 
   /**
