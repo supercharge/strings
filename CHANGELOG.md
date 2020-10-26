@@ -4,7 +4,11 @@
 ## [1.16.0](https://github.com/supercharge/strings/compare/v1.15.1...v1.16.0) - 2020-10-xx
 
 ### Added
-- `includesAll(...needles)`: determine whether the string contains all of the given needles
+- `notIncludes(needle)`: determine whether the string contains the given `needle`
+- `includesAll(...needles)`: determine whether the string contains all of the given `needles`
+
+### Updated
+- bump dependencies
 
 
 ## [1.15.1](https://github.com/supercharge/strings/compare/v1.15.0...v1.15.1) - 2020-10-23
