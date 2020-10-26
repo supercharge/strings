@@ -179,6 +179,14 @@ describe('Strings', () => {
     expect(Str('supercharge').notContains('super')).toBe(false)
   })
 
+  it('notIncludes', () => {
+    expect(Str('supercharge').notIncludes('')).toBe(true)
+    expect(Str('supercharge').notIncludes('sub')).toBe(true)
+    expect(Str('supercharge').notIncludes('charger')).toBe(true)
+
+    expect(Str('supercharge').notIncludes('super')).toBe(false)
+  })
+
   it('length', () => {
     expect(Str('supercharge').length()).toEqual(11)
     expect(Str(' 123').length()).toEqual(4)

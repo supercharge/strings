@@ -256,6 +256,17 @@ export class Str {
   }
 
   /**
+   * Determine whether the string does not contain the given `needle`.
+   *
+   * @param {String} needle
+   *
+   * @returns {Boolean}
+   */
+  notIncludes (needle: string): boolean {
+    return !this.includes(needle)
+  }
+
+  /**
    * Determine whether the given string is empty.
    *
    * @returns {Boolean}
