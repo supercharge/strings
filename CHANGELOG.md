@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.16.0](https://github.com/supercharge/strings/compare/v1.15.1...v1.16.0) - 2020-10-xx
+## [1.16.0](https://github.com/supercharge/strings/compare/v1.15.1...v1.16.0) - 2020-11-18
 
 ### Added
 - `notEquals(value)`: determine whether the string does not equal the given `value`
