@@ -211,6 +211,17 @@ export class Str {
   }
 
   /**
+   * Determine whether the string does not equal the given `value`.
+   *
+   * @param {String} value
+   *
+   * @returns {Boolean}
+   */
+  notEquals (value: string): boolean {
+    return !this.equals(value)
+  }
+
+  /**
    * Append a single instance of the given `suffix` to the end of
    * the string if it doesn’t already ends with the given suffix.
    *

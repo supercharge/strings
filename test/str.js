@@ -254,6 +254,13 @@ describe('Strings', () => {
     expect(Str('Super').equals()).toBe(false)
   })
 
+  it('notEquals', () => {
+    expect(Str('Super').notEquals()).toBe(true)
+    expect(Str('Super').notEquals('super')).toBe(true)
+
+    expect(Str('Supercharge').notEquals('Supercharge')).toBe(false)
+  })
+
   it('startsWith', () => {
     expect(Str('Supercharge').startsWith('Super')).toBe(true)
     expect(Str('Supercharge').startsWith('charge', 5)).toBe(true)
