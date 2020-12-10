@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.17.0](https://github.com/supercharge/strings/compare/v1.16.0...v1.17.0) - 2020-12-10
+
+### Added
+- `parseCallback(separator = '@', defaultValue?)`: parse a Class[@]method style string into the Class and method names
+
+
 ## [1.16.0](https://github.com/supercharge/strings/compare/v1.15.1...v1.16.0) - 2020-11-18
 
 ### Added

@@ -461,6 +461,17 @@ export class Str {
   }
 
   /**
+   * Parse a Class[@]method style string into the Class and method names.
+   *
+   * @returns {String[]}
+   */
+  parseCallback (separator: string = '@', defaultValue?: string): string[] | Array<(string | undefined)> {
+    return this.contains(separator)
+      ? this.split(separator, 2)
+      : [this.value, defaultValue]
+  }
+
+  /**
    * Convert the string to PascalCase (same as StudlyCase). Alias for `.studly()`.
    *
    * @returns {Str}

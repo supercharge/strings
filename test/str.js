@@ -377,6 +377,18 @@ describe('Strings', () => {
     expect(Str('Supercharge').padRight(15, '-=-').get()).toEqual('Supercharge-=--')
   })
 
+  it('parseCallback', () => {
+    expect(Str('').parseCallback()).toEqual(['', undefined])
+    expect(Str(null).parseCallback()).toEqual(['', undefined])
+    expect(Str(undefined).parseCallback()).toEqual(['', undefined])
+
+    expect(Str('Controller').parseCallback()).toEqual(['Controller', undefined])
+    expect(Str('Controller@index').parseCallback()).toEqual(['Controller', 'index'])
+
+    expect(Str('Controller.method').parseCallback('.')).toEqual(['Controller', 'method'])
+    expect(Str('Controller').parseCallback('.', 'handle')).toEqual(['Controller', 'handle'])
+  })
+
   it('pascal', () => {
     expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
     expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAwesome')
