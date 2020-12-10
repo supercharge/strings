@@ -465,10 +465,14 @@ export class Str {
    *
    * @returns {String[]}
    */
-  parseCallback (separator: string = '@', defaultValue?: string): string[] | Array<(string | undefined)> {
-    return this.contains(separator)
-      ? this.split(separator, 2)
-      : [this.value, defaultValue]
+  parseCallback (separator: string = '@', defaultValue?: string): [string, string] | [string, string | undefined] {
+    if (this.notContains(separator)) {
+      return [this.value, defaultValue]
+    }
+
+    const [Class, method] = this.split(separator, 2)
+
+    return [Class, method]
   }
 
   /**
