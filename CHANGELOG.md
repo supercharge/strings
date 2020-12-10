@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.17.1](https://github.com/supercharge/strings/compare/v1.17.0...v1.17.1) - 2020-12-10
+
+### Fixed
+- fixed typings for `parseCallback)` method
+
+
 ## [1.17.0](https://github.com/supercharge/strings/compare/v1.16.0...v1.17.0) - 2020-12-10
 
 ### Added
