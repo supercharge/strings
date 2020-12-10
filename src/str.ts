@@ -465,7 +465,7 @@ export class Str {
    *
    * @returns {String[]}
    */
-  parseCallback (separator: string = '@', defaultValue?: string): [string, string] | [string, string | undefined] {
+  parseCallback (separator: string = '@', defaultValue?: string): [string, string | undefined] {
     if (this.notContains(separator)) {
       return [this.value, defaultValue]
     }
