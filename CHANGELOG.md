@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [1.18.0](https://github.com/supercharge/strings/compare/v1.17.1...v1.18.0) - 2021-01-23
+
+### Added
+- `slug(separator = '-')`: convert the string to a URL-friendly “slug” in kebab-case
+
+### Updated
+- bump dependencies
+- `kebab(separator = '-')`: add the `separator` parameter to the `kebab` method
+
+
 ## [1.17.1](https://github.com/supercharge/strings/compare/v1.17.0...v1.17.1) - 2020-12-10
 
 ### Fixed
