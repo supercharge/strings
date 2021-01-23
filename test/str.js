@@ -331,13 +331,17 @@ describe('Strings', () => {
     expect(Str('Supercharge').limit(12, ' ->').get()).toEqual('Supercharge')
   })
 
-  it('kebab', () => {
+  it('kebab/slug', () => {
     expect(Str('super charge').kebab().get()).toEqual('super-charge')
-    expect(Str('supercharge is awesome').kebab().get()).toEqual('supercharge-is-awesome')
-    expect(Str('supercharge_IS_AWesoME').kebab().get()).toEqual('supercharge-is-awesome')
-    expect(Str('SUPERCHARGE_is_AWESOME').kebab().get()).toEqual('supercharge-is-awesome')
-    expect(Str('supercharge_IS_AWesoME!').kebab().get()).toEqual('supercharge-is-awesome!')
-    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').kebab().get()).toEqual('supercharge-is-awesome')
+
+    expect(Str('super charge').slug().get()).toEqual('super-charge')
+    expect(Str('supercharge is awesome').slug().get()).toEqual('supercharge-is-awesome')
+    expect(Str('supercharge_IS_AWesoME').slug().get()).toEqual('supercharge-is-awesome')
+    expect(Str('SUPERCHARGE_is_AWESOME').slug().get()).toEqual('supercharge-is-awesome')
+    expect(Str('supercharge_IS_AWesoME!').slug().get()).toEqual('supercharge-is-awesome!')
+    expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').slug().get()).toEqual('supercharge-is-awesome')
+
+    expect(Str('super charge').slug('.AA.').get()).toEqual('super.aa.charge')
   })
 
   it('snake', () => {

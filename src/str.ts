@@ -347,9 +347,9 @@ export class Str {
    *
    * @returns {Str}
    */
-  kebab (): Str {
+  kebab (separator: string = '-'): Str {
     return new Str(
-      this.value.replace(/[_-\s]+/g, '-')
+      this.value.replace(/[_-\s]+/g, separator)
     )
       .strip()
       .toLowerCase()
@@ -384,7 +384,7 @@ export class Str {
    * @returns {Str}
    */
   limit (limit: number = 0, end: string = ''): Str {
-    return limit >= this.length()
+    return this.length() <= limit
       ? this
       : new Str(this.value.substring(0, limit).concat(end))
   }
@@ -595,6 +595,17 @@ export class Str {
     }
 
     return new Str(this.value)
+  }
+
+  /**
+   * Convert the string to a URL-friendly “slug” in kebab-case.
+   *
+   * @param {String} separator
+   *
+   * @returns {Str}
+   */
+  slug (separator: string = '-'): Str {
+    return this.kebab(separator)
   }
 
   /**
