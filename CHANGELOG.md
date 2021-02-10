@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.19.0](https://github.com/supercharge/strings/compare/v1.18.0...v1.19.0) - 2021-02-xx
+
+### Updated
+- bump dependencies
+- remove not needed `eslint-plugin-standard` dependency: not needed when using `eslint-config-standard v16`
+
+
 ## [1.18.0](https://github.com/supercharge/strings/compare/v1.17.1...v1.18.0) - 2021-01-23
 
 ### Added
