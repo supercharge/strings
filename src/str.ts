@@ -139,6 +139,15 @@ export class Str {
   }
 
   /**
+   * Returns the list of characters for the given string.
+   *
+   * @returns {String[]}
+   */
+  chars (): string[] {
+    return Array.from(this.toString())
+  }
+
+  /**
    * Returns a string that contains the concatenation of two or more strings.
    *
    * @param {String|Array} strings

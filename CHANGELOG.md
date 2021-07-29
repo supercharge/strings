@@ -1,7 +1,10 @@
 # Changelog
 
 
-## [1.19.0](https://github.com/supercharge/strings/compare/v1.18.0...v1.19.0) - 2021-02-xx
+## [1.19.0](https://github.com/supercharge/strings/compare/v1.18.0...v1.19.0) - 2021-07-29
+
+### Added
+- `chars()`: returns the list of characters for the given string
 
 ### Updated
 - bump dependencies

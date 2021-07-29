@@ -444,4 +444,11 @@ describe('Strings', () => {
 
     expect(Str('supercharge').replaceLast('sweet', 'awesome').get()).toEqual('supercharge')
   })
+
+  it('chars', () => {
+    expect(Str().chars()).toEqual([])
+    expect(Str('').chars()).toEqual([])
+    expect(Str('Super').chars()).toEqual(['S', 'u', 'p', 'e', 'r'])
+    expect(Str('Super 👍').chars()).toEqual(['S', 'u', 'p', 'e', 'r', ' ', '👍'])
+  })
 })
