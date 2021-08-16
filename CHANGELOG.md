@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.20.0](https://github.com/supercharge/strings/compare/v1.19.0...v1.20.0) - 2021-xx-xx
+
+### Updated
+- bump dependencies
+
+
 ## [1.19.0](https://github.com/supercharge/strings/compare/v1.18.0...v1.19.0) - 2021-07-29
 
 ### Added
