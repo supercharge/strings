@@ -692,6 +692,17 @@ export class Str {
   }
 
   /**
+   * Removes all extra spaces from the string and leaves a single space at the position.
+   *
+   * @returns {Str}
+   */
+  stripExtraSpaces (): Str {
+    return new Str(
+      this.value.replace(/\s+/g, ' ')
+    )
+  }
+
+  /**
    * Convert the string to StudlyCase. StudlyCase is similar to camelCase
    * except that the first character is uppercase instead of lowercase.
    *

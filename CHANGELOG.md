@@ -3,6 +3,9 @@
 
 ## [1.20.0](https://github.com/supercharge/strings/compare/v1.19.0...v1.20.0) - 2021-xx-xx
 
+### Added
+- `stripExtraSpaces()`: removes all extra spaces from a string and leaves only a single space at the given position
+
 ### Updated
 - bump dependencies
 

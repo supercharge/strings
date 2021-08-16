@@ -121,6 +121,12 @@ describe('Strings', () => {
     expect(Str('5up3rch4rge 12 awes0me 6789').stripNums().get()).toEqual('uprchrge  awesme ')
   })
 
+  it('stripExtraSpaces', () => {
+    expect(Str('').stripExtraSpaces().get()).toEqual('')
+    expect(Str('    Supercharge   ').stripExtraSpaces().get()).toEqual(' Supercharge ')
+    expect(Str('supercharge 123 is awesome').stripNums().stripExtraSpaces().get()).toEqual('supercharge is awesome')
+  })
+
   it('title', () => {
     expect(Str('supercharge is awesome').title().get()).toEqual('Supercharge Is Awesome')
     expect(Str('supercharge IS AWesoME').title().get()).toEqual('Supercharge Is Awesome')
