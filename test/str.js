@@ -457,4 +457,17 @@ describe('Strings', () => {
     expect(Str('Super').chars()).toEqual(['S', 'u', 'p', 'e', 'r'])
     expect(Str('Super 👍').chars()).toEqual(['S', 'u', 'p', 'e', 'r', ' ', '👍'])
   })
+
+  it('shuffle', () => {
+    expect(Str().shuffle().get()).toEqual('')
+    expect(Str('').shuffle().get()).toEqual('')
+
+    const chars = Str('Super').shuffle().chars()
+    expect(chars.length).toBe(5)
+    expect(chars.includes('S')).toBe(true)
+    expect(chars.includes('u')).toBe(true)
+    expect(chars.includes('p')).toBe(true)
+    expect(chars.includes('e')).toBe(true)
+    expect(chars.includes('r')).toBe(true)
+  })
 })

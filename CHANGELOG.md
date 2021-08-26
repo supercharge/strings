@@ -5,6 +5,7 @@
 
 ### Added
 - `stripExtraSpaces()`: removes all extra spaces from a string and leaves only a single space at the given position
+- `shuffle()`: randomly shuffle the characters of the string (using the fisher yates shuffle algorithm)
 
 ### Updated
 - bump dependencies

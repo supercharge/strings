@@ -607,6 +607,28 @@ export class Str {
   }
 
   /**
+   * Shuffles the characters of the string using the Fisher-Yates-Shuffle algorithm (also known as the Knuth-Shuffle).
+   *
+   * @returns {Str}
+   */
+  shuffle (): Str {
+    const characters = this.chars()
+    let characterCount = characters.length
+
+    while (characterCount) {
+      // Pick a remaining character
+      const position = Math.floor(Math.random() * characterCount--)
+
+      // And swap it with the current element.
+      const char = characters[characterCount]
+      characters[characterCount] = characters[position]
+      characters[position] = char
+    }
+
+    return new Str(characters.join(''))
+  }
+
+  /**
    * Convert the string to a URL-friendly “slug” in kebab-case.
    *
    * @param {String} separator
