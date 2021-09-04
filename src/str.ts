@@ -35,6 +35,15 @@ export class Str {
   }
 
   /**
+   * Returns the byte order mark (BOM) character code.
+   *
+   * @returns {Number}
+   */
+  private bomCharCode (): number {
+    return 0xFEFF
+  }
+
+  /**
    * Returns the string value.
    *
    * @returns {String}
@@ -726,7 +735,7 @@ export class Str {
   stripBom (): Str {
     // Catches EFBBBF (UTF-8 BOM) because the buffer-to-string
     // conversion translates it to FEFF (UTF-16 BOM).
-    return this.value.charCodeAt(0) === 0xFEFF
+    return this.value.charCodeAt(0) === this.bomCharCode()
       ? new Str(this.slice(1))
       : this
   }
