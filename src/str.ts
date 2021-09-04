@@ -719,7 +719,7 @@ export class Str {
   }
 
   /**
-   * Removes the byte order mark (BOM) from the string.
+   * Removes the byte order mark (BOM) from the beginning of the string.
    *
    * @returns {Str}
    */
