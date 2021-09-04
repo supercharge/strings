@@ -629,6 +629,20 @@ export class Str {
   }
 
   /**
+   * Returns a section of the string starting from the given `start` until the given `end`.
+   *
+   * @param {Number} start
+   * @param {Number} end
+   *
+   * @returns {Str}
+   */
+  slice (start?: number, end?: number): Str {
+    return new Str(
+      this.value.slice(start, end)
+    )
+  }
+
+  /**
    * Convert the string to a URL-friendly “slug” in kebab-case.
    *
    * @param {String} separator
