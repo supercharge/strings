@@ -1,6 +1,8 @@
 'use strict'
 
+const Path = require('path')
 const Str = require('../dist')
+const Fs = require('fs/promises')
 
 describe('Strings', () => {
   it('get', () => {
@@ -469,5 +471,31 @@ describe('Strings', () => {
     expect(chars.includes('p')).toBe(true)
     expect(chars.includes('e')).toBe(true)
     expect(chars.includes('r')).toBe(true)
+  })
+
+  it('slice', () => {
+    expect(Str().slice().get()).toEqual('')
+    expect(Str('').slice().get()).toEqual('')
+
+    expect(Str('Super').slice().get()).toEqual('Super')
+    expect(Str('Super').slice(1).get()).toEqual('uper')
+    expect(Str('Super').slice(1, 3).get()).toEqual('up')
+  })
+
+  it('stripBom', async () => {
+    expect(Str().stripBom().get()).toEqual('')
+    expect(Str('').stripBom().get()).toEqual('')
+
+    const startingWithBom = Path.resolve(__dirname, 'fixtures', 'utf8-starting-with-bom.txt')
+    expect(
+      Str(await Fs.readFile(startingWithBom)).stripBom().get()
+    ).toEqual('Supercharge\n')
+
+    const bomInTheMiddle = Path.resolve(__dirname, 'fixtures', 'utf8-bom-in-the-middle.txt')
+    expect(
+      Str(await Fs.readFile(bomInTheMiddle)).stripBom().get()
+    ).toEqual(
+      await Fs.readFile(bomInTheMiddle, 'utf-8')
+    )
   })
 })
