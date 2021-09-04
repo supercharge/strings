@@ -2,7 +2,7 @@
 
 const Path = require('path')
 const Str = require('../dist')
-const Fs = require('fs/promises')
+const { promises: Fs } = require('fs')
 
 describe('Strings', () => {
   it('get', () => {
