@@ -719,6 +719,19 @@ export class Str {
   }
 
   /**
+   * Removes the byte order mark (BOM) from the string.
+   *
+   * @returns {Str}
+   */
+  stripBom (): Str {
+    // Catches EFBBBF (UTF-8 BOM) because the buffer-to-string
+    // conversion translates it to FEFF (UTF-16 BOM).
+    return this.value.charCodeAt(0) === 0xFEFF
+      ? new Str(this.slice(1))
+      : this
+  }
+
+  /**
    * Removes all numbers from the string.
    *
    * @returns {Str}
