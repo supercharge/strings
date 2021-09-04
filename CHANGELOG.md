@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.21.0](https://github.com/supercharge/strings/compare/v1.20.0...v1.21.0) - 2021-09-03
+
+### Added
+- `containsBom()`: determine whether the string contains a byte order mark (BOM) at any position
+- `startsWithBom()`: determine whether the string starts with the byte order mark (BOM)
+
 ## [1.20.0](https://github.com/supercharge/strings/compare/v1.19.0...v1.20.0) - 2021-09-03
 
 ### Added

@@ -498,4 +498,36 @@ describe('Strings', () => {
       await Fs.readFile(bomInTheMiddle, 'utf-8')
     )
   })
+
+  it('startsWithBom', async () => {
+    expect(Str().startsWithBom()).toBe(false)
+    expect(Str('').startsWithBom()).toBe(false)
+    expect(Str('Supercharge').containsBom()).toBe(false)
+
+    const startingWithBom = Path.resolve(__dirname, 'fixtures', 'utf8-starting-with-bom.txt')
+    expect(
+      Str(await Fs.readFile(startingWithBom)).startsWithBom()
+    ).toBe(true)
+
+    const bomInTheMiddle = Path.resolve(__dirname, 'fixtures', 'utf8-bom-in-the-middle.txt')
+    expect(
+      Str(await Fs.readFile(bomInTheMiddle)).startsWithBom()
+    ).toBe(false)
+  })
+
+  it('containsBom', async () => {
+    expect(Str().containsBom()).toBe(false)
+    expect(Str('').containsBom()).toBe(false)
+    expect(Str('Supercharge').containsBom()).toBe(false)
+
+    const startingWithBom = Path.resolve(__dirname, 'fixtures', 'utf8-starting-with-bom.txt')
+    expect(
+      Str(await Fs.readFile(startingWithBom)).containsBom()
+    ).toBe(true)
+
+    const bomInTheMiddle = Path.resolve(__dirname, 'fixtures', 'utf8-bom-in-the-middle.txt')
+    expect(
+      Str(await Fs.readFile(bomInTheMiddle)).containsBom()
+    ).toBe(true)
+  })
 })

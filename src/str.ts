@@ -194,6 +194,17 @@ export class Str {
   }
 
   /**
+   * Determine whether the string contains the byte order mark (BOM) at any position in the string.
+   *
+   * @returns {Boolean}
+   */
+  containsBom (): boolean {
+    return !!this.chars().find((_, index) => {
+      return this.value.charCodeAt(index) === this.bomCharCode()
+    })
+  }
+
+  /**
    * Determine whether the haystack does not contain the given `needle`.
    *
    * @param {String} needle
@@ -717,6 +728,15 @@ export class Str {
   }
 
   /**
+   * Determine whether the string starts with the byte order mark (BOM).
+   *
+   * @returns {Boolean}
+   */
+  startsWithBom (): boolean {
+    return this.value.charCodeAt(0) === this.bomCharCode()
+  }
+
+  /**
    * Removes all whitespace from the string, everywhere.
    *
    * @returns {Str}
@@ -735,7 +755,7 @@ export class Str {
   stripBom (): Str {
     // Catches EFBBBF (UTF-8 BOM) because the buffer-to-string
     // conversion translates it to FEFF (UTF-16 BOM).
-    return this.value.charCodeAt(0) === this.bomCharCode()
+    return this.startsWithBom()
       ? new Str(this.slice(1))
       : this
   }
