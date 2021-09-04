@@ -1,11 +1,13 @@
 # Changelog
 
 
-## [1.20.0](https://github.com/supercharge/strings/compare/v1.19.0...v1.20.0) - 2021-xx-xx
+## [1.20.0](https://github.com/supercharge/strings/compare/v1.19.0...v1.20.0) - 2021-09-03
 
 ### Added
 - `stripExtraSpaces()`: removes all extra spaces from a string and leaves only a single space at the given position
 - `shuffle()`: randomly shuffle the characters of the string (using the fisher yates shuffle algorithm)
+- `slice(start, end)`: returns a section of the string from `start` to `end`
+- `stripBom()`: removes the byte order mark (BOM) from the string
 
 ### Updated
 - bump dependencies
