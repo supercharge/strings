@@ -349,7 +349,7 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  isString (input: any): boolean {
+  isString (input: any): input is string {
     return typeof input === 'string' && Object.prototype.toString.call(input) === '[object String]'
   }
 

@@ -35,7 +35,7 @@ strings.random = (size?: number): string => {
  *
  * @param input - the `input` value to check whether it’s a string
  */
-strings.isString = (input?: any): boolean => {
+strings.isString = (input?: any): input is string => {
   return strings().isString(input)
 }
 
