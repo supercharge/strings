@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -17,29 +18,27 @@ jobs:
           - macos-latest
           - windows-latest
 
-    name: Node.js ${{ matrix.node-version }}
-
     steps:
-    - name: Git checkout
-      uses: actions/checkout@v2
+      - name: Git checkout
+        uses: actions/checkout@v2
 
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm/cache/files
-        key: dependencies-nodejs-${{ matrix.node-version }}-package-${{ hashFiles('package.json') }}
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm/cache/files
+          key: dependencies-nodejs-${{ matrix.node-version }}-package-${{ hashFiles('package.json') }}
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: npm install
-      env:
-        CI: true
+      - name: Install dependencies
+        run: npm install
+        env:
+          CI: true
 
-    - name: Run tests
-      run: npm test
-      env:
-        CI: true
+      - name: Run tests
+        run: npm test
+        env:
+          CI: true
