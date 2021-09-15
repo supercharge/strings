@@ -10,9 +10,7 @@ import { StrContract } from './str-contract'
  *
  * @param value - `value` is the value being wrapped into an `Str` instance
  */
-const strings: StrContract = function (value?: any): Str {
-  return new Str(value)
-}
+const strings: StrContract = (value?: any): Str => new Str(value)
 
 /**
  * Create a UUID (version 4).
