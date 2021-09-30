@@ -361,7 +361,7 @@ export class Str {
    * @returns {Boolean}
    */
   isSymbol (input: any): input is symbol {
-    return typeof input === 'symbol'
+    // TODO
   }
 
   /**
