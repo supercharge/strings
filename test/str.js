@@ -530,4 +530,16 @@ describe('Strings', () => {
       Str(await Fs.readFile(bomInTheMiddle)).containsBom()
     ).toBe(true)
   })
+
+  it('isSymbol', () => {
+    expect(Str.isSymbol(Symbol.for(''))).toBe(true)
+    expect(Str.isSymbol(Symbol.for('Supercharge'))).toBe(true)
+
+    expect(Str.isSymbol(Symbol)).toBe(false)
+    expect(Str.isSymbol(1)).toBe(false)
+    expect(Str.isSymbol({})).toBe(false)
+    expect(Str.isSymbol('')).toBe(false)
+    expect(Str.isSymbol(String())).toBe(false)
+    expect(Str.isSymbol('Supercharge')).toBe(false)
+  })
 })

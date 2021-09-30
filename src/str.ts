@@ -354,6 +354,17 @@ export class Str {
   }
 
   /**
+   * Determine whether the given `input` is a symbol.
+   *
+   * @param {*} input
+   *
+   * @returns {Boolean}
+   */
+  isSymbol (input: any): input is symbol {
+    return typeof input === 'symbol'
+  }
+
+  /**
    * Determine whether the given string is uppercase.
    *
    * @returns {Boolean}
