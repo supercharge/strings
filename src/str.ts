@@ -900,4 +900,13 @@ export class Str {
   uuid (): string {
     return uuidv4()
   }
+
+  /**
+   * Determine whether the given string is a valid UUID (no matter what version).
+   *
+   * @returns {Boolean}
+   */
+  isUuid (): boolean {
+    // TODO
+  }
 }
