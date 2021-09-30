@@ -1,7 +1,7 @@
 'use strict'
 
 import Crypto from 'crypto'
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4, validate } from 'uuid'
 
 export class Str {
   /**
@@ -907,6 +907,6 @@ export class Str {
    * @returns {Boolean}
    */
   isUuid (): boolean {
-    // TODO
+    return validate(this.value)
   }
 }
