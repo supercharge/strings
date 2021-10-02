@@ -1,7 +1,7 @@
 'use strict'
 
 import Crypto from 'crypto'
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4, validate } from 'uuid'
 
 export class Str {
   /**
@@ -918,5 +918,14 @@ export class Str {
    */
   uuid (): string {
     return uuidv4()
+  }
+
+  /**
+   * Determine whether the given string is a valid UUID (no matter what version).
+   *
+   * @returns {Boolean}
+   */
+  isUuid (): boolean {
+    return validate(this.value)
   }
 }

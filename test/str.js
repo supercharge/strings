@@ -539,4 +539,15 @@ describe('Strings', () => {
     expect(Str('Supercharge').at(50)).toEqual(undefined)
     expect(Str('Supercharge').at(-50)).toEqual(undefined)
   })
+
+  it('isUuid', async () => {
+    expect(Str().isUuid()).toBe(false)
+    expect(Str('').isUuid()).toBe(false)
+    expect(Str(null).isUuid()).toBe(false)
+    expect(Str('randommm-inva-lidd-uuid').isUuid()).toBe(false)
+    expect(Str('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa').isUuid()).toBe(false)
+
+    expect(Str(Str.uuid()).isUuid()).toBe(true)
+    expect(Str('00000000-0000-0000-0000-000000000000').isUuid()).toBe(true)
+  })
 })
