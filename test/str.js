@@ -534,6 +534,7 @@ describe('Strings', () => {
   it('isSymbol', () => {
     expect(Str.isSymbol(Symbol.for(''))).toBe(true)
     expect(Str.isSymbol(Symbol.for('Supercharge'))).toBe(true)
+    expect(Str.isSymbol(Object(Symbol.for('Supercharge')))).toBe(true)
 
     expect(Str.isSymbol(Symbol)).toBe(false)
     expect(Str.isSymbol(1)).toBe(false)
