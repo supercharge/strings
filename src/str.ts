@@ -107,6 +107,25 @@ export class Str {
   }
 
   /**
+   * Returns the character at the given `index` or undefined if the index exceeds the set’s size.
+   *
+   * @param {Number} index
+   *
+   * @returns {string|undefined}
+   */
+  at (index: number): string | undefined {
+    const length = this.length()
+
+    if (index < 0) {
+      index += length
+    }
+
+    return Math.abs(index) < length
+      ? this.value[index]
+      : undefined
+  }
+
+  /**
    * Returns the portion of the string before the first occurrence of the given `delimiter`.
    *
    * @param {String} delimiter
