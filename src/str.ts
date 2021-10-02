@@ -361,7 +361,7 @@ export class Str {
    * @returns {Boolean}
    */
   isSymbol (input: any): input is symbol {
-    // TODO
+    return typeof input === 'symbol' || (typeof input === 'object' && Object.prototype.toString.call(input) === '[object Symbol]')
   }
 
   /**
