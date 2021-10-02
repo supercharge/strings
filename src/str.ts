@@ -120,9 +120,11 @@ export class Str {
       index += length
     }
 
-    return Math.abs(index) < length
-      ? this.value[index]
-      : undefined
+    if (index < 0 || index > length) {
+      return undefined
+    }
+
+    return this.value[index]
   }
 
   /**

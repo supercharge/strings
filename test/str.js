@@ -535,8 +535,12 @@ describe('Strings', () => {
     expect(Str('Supercharge').at(0)).toEqual('S')
     expect(Str('Supercharge').at(-1)).toEqual('e')
     expect(Str('Supercharge').at(-3)).toEqual('r')
+    expect(Str('Supercharge').at(-11)).toEqual('S')
 
+    expect(Str('Supercharge').at(12)).toEqual(undefined)
     expect(Str('Supercharge').at(50)).toEqual(undefined)
+
+    expect(Str('Supercharge').at(-12)).toEqual(undefined)
     expect(Str('Supercharge').at(-50)).toEqual(undefined)
   })
 
