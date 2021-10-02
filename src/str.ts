@@ -114,7 +114,15 @@ export class Str {
    * @returns {string|undefined}
    */
   at (index: number): string | undefined {
-    // TODO
+    const length = this.length()
+
+    if (index < 0) {
+      index += length
+    }
+
+    return Math.abs(index) < length
+      ? this.value[index]
+      : undefined
   }
 
   /**
