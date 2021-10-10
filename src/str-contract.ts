@@ -30,4 +30,11 @@ export interface StrContract {
    * @param input - the `input` value to check whether it’s a string
    */
   isString (input?: any): input is string
+
+  /**
+   * Determine whether the given `input` is a symbol.
+   *
+   * @param input - the `input` value to check whether it’s a symbol
+   */
+  isSymbol (input?: any): input is symbol
 }

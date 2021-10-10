@@ -375,6 +375,17 @@ export class Str {
   }
 
   /**
+   * Determine whether the given `input` is a symbol.
+   *
+   * @param {*} input
+   *
+   * @returns {Boolean}
+   */
+  isSymbol (input: any): input is symbol {
+    return typeof input === 'symbol' || (typeof input === 'object' && Object.prototype.toString.call(input) === '[object Symbol]')
+  }
+
+  /**
    * Determine whether the given string is uppercase.
    *
    * @returns {Boolean}
