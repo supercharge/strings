@@ -1,7 +1,7 @@
 'use strict'
 
 import Crypto from 'crypto'
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4, validate } from 'uuid'
 
 export class Str {
   /**
@@ -104,6 +104,27 @@ export class Str {
     return new Str(
       this.value + ([] as string[]).concat(...values).join('')
     )
+  }
+
+  /**
+   * Returns the character at the given `index` or undefined if the index exceeds the set’s size.
+   *
+   * @param {Number} index
+   *
+   * @returns {string|undefined}
+   */
+  at (index: number): string | undefined {
+    const length = this.length()
+
+    if (index < 0) {
+      index += length
+    }
+
+    if (index < 0 || index > length) {
+      return undefined
+    }
+
+    return this.value[index]
   }
 
   /**
@@ -910,5 +931,14 @@ export class Str {
    */
   uuid (): string {
     return uuidv4()
+  }
+
+  /**
+   * Determine whether the given string is a valid UUID (no matter what version).
+   *
+   * @returns {Boolean}
+   */
+  isUuid (): boolean {
+    return validate(this.value)
   }
 }
