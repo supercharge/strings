@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [1.22.0](https://github.com/supercharge/strings/compare/v1.21.0...v1.22.0) - 2021-10-13
+
+### Added
+- `at(position)`: returns the character at the given `position`
+- `isSymbol()`: determine whether the string is a JavaScript `Symbol`
+- `isUuid()`: determine whether the string is a UUID
+
+
 ## [1.21.0](https://github.com/supercharge/strings/compare/v1.20.0...v1.21.0) - 2021-09-08
 
 ### Added
