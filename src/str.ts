@@ -850,8 +850,8 @@ export class Str {
       this
         .lowercase()
         .split(' ')
-        .filter(s => s)
-        .map(s => s[0].toUpperCase() + s.slice(1))
+        .filter(word => word)
+        .map(word => word[0].toUpperCase() + word.slice(1))
         .join(' ')
     )
   }
