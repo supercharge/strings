@@ -165,7 +165,9 @@ export class Str {
    * @returns {Str}
    */
   camel (): Str {
-    return this.studly().lcFirst()
+    return new Str(
+      this.splitCamel().join(' ')
+    ).studly().lcFirst()
   }
 
   /**
@@ -722,13 +724,25 @@ export class Str {
    * Splits up the string into an array of strings by separating
    * the string at each of the specified `separator` string.
    *
-   * @param {String} separator
+   * @param {String|RegExp} separator
    * @param {Number} limit
    *
-   * @returns {Array}
+   * @returns {String[]}
    */
-  split (separator: string, limit?: number): string[] {
+  split (separator: string | RegExp, limit?: number): string[] {
     return this.value.split(separator, limit)
+  }
+
+  /**
+   * Split up the camelCased string into an array of strings.
+   *
+   * @returns {String[]}
+   */
+  splitCamel (): string[] {
+    return this
+      // this RegEx comes from https://stackoverflow.com/a/62527131
+      .split(/([^\p{L}\d]+|(?<=\p{L})(?=\d)|(?<=\d)(?=\p{L})|(?<=[\p{Ll}\d])(?=\p{Lu})|(?<=\p{Lu})(?=\p{Lu}\p{Ll})|(?<=[\p{L}\d])(?=\p{Lu}\p{Ll}))/gu)
+      .filter(word => word.trim())
   }
 
   /**
@@ -940,5 +954,14 @@ export class Str {
    */
   isUuid (): boolean {
     return validate(this.value)
+  }
+
+  /**
+   * Returns the list of words for the given string.
+   *
+   * @returns {String[]}
+   */
+  words (): string[] {
+    return this.splitCamel()
   }
 }

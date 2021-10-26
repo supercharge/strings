@@ -138,9 +138,17 @@ describe('Strings', () => {
   it('camel', () => {
     expect(Str('supercharge').camel().get()).toEqual('supercharge')
     expect(Str('supercharge is awesome').camel().get()).toEqual('superchargeIsAwesome')
-    expect(Str('supercharge_IS_AWesoME').camel().get()).toEqual('superchargeIsAwesome')
+    expect(Str('supercharge_IS_AwesoMe').camel().get()).toEqual('superchargeIsAwesoMe')
     expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).toEqual('superchargeIsAwesome')
     expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).toEqual('superchargeIsAwesome')
+  })
+
+  it('camel should handle acronyms', () => {
+    expect(Str('superCHARGE').camel().get()).toEqual('superCharge')
+    expect(Str('super CHARGE').camel().get()).toEqual('superCharge')
+
+    expect(Str('XMLHttpRequest').camel().get()).toEqual('xmlHttpRequest')
+    expect(Str('XmlHTTPRequest').camel().get()).toEqual('xmlHttpRequest')
   })
 
   it('studly', () => {
@@ -567,5 +575,23 @@ describe('Strings', () => {
     expect(Str.isSymbol('')).toBe(false)
     expect(Str.isSymbol(String())).toBe(false)
     expect(Str.isSymbol('Supercharge')).toBe(false)
+  })
+
+  it('splitCamel', () => {
+    expect(Str('Supercharge').splitCamel()).toEqual(['Supercharge'])
+    expect(Str('SuperchargeIsAwesome').splitCamel()).toEqual(['Supercharge', 'Is', 'Awesome'])
+    expect(Str('Supercharge Is Awesome').splitCamel()).toEqual(['Supercharge', 'Is', 'Awesome'])
+
+    expect(Str('super').splitCamel()).toEqual(['super'])
+    expect(Str('superChargeIsCamelCase').splitCamel()).toEqual(['super', 'Charge', 'Is', 'Camel', 'Case'])
+  })
+
+  it('words', () => {
+    expect(Str('Supercharge').words()).toEqual(['Supercharge'])
+    expect(Str('super charge').words()).toEqual(['super', 'charge'])
+    expect(Str('Supercharge       ').words()).toEqual(['Supercharge'])
+    expect(Str('Supercharge is awesome').words()).toEqual(['Supercharge', 'is', 'awesome'])
+
+    expect(Str('SuperchargeIsAwesome').words()).toEqual(['Supercharge', 'Is', 'Awesome'])
   })
 })
