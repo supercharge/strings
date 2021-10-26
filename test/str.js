@@ -532,6 +532,19 @@ describe('Strings', () => {
     ).toBe(true)
   })
 
+  it('at', () => {
+    expect(Str('Supercharge').at(0)).toEqual('S')
+    expect(Str('Supercharge').at(-1)).toEqual('e')
+    expect(Str('Supercharge').at(-3)).toEqual('r')
+    expect(Str('Supercharge').at(-11)).toEqual('S')
+
+    expect(Str('Supercharge').at(12)).toEqual(undefined)
+    expect(Str('Supercharge').at(50)).toEqual(undefined)
+
+    expect(Str('Supercharge').at(-12)).toEqual(undefined)
+    expect(Str('Supercharge').at(-50)).toEqual(undefined)
+  })
+
   it('isUuid', async () => {
     expect(Str().isUuid()).toBe(false)
     expect(Str('').isUuid()).toBe(false)
@@ -541,5 +554,18 @@ describe('Strings', () => {
 
     expect(Str(Str.uuid()).isUuid()).toBe(true)
     expect(Str('00000000-0000-0000-0000-000000000000').isUuid()).toBe(true)
+  })
+
+  it('isSymbol', () => {
+    expect(Str.isSymbol(Symbol.for(''))).toBe(true)
+    expect(Str.isSymbol(Symbol.for('Supercharge'))).toBe(true)
+    expect(Str.isSymbol(Object(Symbol.for('Supercharge')))).toBe(true)
+
+    expect(Str.isSymbol(Symbol)).toBe(false)
+    expect(Str.isSymbol(1)).toBe(false)
+    expect(Str.isSymbol({})).toBe(false)
+    expect(Str.isSymbol('')).toBe(false)
+    expect(Str.isSymbol(String())).toBe(false)
+    expect(Str.isSymbol('Supercharge')).toBe(false)
   })
 })

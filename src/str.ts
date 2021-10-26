@@ -107,6 +107,27 @@ export class Str {
   }
 
   /**
+   * Returns the character at the given `index` or undefined if the index exceeds the set’s size.
+   *
+   * @param {Number} index
+   *
+   * @returns {string|undefined}
+   */
+  at (index: number): string | undefined {
+    const length = this.length()
+
+    if (index < 0) {
+      index += length
+    }
+
+    if (index < 0 || index > length) {
+      return undefined
+    }
+
+    return this.value[index]
+  }
+
+  /**
    * Returns the portion of the string before the first occurrence of the given `delimiter`.
    *
    * @param {String} delimiter
@@ -351,6 +372,17 @@ export class Str {
    */
   isString (input: any): input is string {
     return typeof input === 'string' && Object.prototype.toString.call(input) === '[object String]'
+  }
+
+  /**
+   * Determine whether the given `input` is a symbol.
+   *
+   * @param {*} input
+   *
+   * @returns {Boolean}
+   */
+  isSymbol (input: any): input is symbol {
+    return typeof input === 'symbol' || (typeof input === 'object' && Object.prototype.toString.call(input) === '[object Symbol]')
   }
 
   /**
