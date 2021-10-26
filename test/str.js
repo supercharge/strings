@@ -137,6 +137,7 @@ describe('Strings', () => {
 
   it('camel', () => {
     expect(Str('supercharge').camel().get()).toEqual('supercharge')
+    expect(Str('superCharge').camel().get()).toEqual('superCharge')
     expect(Str('supercharge is awesome').camel().get()).toEqual('superchargeIsAwesome')
     expect(Str('supercharge_IS_AwesoMe').camel().get()).toEqual('superchargeIsAwesoMe')
     expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).toEqual('superchargeIsAwesome')
