@@ -330,6 +330,15 @@ export class Str {
   }
 
   /**
+   * Determine whether the given string is written in camelCase.
+   *
+   * @returns {Boolean}
+   */
+  isCamel (): boolean {
+    return this.equals(this.camel().get())
+  }
+
+  /**
    * Determine whether the given string is empty.
    *
    * @returns {Boolean}

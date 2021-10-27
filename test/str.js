@@ -554,6 +554,14 @@ describe('Strings', () => {
     expect(Str('Supercharge').at(-50)).toEqual(undefined)
   })
 
+  it('isCamel', () => {
+    expect(Str('helloWorld').isCamel()).toBe(true)
+    expect(Str('hello').isCamel()).toBe(true)
+    expect(Str('hello world').isCamel()).toBe(false)
+    expect(Str('HelloworlD').isCamel()).toBe(false)
+    expect(Str('HELLOWORLD').isCamel()).toBe(false)
+  })
+
   it('isUuid', async () => {
     expect(Str().isUuid()).toBe(false)
     expect(Str('').isUuid()).toBe(false)
