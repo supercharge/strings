@@ -335,7 +335,7 @@ export class Str {
    * @returns {Boolean}
    */
   isCamel (): boolean {
-    return this.equals(this.camel().value)
+    return this.equals(this.camel().get())
   }
 
   /**
