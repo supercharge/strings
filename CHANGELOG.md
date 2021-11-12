@@ -5,6 +5,8 @@
 
 ### Added
 - `lines()`: breaks the string at the newline character and returns an array of lines
+- `isCamel()`: determine whether the given string is written in camelCase
+- `words()`: returns the list of words for the given string
 
 
 ## [1.22.0](https://github.com/supercharge/strings/compare/v1.21.0...v1.22.0) - 2021-10-13
