@@ -462,6 +462,15 @@ export class Str {
   }
 
   /**
+   * Splits the string at the newline character and returns all lines.
+   *
+   * @returns {String[]}
+   */
+  lines (): string[] {
+    return this.split('\n')
+  }
+
+  /**
    * Lowercases the string.
    *
    * @returns {Str}

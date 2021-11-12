@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.23.0](https://github.com/supercharge/strings/compare/v1.22.0...v1.23.0) - 2021-11-12
+
+### Added
+- `lines()`: breaks the string at the newline character and returns an array of lines
+
+
 ## [1.22.0](https://github.com/supercharge/strings/compare/v1.21.0...v1.22.0) - 2021-10-13
 
 ### Added
