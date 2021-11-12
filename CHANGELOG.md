@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.23.1](https://github.com/supercharge/strings/compare/v1.23.0...v1.23.1) - 2021-11-12
+
+### Updated
+- updated the `splitCamel()` method to trim each word
+
+
 ## [1.23.0](https://github.com/supercharge/strings/compare/v1.22.0...v1.23.0) - 2021-11-12
 
 ### Added
