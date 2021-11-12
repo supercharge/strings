@@ -595,13 +595,18 @@ describe('Strings', () => {
     expect(Str('superChargeIsCamelCase').splitCamel()).toEqual(['super', 'Charge', 'Is', 'Camel', 'Case'])
   })
 
-  it('words', () => {
+  it('words', async () => {
     expect(Str('Supercharge').words()).toEqual(['Supercharge'])
     expect(Str('super charge').words()).toEqual(['super', 'charge'])
     expect(Str('Supercharge       ').words()).toEqual(['Supercharge'])
     expect(Str('Supercharge is awesome').words()).toEqual(['Supercharge', 'is', 'awesome'])
 
     expect(Str('SuperchargeIsAwesome').words()).toEqual(['Supercharge', 'Is', 'Awesome'])
+
+    const textWithLineBreaks = Path.resolve(__dirname, 'fixtures', 'text-with-line-breaks.md')
+    expect(
+      Str(await Fs.readFile(textWithLineBreaks)).words()
+    ).toEqual(['##', 'Headline', 'Intro', 'Text'])
   })
 
   it('lines', async () => {

@@ -760,7 +760,8 @@ export class Str {
     return this
       // this RegEx comes from https://stackoverflow.com/a/62527131
       .split(/([^\p{L}\d]+|(?<=\p{L})(?=\d)|(?<=\d)(?=\p{L})|(?<=[\p{Ll}\d])(?=\p{Lu})|(?<=\p{Lu})(?=\p{Lu}\p{Ll})|(?<=[\p{L}\d])(?=\p{Lu}\p{Ll}))/gu)
-      .filter(word => word.trim())
+      .map(word => word.trim())
+      .filter(word => !!word)
   }
 
   /**
