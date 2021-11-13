@@ -983,4 +983,18 @@ export class Str {
   words (): string[] {
     return this.splitCamel()
   }
+
+  /**
+   * Determine whether the string equals the given `value` ignoring character cases.
+   *
+   * @param {String} value
+   *
+   * @returns {Boolean}
+   */
+  equalsIgnoreCase (value: string): boolean {
+    if (typeof value !== 'string') {
+      return false
+    }
+    return this.toLowerCase().equals(value.toLowerCase())
+  }
 }
