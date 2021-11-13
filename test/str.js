@@ -619,4 +619,13 @@ describe('Strings', () => {
     expect(Str('Supercharge').lines()).toEqual(['Supercharge'])
     expect(Str('Supercharge\n').lines()).toEqual(['Supercharge', ''])
   })
+
+  it('equalsIgnoreCase', () => {
+    expect(Str('SUPERCHARGE').equalsIgnoreCase('supercharge')).toBe(true)
+    expect(Str('SuPeRcHaRgE').equalsIgnoreCase('sUpErChArGe')).toBe(true)
+    expect(Str('SUPER').equalsIgnoreCase('SUPER')).toBe(true)
+    expect(Str('Super').equalsIgnoreCase()).toBe(false)
+    expect(Str('SUPERCHARGE').equalsIgnoreCase('SLOWCHARGE')).toBe(false)
+    expect(Str('SuPeR').equalsIgnoreCase('sUpErChArGe')).toBe(false)
+  })
 })
