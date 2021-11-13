@@ -596,6 +596,9 @@ describe('Strings', () => {
   })
 
   it('words', async () => {
+    expect(Str().words()).toEqual([])
+    expect(Str('').words()).toEqual([])
+
     expect(Str('Supercharge').words()).toEqual(['Supercharge'])
     expect(Str('super charge').words()).toEqual(['super', 'charge'])
     expect(Str('Supercharge       ').words()).toEqual(['Supercharge'])
