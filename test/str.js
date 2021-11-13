@@ -618,6 +618,13 @@ describe('Strings', () => {
 
     expect(Str('Supercharge').lines()).toEqual(['Supercharge'])
     expect(Str('Supercharge\n').lines()).toEqual(['Supercharge', ''])
+
+    expect(
+      Str(`
+      Hey pal,
+      Supercharge is awesome!
+    `).lines()
+    ).toEqual(['', '      Hey pal,', '      Supercharge is awesome!', '    '])
   })
 
   it('equalsIgnoreCase', () => {
