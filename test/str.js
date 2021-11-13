@@ -610,14 +610,16 @@ describe('Strings', () => {
   })
 
   it('lines', async () => {
+    expect(Str().lines()).toEqual([''])
+    expect(Str('').lines()).toEqual([''])
+    expect(Str('Supercharge').lines()).toEqual(['Supercharge'])
+    expect(Str('Supercharge\n').lines()).toEqual(['Supercharge', ''])
+
     const textWithLineBreaks = Path.resolve(__dirname, 'fixtures', 'text-with-line-breaks.md')
 
     expect(
       Str(await Fs.readFile(textWithLineBreaks)).lines()
     ).toEqual(['## Headline', 'Intro', '', 'Text', ''])
-
-    expect(Str('Supercharge').lines()).toEqual(['Supercharge'])
-    expect(Str('Supercharge\n').lines()).toEqual(['Supercharge', ''])
 
     expect(
       Str(`
