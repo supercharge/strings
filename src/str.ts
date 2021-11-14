@@ -651,7 +651,7 @@ export class Str {
    */
   reverse (): Str {
     return new Str(
-      this.value.split('').reverse().join('')
+      this.chars().reverse().join('')
     )
   }
 
