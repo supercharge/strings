@@ -454,6 +454,7 @@ describe('Strings', () => {
   it('reverse', () => {
     expect(Str().reverse().get()).toEqual('')
     expect(Str('').reverse().get()).toEqual('')
+    expect(Str(null).reverse().get()).toEqual('')
     expect(Str('abc').reverse().get()).toEqual('cba')
     expect(Str('SuperchargE').reverse().get()).toEqual('EgrahcrepuS')
   })
