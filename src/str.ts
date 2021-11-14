@@ -612,7 +612,7 @@ export class Str {
   }
 
   /**
-   * Replace the first occurence of the string.
+   * Replace the first occurrence of the string.
    *
    * @param {String} search
    * @param {String} replace
@@ -642,7 +642,7 @@ export class Str {
   }
 
   /**
-   * Replace the last occurence of the string.
+   * Replace the last occurrence of the string.
    *
    * @param {String} search
    * @param {String} replace
