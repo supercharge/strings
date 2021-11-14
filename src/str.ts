@@ -263,6 +263,19 @@ export class Str {
   }
 
   /**
+   * Determine whether the string equals given `value` when ignoring character casing.
+   *
+   * @param {String} value
+   *
+   * @returns {Boolean}
+   */
+  equalsIgnoreCase (value: string): boolean {
+    return this.lower().equals(
+      new Str(value).lower().get()
+    )
+  }
+
+  /**
    * Determine whether the string does not equal the given `value`.
    *
    * @param {String} value
@@ -679,6 +692,18 @@ export class Str {
   }
 
   /**
+   * Alias for `.equalsIgnoreCase()`. Determine whether the string
+   * equals given `value` when ignoring character casing.
+   *
+   * @param {String} value
+   *
+   * @returns {Boolean}
+   */
+  sameAs (value: string): boolean {
+    return this.equalsIgnoreCase(value)
+  }
+
+  /**
    * Shuffles the characters of the string using the Fisher-Yates-Shuffle algorithm (also known as the Knuth-Shuffle).
    *
    * @returns {Str}
@@ -982,19 +1007,5 @@ export class Str {
    */
   words (): string[] {
     return this.splitCamel()
-  }
-
-  /**
-   * Determine whether the string equals the given `value` ignoring character cases.
-   *
-   * @param {String} value
-   *
-   * @returns {Boolean}
-   */
-  equalsIgnoreCase (value: string): boolean {
-    if (typeof value !== 'string') {
-      return false
-    }
-    return this.toLowerCase().equals(value.toLowerCase())
   }
 }
