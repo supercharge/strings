@@ -452,7 +452,10 @@ describe('Strings', () => {
   })
 
   it('reverse', () => {
-    expect(Str('Supercharge').reverse().get()).toEqual('egrahcrepuS')
+    expect(Str().reverse().get()).toEqual('')
+    expect(Str('').reverse().get()).toEqual('')
+    expect(Str('abc').reverse().get()).toEqual('cba')
+    expect(Str('SuperchargE').reverse().get()).toEqual('EgrahcrepuS')
   })
 
   it('replaceLast()', () => {
@@ -632,12 +635,16 @@ describe('Strings', () => {
     ).toEqual(['', '      Hey pal,', '      Supercharge is awesome!', '    '])
   })
 
-  it('equalsIgnoreCase', () => {
-    expect(Str('SUPERCHARGE').equalsIgnoreCase('supercharge')).toBe(true)
-    expect(Str('SuPeRcHaRgE').equalsIgnoreCase('sUpErChArGe')).toBe(true)
-    expect(Str('SUPER').equalsIgnoreCase('SUPER')).toBe(true)
-    expect(Str('Super').equalsIgnoreCase()).toBe(false)
-    expect(Str('SUPERCHARGE').equalsIgnoreCase('SLOWCHARGE')).toBe(false)
-    expect(Str('SuPeR').equalsIgnoreCase('sUpErChArGe')).toBe(false)
+  it('sameAs', () => {
+    expect(Str().sameAs()).toBe(true)
+    expect(Str('').sameAs()).toBe(true)
+
+    expect(Str('SUPER').sameAs('SUPER')).toBe(true)
+    expect(Str('SUPERCHARGE').sameAs('supercharge')).toBe(true)
+    expect(Str('SuPeRcHaRgE').sameAs('sUpErChArGe')).toBe(true)
+
+    expect(Str('Super').sameAs()).toBe(false)
+    expect(Str('SuPeR').sameAs('sUpErChArGe')).toBe(false)
+    expect(Str('SUPERCHARGE').sameAs('SLOWCHARGE')).toBe(false)
   })
 })
