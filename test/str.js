@@ -267,10 +267,26 @@ test('replaceAll', () => {
 })
 
 test('equals', () => {
+  expect(Str().equals('')).toBe(true)
+  expect(Str('').equals('')).toBe(true)
+  expect(Str(null).equals('')).toBe(true)
   expect(Str('Supercharge').equals('Supercharge')).toBe(true)
 
-  expect(Str('Super').equals('super')).toBe(false)
   expect(Str('Super').equals()).toBe(false)
+  expect(Str('Super').equals('super')).toBe(false)
+})
+
+test('equalsIgnoreCase', () => {
+  expect(Str().equalsIgnoreCase()).toBe(true)
+  expect(Str('').equalsIgnoreCase()).toBe(true)
+
+  expect(Str('SUPER').equalsIgnoreCase('SUPER')).toBe(true)
+  expect(Str('SUPER').equalsIgnoreCase('super')).toBe(true)
+  expect(Str('SuPeRcHaRgE').equalsIgnoreCase('sUpErChArGe')).toBe(true)
+
+  expect(Str('Super').equalsIgnoreCase()).toBe(false)
+  expect(Str('SuPeR').equalsIgnoreCase('sUpErChArGe')).toBe(false)
+  expect(Str('SUPERCHARGE').equalsIgnoreCase('SLOWCHARGE')).toBe(false)
 })
 
 test('notEquals', () => {
@@ -635,19 +651,6 @@ test('lines', async () => {
       Supercharge is awesome!
     `).lines()
   ).toEqual(['', '      Hey pal,', '      Supercharge is awesome!', '    '])
-})
-
-test('sameAs', () => {
-  expect(Str().sameAs()).toBe(true)
-  expect(Str('').sameAs()).toBe(true)
-
-  expect(Str('SUPER').sameAs('SUPER')).toBe(true)
-  expect(Str('SUPERCHARGE').sameAs('supercharge')).toBe(true)
-  expect(Str('SuPeRcHaRgE').sameAs('sUpErChArGe')).toBe(true)
-
-  expect(Str('Super').sameAs()).toBe(false)
-  expect(Str('SuPeR').sameAs('sUpErChArGe')).toBe(false)
-  expect(Str('SUPERCHARGE').sameAs('SLOWCHARGE')).toBe(false)
 })
 
 test.run()

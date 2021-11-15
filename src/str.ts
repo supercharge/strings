@@ -692,18 +692,6 @@ export class Str {
   }
 
   /**
-   * Alias for `.equalsIgnoreCase()`. Determine whether the string
-   * equals given `value` when ignoring character casing.
-   *
-   * @param {String} value
-   *
-   * @returns {Boolean}
-   */
-  sameAs (value: string): boolean {
-    return this.equalsIgnoreCase(value)
-  }
-
-  /**
    * Shuffles the characters of the string using the Fisher-Yates-Shuffle algorithm (also known as the Knuth-Shuffle).
    *
    * @returns {Str}
