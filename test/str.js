@@ -102,7 +102,12 @@ test('lowercase', () => {
 })
 
 test('isLower', () => {
+  expect(Str().isLower()).toBe(true)
+  expect(Str('').isLower()).toBe(true)
+  expect(Str(null).isLower()).toBe(true)
+  expect(Str(undefined).isLower()).toBe(true)
   expect(Str('supercharge').isLower()).toBe(true)
+
   expect(Str('sUPERCHARGE').isLower()).toBe(false)
   expect(Str('SUPERCHARGE').isLower()).toBe(false)
 })
