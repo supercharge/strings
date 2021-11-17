@@ -525,6 +525,25 @@ export class Str {
   }
 
   /**
+   * Pad both sides, left and right, of the string with the given `pad` string (repeatedly
+   * if needed) so that the resulting string reaches a given `length`.
+   *
+   * @param {Number} length
+   * @param {String} pad
+   *
+   * @returns {Str}
+   */
+  padBoth (length: number = 0, pad: string = ' '): Str {
+    if (length <= this.length()) {
+      return this
+    }
+
+    return this
+      .padLeft((this.length() + length) / 2, pad)
+      .padRight(length, pad)
+  }
+
+  /**
    * Pad the left side of the string with the given `pad` string (repeatedly
    * if needed) so that the resulting string reaches a given `length`.
    *

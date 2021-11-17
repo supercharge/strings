@@ -1,9 +1,10 @@
 # Changelog
 
 
-## [1.24.0](https://github.com/supercharge/strings/compare/v1.23.0...v1.24.0) - 2021-11-xx
+## [1.24.0](https://github.com/supercharge/strings/compare/v1.23.0...v1.24.0) - 2021-11-17
 
 ### Added
+- `padBoth(length, pad)`: pad both sides, left and right, of the string with the given `pad` string (repeatedly if needed) so that the resulting string reaches a given `length`
 - `equalsIgnoreCase(value)`: determine whether the string equals given `value` when ignoring character casing
 
 ### Updated

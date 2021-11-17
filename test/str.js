@@ -393,6 +393,20 @@ test('snake', () => {
   expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').snake().get()).toEqual('supercharge_is_awesome')
 })
 
+test('padBoth', () => {
+  expect(Str('Super').padBoth().get()).toEqual('Super')
+  expect(Str('Super').padBoth(1).get()).toEqual('Super')
+  expect(Str('Super').padBoth(15).get()).toEqual('     Super     ')
+
+  expect(Str('Super').padBoth(-1, '.').get()).toEqual('Super')
+  expect(Str('Super').padBoth(10, '').get()).toEqual('Super')
+  expect(Str('Super').padBoth(5, '.').get()).toEqual('Super')
+  expect(Str('Super').padBoth(15, '.').get()).toEqual('.....Super.....')
+  expect(Str('Super').padBoth(13, '-=-').get()).toEqual('-=--Super-=--')
+  expect(Str('Super').padBoth(14, '-=-').get()).toEqual('-=--Super-=--=')
+  expect(Str('Super').padBoth(15, '-=-').get()).toEqual('-=--=Super-=--=')
+})
+
 test('padLeft', () => {
   expect(Str('Supercharge').padLeft().get()).toEqual('Supercharge')
   expect(Str('Supercharge').padLeft(1).get()).toEqual('Supercharge')
