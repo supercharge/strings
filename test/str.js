@@ -21,6 +21,9 @@ test('after', () => {
   expect(Str('super0charge').after('0').get()).toEqual('charge')
   expect(Str('super0charge').after(0).get()).toEqual('charge')
   expect(Str('super2charge').after(2).get()).toEqual('charge')
+
+  expect(Str('Supercharge').after('awesome').get()).toEqual('Supercharge')
+  expect(Str('Supercharge is awesome').after('is').get()).toEqual(' awesome')
 })
 
 test('afterLast', () => {
