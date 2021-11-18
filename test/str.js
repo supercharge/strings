@@ -80,6 +80,11 @@ test('uppercase', () => {
 })
 
 test('isUpper', () => {
+  expect(Str().isUpper()).toBe(true)
+  expect(Str('').isUpper()).toBe(true)
+  expect(Str(null).isLower()).toBe(true)
+  expect(Str(undefined).isLower()).toBe(true)
+
   expect(Str('SUPERCHARGE').isUpper()).toBe(true)
   expect(Str('sUPERCHARGE').isUpper()).toBe(false)
   expect(Str('superchargE').isUpper()).toBe(false)
