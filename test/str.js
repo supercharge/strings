@@ -136,9 +136,14 @@ test('stripExtraSpaces', () => {
 })
 
 test('title', () => {
+  expect(Str().title().get()).toEqual('')
+  expect(Str('Title').title().get()).toEqual('Title')
+
   expect(Str('supercharge is awesome').title().get()).toEqual('Supercharge Is Awesome')
   expect(Str('supercharge IS AWesoME').title().get()).toEqual('Supercharge Is Awesome')
   expect(Str('SUPERCHARGE IS AWESOME').title().get()).toEqual('Supercharge Is Awesome')
+
+  expect(Str('superchargeIsAwesome').title().get()).toEqual('Superchargeisawesome')
 })
 
 test('camel', () => {
