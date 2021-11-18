@@ -50,6 +50,7 @@ test('before', () => {
 
   expect(Str('supercharge').before('xxx').get()).toEqual('supercharge')
   expect(Str('supercharge').before('').get()).toEqual('supercharge')
+  expect(Str('supercharge').before().get()).toEqual('supercharge')
 
   expect(Str('super0charge').before('0').get()).toEqual('super')
   expect(Str('super0charge').before(0).get()).toEqual('super')
