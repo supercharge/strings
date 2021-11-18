@@ -54,6 +54,9 @@ test('before', () => {
   expect(Str('super0charge').before('0').get()).toEqual('super')
   expect(Str('super0charge').before(0).get()).toEqual('super')
   expect(Str('super2charge').before(2).get()).toEqual('super')
+
+  expect(Str('Supercharge').before('awesome').get()).toEqual('Supercharge')
+  expect(Str('Supercharge is awesome').before('is').get()).toEqual('Supercharge ')
 })
 
 test('beforeLast', () => {
