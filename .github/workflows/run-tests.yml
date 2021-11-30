@@ -1,11 +1,5 @@
 name: Run tests
 
-on:
-  pull_request:
-  push:
-  schedule:
-    - cron: '0 0 * * *'    # every day at midnight
-
 jobs:
   test:
     uses: supercharge/.github/.github/workflows/run-nodejs-tests-ubuntu.yml@main
