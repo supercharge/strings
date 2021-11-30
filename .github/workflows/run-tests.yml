@@ -8,4 +8,4 @@ on:
 
 jobs:
   test:
-    uses: supercharge/actions/.github/workflows/run-nodejs-tests-ubuntu.yml
+    uses: supercharge/actions/.github/workflows/run-nodejs-tests-ubuntu.yml@main
