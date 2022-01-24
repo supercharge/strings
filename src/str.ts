@@ -638,7 +638,7 @@ export class Str {
    *
    * @returns {Str}
    */
-  replace (search: string, replace: string): Str {
+  replace (search: string | RegExp, replace: string): Str {
     return new Str(
       this.value.replace(search, replace)
     )
@@ -652,7 +652,7 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceAll (search: string|RegExp, replace: string): Str {
+  replaceAll (search: string | RegExp, replace: string): Str {
     const replacer = new RegExp(search, 'g')
 
     return new Str(
@@ -855,6 +855,15 @@ export class Str {
     return this.startsWithBom()
       ? new Str(this.slice(1))
       : this
+  }
+
+  /**
+   * Removes HTML tags from the string.
+   *
+   * @returns {Str}
+   */
+  stripHtml (): Str {
+    return this.replace(/(<([^>]+)>)/gi, '')
   }
 
   /**

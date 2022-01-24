@@ -141,6 +141,15 @@ test('stripNums', () => {
   expect(Str('5up3rch4rge 12 awes0me 6789').stripNums().get()).toEqual('uprchrge  awesme ')
 })
 
+test('stripHtml', () => {
+  expect(Str().stripHtml().get()).toEqual('')
+  expect(Str('').stripHtml().get()).toEqual('')
+  expect(Str('<p></p>').stripHtml().get()).toEqual('')
+  expect(Str('<p>App.basePath()</p>').stripHtml().slug().get()).toEqual('app.basepath()')
+  expect(Str('<div><p>Hey <span>Supercharge</span></p></div>').stripHtml().get()).toEqual('Hey Supercharge')
+  expect(Str('<div><p>Hey <span>Supercharge</span></p></div>').stripHtml().slug().get()).toEqual('hey-supercharge')
+})
+
 test('stripExtraSpaces', () => {
   expect(Str('').stripExtraSpaces().get()).toEqual('')
   expect(Str('    Supercharge   ').stripExtraSpaces().get()).toEqual(' Supercharge ')
