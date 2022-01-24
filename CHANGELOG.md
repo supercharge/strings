@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [1.25.0](https://github.com/supercharge/strings/compare/v1.23.0...v1.25.0) - 2022-01-24
+
+### Added
+- `stripHtml()`: remove HTML tags from the string
+
+### Updated
+- bump deps
+- `replace(searchValue: string | RegEx)`: add the `RegEx` type annotation to the search value in the replace method
+
+
 ## [1.24.0](https://github.com/supercharge/strings/compare/v1.23.0...v1.24.0) - 2021-11-17
 
 ### Added
