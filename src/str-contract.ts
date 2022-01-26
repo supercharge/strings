@@ -22,7 +22,7 @@ export interface StrContract {
    *
    * @param size - `[size=21]` defines the number of symbols in the random string
    */
-  random (size?: number | undefined): string
+  random (size?: number): string
 
   /**
    * Determine whether the given `input` is a string.
