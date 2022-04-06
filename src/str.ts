@@ -19,7 +19,7 @@ export class Str {
    * @returns {Str}
    */
   constructor (value?: any) {
-    this.value = String(value || '').slice(0)
+    this.value = String(value ?? '').slice(0)
   }
 
   /**

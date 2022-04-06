@@ -247,6 +247,9 @@ test('isEmpty', () => {
   expect(Str().isEmpty()).toBe(true)
   expect(Str('').isEmpty()).toBe(true)
   expect(Str(null).isEmpty()).toBe(true)
+
+  expect(Str(true).isEmpty()).toBe(false)
+  expect(Str(false).isEmpty()).toBe(false)
   expect(Str('Supercharge').isEmpty()).toBe(false)
 })
 
@@ -254,6 +257,9 @@ test('isNotEmpty', () => {
   expect(Str().isNotEmpty()).toBe(false)
   expect(Str('').isNotEmpty()).toBe(false)
   expect(Str(null).isNotEmpty()).toBe(false)
+
+  expect(Str(true).isNotEmpty()).toBe(true)
+  expect(Str(false).isNotEmpty()).toBe(true)
   expect(Str('Supercharge').isNotEmpty()).toBe(true)
 })
 
