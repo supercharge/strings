@@ -5,7 +5,6 @@
 
 ### Updated
 - bump deps
-- `replace(searchValue: string | RegEx)`: add the `RegEx` type annotation to the search value in the replace method
 
 ### Fixed
 - properly handle boolean `false` values as strings
