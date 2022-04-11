@@ -797,6 +797,17 @@ export class Str {
   }
 
   /**
+   * Removes all extra spaces from the string and leaves a single space at the
+   * position. In contrast to `stripExtraSpaces`, this method also strips a
+   * leading or trailing space of the given string.
+   *
+   * @returns {Str}
+   */
+  squish (): Str {
+    return this.stripExtraSpaces().trim()
+  }
+
+  /**
    * Prepends a single instance of the given `prefix` to the start of
    * the string if it doesn’t already start with the given prefix.
    *

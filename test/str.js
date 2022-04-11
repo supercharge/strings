@@ -152,8 +152,19 @@ test('stripHtml', () => {
 
 test('stripExtraSpaces', () => {
   expect(Str('').stripExtraSpaces().get()).toEqual('')
-  expect(Str('    Supercharge   ').stripExtraSpaces().get()).toEqual(' Supercharge ')
+  expect(Str('    Supercharge  is   awesome  ').stripExtraSpaces().get()).toEqual(' Supercharge is awesome ')
   expect(Str('supercharge 123 is awesome').stripNums().stripExtraSpaces().get()).toEqual('supercharge is awesome')
+})
+
+test('squish', () => {
+  expect(Str('').squish().get()).toEqual('')
+  expect(Str('    Supercharge  is   awesome  ').squish().get()).toEqual('Supercharge is awesome')
+  expect(Str('supercharge 123 is awesome').stripNums().squish().get()).toEqual('supercharge is awesome')
+  expect(Str('supercharge\t\tis\n\nawesome').squish().get()).toEqual('supercharge is awesome')
+  expect(Str(`
+    supercharge
+    is
+    awesome`).squish().get()).toEqual('supercharge is awesome')
 })
 
 test('title', () => {
