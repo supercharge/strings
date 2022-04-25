@@ -152,8 +152,19 @@ test('stripHtml', () => {
 
 test('stripExtraSpaces', () => {
   expect(Str('').stripExtraSpaces().get()).toEqual('')
-  expect(Str('    Supercharge   ').stripExtraSpaces().get()).toEqual(' Supercharge ')
+  expect(Str('    Supercharge  is   awesome  ').stripExtraSpaces().get()).toEqual(' Supercharge is awesome ')
   expect(Str('supercharge 123 is awesome').stripNums().stripExtraSpaces().get()).toEqual('supercharge is awesome')
+})
+
+test('squish', () => {
+  expect(Str('').squish().get()).toEqual('')
+  expect(Str('    Supercharge  is   awesome  ').squish().get()).toEqual('Supercharge is awesome')
+  expect(Str('supercharge 123 is awesome').stripNums().squish().get()).toEqual('supercharge is awesome')
+  expect(Str('supercharge\t\tis\n\nawesome').squish().get()).toEqual('supercharge is awesome')
+  expect(Str(`
+    supercharge
+    is
+    awesome`).squish().get()).toEqual('supercharge is awesome')
 })
 
 test('title', () => {
@@ -247,6 +258,9 @@ test('isEmpty', () => {
   expect(Str().isEmpty()).toBe(true)
   expect(Str('').isEmpty()).toBe(true)
   expect(Str(null).isEmpty()).toBe(true)
+
+  expect(Str(true).isEmpty()).toBe(false)
+  expect(Str(false).isEmpty()).toBe(false)
   expect(Str('Supercharge').isEmpty()).toBe(false)
 })
 
@@ -254,6 +268,9 @@ test('isNotEmpty', () => {
   expect(Str().isNotEmpty()).toBe(false)
   expect(Str('').isNotEmpty()).toBe(false)
   expect(Str(null).isNotEmpty()).toBe(false)
+
+  expect(Str(true).isNotEmpty()).toBe(true)
+  expect(Str(false).isNotEmpty()).toBe(true)
   expect(Str('Supercharge').isNotEmpty()).toBe(true)
 })
 

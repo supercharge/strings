@@ -22,7 +22,7 @@ export class Str {
    * @returns {Str}
    */
   constructor (value?: any) {
-    this.value = String(value || '').slice(0)
+    this.value = String(value ?? '').slice(0)
   }
 
   /**
@@ -803,6 +803,17 @@ export class Str {
       .split(/([^\p{L}\d]+|(?<=\p{L})(?=\d)|(?<=\d)(?=\p{L})|(?<=[\p{Ll}\d])(?=\p{Lu})|(?<=\p{Lu})(?=\p{Lu}\p{Ll})|(?<=[\p{L}\d])(?=\p{Lu}\p{Ll}))/gu)
       .map(word => word.trim())
       .filter(word => !!word)
+  }
+
+  /**
+   * Removes all extra spaces from the string and leaves a single space at the
+   * position. In contrast to `stripExtraSpaces`, this method also strips a
+   * leading or trailing space of the given string.
+   *
+   * @returns {Str}
+   */
+  squish (): Str {
+    return this.stripExtraSpaces().trim()
   }
 
   /**

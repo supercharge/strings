@@ -1,7 +1,24 @@
 # Changelog
 
 
-## [1.25.0](https://github.com/supercharge/strings/compare/v1.23.0...v1.25.0) - 2022-01-24
+## [1.26.0](https://github.com/supercharge/strings/compare/v1.25.1...v1.26.0) - 2022-04-11
+
+### Added
+- `squish()`: remove all extra whitespaces and also trim the string (remove leading and trailing whitespaces)
+
+
+## [1.25.1](https://github.com/supercharge/strings/compare/v1.25.0...v1.25.1) - 2022-04-06
+
+### Updated
+- bump deps
+
+### Fixed
+- properly handle boolean `false` values as strings
+  - before: `false` was replaced with an empty string
+  - now: `false` will be wrapped properly to a string `'false'`
+
+
+## [1.25.0](https://github.com/supercharge/strings/compare/v1.24.0...v1.25.0) - 2022-01-24
 
 ### Added
 - `stripHtml()`: remove HTML tags from the string
