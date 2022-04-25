@@ -30,7 +30,12 @@ export class RandomStringConfig {
    * Create a new instance.
    */
   constructor () {
-    this.config = { length: 21, numbers: false, characters: false, symbols: false }
+    this.config = {
+      length: 21,
+      numbers: false,
+      symbols: false,
+      characters: false
+    }
   }
 
   /**
