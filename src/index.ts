@@ -2,6 +2,7 @@
 
 import { Str } from './str'
 import { StrContract } from './str-contract'
+import { RandomStringBuilderCallback } from './contracts'
 
 /**
  * Creates a new  providing chainable string operations. This new
@@ -24,7 +25,7 @@ strings.uuid = (): string => {
  *
  * @param size - `[size=21]` defines the number of symbols in the random string
  */
-strings.random = (size?: number): string => {
+strings.random = (size?: number | RandomStringBuilderCallback): string => {
   return strings().random(size)
 }
 

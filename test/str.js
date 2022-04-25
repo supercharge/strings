@@ -287,13 +287,21 @@ test('split', () => {
 
 test('random', () => {
   expect(Str.random())
+  expect(Str.random(null))
 
   // default length is 21 chars
   expect(Str.random().length).toEqual(21)
-
-  // supports a custom length
-  expect(Str.random(50))
   expect(Str.random(50).length).toEqual(50)
+
+  expect(() => Str.random(use => use.length(3))).toThrow()
+  expect(Str.random(use => use.length(3).characters()).length).toEqual(3)
+
+  expect(Str.random(builder => builder.length(10).numbers()).length).toBe(10)
+  const onlyNumbers = /^\d+$/.test(Str.random(builder => builder.length().numbers()))
+  expect(onlyNumbers).toBe(true)
+
+  const symbols = Str.random(builder => builder.length(30).symbols())
+  expect(Str(symbols).includesAll('-', '_')).toBe(true)
 })
 
 test('replaceAll', () => {

@@ -1,7 +1,10 @@
 'use strict'
 
-import Crypto from 'crypto'
 import { v4 as uuidv4, validate } from 'uuid'
+import { RandomStringBuilderCallback } from './contracts'
+import { RandomStringConfig } from './random-string-config'
+import { RandomStringBuilder } from './random-string-builder'
+import { RandomStringGenerator } from './random-string-generator'
 
 export class Str {
   /**
@@ -20,18 +23,6 @@ export class Str {
    */
   constructor (value?: any) {
     this.value = String(value ?? '').slice(0)
-  }
-
-  /**
-   * Returns a URL-friendly alphabet containing the symbols `a-z A-Z 0-9 _-`.
-   * The symbols order was changed for better gzip compression.
-   *
-   * The alphabet comes from the https://github.com/ai/nanoid package.
-   *
-   * @returns {String}
-   */
-  static get alphabet (): string {
-    return 'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
   }
 
   /**
@@ -613,21 +604,38 @@ export class Str {
   /**
    * Create a random, URL-friendly string. The default length will have 21 symbols.
    *
+   * @param {Number} [lengthOrCallback=21] number of symbols in string
+   *
+   * @returns {String}
+   */
+  random (lengthOrCallback?: number | null | RandomStringBuilderCallback): string {
+    const config = new RandomStringConfig()
+    const builder = new RandomStringBuilder(config)
+
+    if (!lengthOrCallback) {
+      builder.characters().numbers().symbols()
+    }
+
+    if (typeof lengthOrCallback === 'function') {
+      lengthOrCallback(builder)
+    }
+
+    if (typeof lengthOrCallback === 'number') {
+      builder.characters().numbers().symbols().length(lengthOrCallback)
+    }
+
+    return this.generateRandom(config)
+  }
+
+  /**
+   * Create a random, URL-friendly string. The default length will have 21 symbols.
+   *
    * @param {Number} [size=21] number of symbols in string
    *
    * @returns {String}
    */
-  random (size = 21): string {
-    const bytes = Crypto.randomBytes(size)
-    const alphabetLength = Str.alphabet.length - 1
-
-    let random = ''
-
-    while (size--) {
-      random += Str.alphabet[bytes[size] & alphabetLength]
-    }
-
-    return random
+  private generateRandom (config: RandomStringConfig): string {
+    return new RandomStringGenerator(Str, config).generate()
   }
 
   /**
@@ -711,7 +719,8 @@ export class Str {
   }
 
   /**
-   * Shuffles the characters of the string using the Fisher-Yates-Shuffle algorithm (also known as the Knuth-Shuffle).
+   * Shuffles the characters of the string using the Fisher-Yates
+   * shuffle algorithm (also known as the Knuth-Shuffle).
    *
    * @returns {Str}
    */

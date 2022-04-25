@@ -1,5 +1,6 @@
 'use strict'
 
+import { RandomStringBuilderCallback } from './contracts'
 import { Str } from './str'
 
 export interface StrContract {
@@ -22,7 +23,7 @@ export interface StrContract {
    *
    * @param size - `[size=21]` defines the number of symbols in the random string
    */
-  random (size?: number): string
+  random (size?: number | RandomStringBuilderCallback): string
 
   /**
    * Determine whether the given `input` is a string.
