@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.27.0](https://github.com/supercharge/strings/compare/v1.26.0...v1.27.0) - 2022-04-25
+
+### Updated
+- `random`: add support for a random string builder
+  - example: `Str.random(use => use.length(10).numbers().characters())` results in a random string using only numbers and characters with a length of 10
+
+
 ## [1.26.0](https://github.com/supercharge/strings/compare/v1.25.1...v1.26.0) - 2022-04-11
 
 ### Added
