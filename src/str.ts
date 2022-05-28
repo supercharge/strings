@@ -213,7 +213,7 @@ export class Str {
    * @returns {Boolean}
    */
   containsBom (): boolean {
-    return !!this.chars().find((_, index) => {
+    return this.chars().some((_, index) => {
       return this.value.charCodeAt(index) === this.bomCharCode()
     })
   }
@@ -299,12 +299,10 @@ export class Str {
    * @returns {Boolean}
    */
   includes (...needles: string[] | string[][]): boolean {
-    const includes = ([] as string[])
+    return ([] as string[])
       .concat(...needles)
       .filter(needle => needle !== '')
-      .find(needle => this.value.includes(needle))
-
-    return !!includes
+      .some(needle => this.value.includes(needle))
   }
 
   /**
