@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [1.28.0](https://github.com/supercharge/strings/compare/v1.27.1...v1.28.0) - 2022-05-xx
+## [1.28.0](https://github.com/supercharge/strings/compare/v1.27.1...v1.28.0) - 2022-05-30
 
 ### Added
 - `hasLength(length)`: determine whether the string has the given `length`
