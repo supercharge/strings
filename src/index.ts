@@ -39,6 +39,15 @@ strings.isString = (input?: any): input is string => {
 }
 
 /**
+ * Determine whether the given `input` is an alpha-numeric string.
+ *
+ * @param input
+ */
+strings.isAlphaNumeric = (input?: any): boolean => {
+  return strings().isAlphaNumeric(input)
+}
+
+/**
  * Determine whether the given `input` is a symbol.
  *
  * @param input - the `input` value to check whether it’s a symbol

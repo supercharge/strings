@@ -254,6 +254,15 @@ test('length', () => {
   expect(Str('').length()).toEqual(0)
 })
 
+test('hasLength', () => {
+  expect(Str().hasLength(0)).toBe(true)
+  expect(Str('').hasLength(0)).toBe(true)
+  expect(Str(null).hasLength(0)).toBe(true)
+  expect(Str(' super ').hasLength(7)).toBe(true)
+
+  expect(Str('super').hasLength(2)).toBe(false)
+})
+
 test('isEmpty', () => {
   expect(Str().isEmpty()).toBe(true)
   expect(Str('').isEmpty()).toBe(true)
@@ -408,6 +417,22 @@ test('isString', () => {
 
   expect(Str.isString(1)).toBe(false)
   expect(Str.isString({})).toBe(false)
+})
+
+test('isAlphaNumeric', () => {
+  expect(Str.isAlphaNumeric('')).toBe(true)
+  expect(Str.isAlphaNumeric('1')).toBe(true)
+  expect(Str.isAlphaNumeric('Ab12')).toBe(true)
+  expect(Str.isAlphaNumeric(String())).toBe(true)
+  expect(Str.isAlphaNumeric('Supercharge')).toBe(true)
+
+  expect(Str.isAlphaNumeric()).toBe(false)
+  expect(Str.isAlphaNumeric(1)).toBe(false)
+  expect(Str.isAlphaNumeric({})).toBe(false)
+  expect(Str.isAlphaNumeric(null)).toBe(false)
+  expect(Str.isAlphaNumeric('aä')).toBe(false)
+  expect(Str.isAlphaNumeric('abc#')).toBe(false)
+  expect(Str.isAlphaNumeric('abc!')).toBe(false)
 })
 
 test('limit', () => {

@@ -388,6 +388,15 @@ export class Str {
   }
 
   /**
+   * Determine whether the given `input` is an alpha-numeric string.
+   *
+   * @param input
+   */
+  isAlphaNumeric (input?: any): boolean {
+    return this.isString(input) && input.match(/^[0-9a-zA-Z]*$/) !== null
+  }
+
+  /**
    * Determine whether the given `input` is a symbol.
    *
    * @param {*} input
@@ -447,6 +456,17 @@ export class Str {
    */
   length (): number {
     return this.value.length
+  }
+
+  /**
+   * Determine whether the string has the given `length`.
+   *
+   * @param {Number} length
+   *
+   * @returns {Boolean}
+   */
+  hasLength (length: number): boolean {
+    return this.length() === length
   }
 
   /**

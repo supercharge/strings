@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.28.0](https://github.com/supercharge/strings/compare/v1.27.1...v1.28.0) - 2022-05-xx
+
+### Added
+- `hasLength(length)`: determine whether the string has the given `length`
+- `isAlphaNumeric(input)`: determine whether the given `input` is an alpha-numeric string
+
+
 ## [1.27.1](https://github.com/supercharge/strings/compare/v1.27.0...v1.27.1) - 2022-05-06
 
 ### Fixed
