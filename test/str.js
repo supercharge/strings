@@ -97,6 +97,14 @@ test('isUpper', () => {
   expect(Str('superchargE').isUpper()).toBe(false)
 })
 
+test("hasUppercaseWithin", () => {
+  expect(Str("HelloWorld").hasUppercaseWithin()).toBe(true);
+  expect(Str("Hello").hasUppercaseWithin()).toBe(false);
+  expect(Str("hello world").hasUppercaseWithin()).toBe(false);
+  expect(Str("HelloworlD").hasUppercaseWithin()).toBe(true);
+  expect(Str("HELLOWORLD").hasUppercaseWithin()).toBe(false);
+});
+
 test('ucFirst', () => {
   expect(Str('supercharge').ucFirst().get()).toEqual('Supercharge')
   expect(Str('sUPERCHARGE').ucFirst().get()).toEqual('SUPERCHARGE')

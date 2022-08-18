@@ -426,6 +426,15 @@ export class Str {
   }
 
   /**
+   * Determine whether the given string includes capital letters excluding the first character.
+   *
+   * @returns {Boolean}
+   */
+  hasUppercaseWithin (): boolean {
+    return /[A-Z]([A-Z0-9]*[a-z][a-z0-9]*[A-Z]|[a-z0-9]*[A-Z][A-Z0-9]*[a-z])[A-Za-z0-9]*/g.test(this.toString())
+  }
+
+  /**
    * Convert the string to kebab-case.
    *
    * @returns {Str}
