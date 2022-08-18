@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.29.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-08-18
+
+### Added
+- `hasUppercaseWithin()`: determine whether the given string includes capital letters excluding the first character
+
+### Updated
+- bump dependencies
+
 
 ## [1.28.0](https://github.com/supercharge/strings/compare/v1.27.1...v1.28.0) - 2022-05-30
 
