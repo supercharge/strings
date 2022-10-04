@@ -341,6 +341,16 @@ test('equals', () => {
   expect(Str('Super').equals('super')).toBe(false)
 })
 
+test('equals Str instance', () => {
+  expect(Str().equals(Str(''))).toBe(true)
+  expect(Str('').equals(Str(''))).toBe(true)
+  expect(Str(null).equals(Str(''))).toBe(true)
+  expect(Str('Supercharge').equals(Str('Supercharge'))).toBe(true)
+
+  expect(Str('Super').equals(Str())).toBe(false)
+  expect(Str('Super').equals(Str('super'))).toBe(false)
+})
+
 test('equalsIgnoreCase', () => {
   expect(Str().equalsIgnoreCase()).toBe(true)
   expect(Str('').equalsIgnoreCase()).toBe(true)

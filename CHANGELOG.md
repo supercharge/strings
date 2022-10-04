@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [1.29.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-10-xx
+
+### Added
+- `equals(string | Str)`: you can now pass a `Str` instance for comparisons
+
+
 ## [1.28.0](https://github.com/supercharge/strings/compare/v1.27.1...v1.28.0) - 2022-05-30
 
 ### Added

@@ -249,8 +249,10 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  equals (value: string): boolean {
-    return this.value === value
+  equals (value: string | Str): boolean {
+    return value instanceof Str
+      ? this.value === value.get()
+      : this.value === value
   }
 
   /**
@@ -337,7 +339,7 @@ export class Str {
    * @returns {Boolean}
    */
   isCamel (): boolean {
-    return this.equals(this.camel().get())
+    return this.equals(this.camel())
   }
 
   /**
