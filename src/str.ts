@@ -931,11 +931,13 @@ export class Str {
    * @returns {Str}
    */
   studly (): Str {
-    return new Str(
-      this.value.replace(/[_-]+/g, ' ')
-    )
-      .title()
-      .strip()
+    const result = this.replaceAll(/[_-]+/, ' ')
+      .split(' ')
+      .filter(word => !!word)
+      .map(word => new Str(word).ucFirst().get())
+      .join('')
+
+    return new Str(result)
   }
 
   /**

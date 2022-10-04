@@ -182,24 +182,19 @@ test('camel', () => {
   expect(Str('supercharge').camel().get()).toEqual('supercharge')
   expect(Str('superCharge').camel().get()).toEqual('superCharge')
   expect(Str('supercharge is awesome').camel().get()).toEqual('superchargeIsAwesome')
-  expect(Str('supercharge_IS_AwesoMe').camel().get()).toEqual('superchargeIsAwesoMe')
-  expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).toEqual('superchargeIsAwesome')
-  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).toEqual('superchargeIsAwesome')
+  expect(Str('supercharge_IS_AwesoMe').camel().get()).toEqual('superchargeISAwesoMe')
+  expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).toEqual('sUPERCHARGEIsAWESOME')
+  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).toEqual('sUPERCHARGEIsAWESOME')
 })
 
 test('camel should handle acronyms', () => {
-  expect(Str('superCHARGE').camel().get()).toEqual('superCharge')
-  expect(Str('super CHARGE').camel().get()).toEqual('superCharge')
+  expect(Str('superCHARGE').camel().get()).toEqual('superCHARGE')
+  expect(Str('super CHARGE').camel().get()).toEqual('superCHARGE')
+  expect(Str('super_charge').camel().get()).toEqual('superCharge')
+  expect(Str('super-charge').camel().get()).toEqual('superCharge')
 
-  expect(Str('XMLHttpRequest').camel().get()).toEqual('xmlHttpRequest')
-  expect(Str('XmlHTTPRequest').camel().get()).toEqual('xmlHttpRequest')
-})
-
-test('studly', () => {
-  expect(Str('supercharge is awesome').studly().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('supercharge_IS_AWesoME').studly().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE_is_AWESOME').studly().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').studly().get()).toEqual('SuperchargeIsAwesome')
+  expect(Str('XMLHttpRequest').camel().get()).toEqual('xMLHttpRequest')
+  expect(Str('XmlHTTPRequest').camel().get()).toEqual('xmlHTTPRequest')
 })
 
 test('trim', () => {
@@ -523,12 +518,14 @@ test('parseCallback', () => {
   expect(Str('Controller').parseCallback('.', 'handle')).toEqual(['Controller', 'handle'])
 })
 
+// "pascal" and "studly" are aliases
 test('pascal', () => {
+  expect(Str('superchargeIsAwesome').pascal().get()).toEqual('SuperchargeIsAwesome')
   expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE_is_AWESOME!').pascal().get()).toEqual('SuperchargeIsAwesome!')
-  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
+  expect(Str('supercharge_Is_AWesoMe').pascal().get()).toEqual('SuperchargeIsAWesoMe')
+  expect(Str('sUPERCHARGE_is_aWESOME').pascal().get()).toEqual('SUPERCHARGEIsAWESOME')
+  expect(Str('SUPERCHARGE_is_AWESOME!').pascal().get()).toEqual('SUPERCHARGEIsAWESOME!')
+  expect(Str('Supercharge  -_- is -_-  -_-     Awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
 })
 
 test('prepend', () => {
