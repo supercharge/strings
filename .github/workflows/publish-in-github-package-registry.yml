@@ -1,20 +1,29 @@
 name: Publish in GitHub Package Registry
 
 on:
-  workflow_run:
-    workflows: ["Run tests"]
-    types:
-      - completed
-    branches:
-      - main
+  push:
+    tags:
+      - '*'
 
 jobs:
-  publish-gpr:
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-    # Deploy only when the "Run tests" workflow succeeded
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  publish-gpr:
+    needs: test
+    runs-on: ubuntu-latest
     steps:
       - name: Git checkout
         uses: actions/checkout@v3
