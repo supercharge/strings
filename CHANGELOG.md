@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [2.0.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-1x-xx
+
+### Updated
+- bump dependencies
+
+### Breaking Changes
+- drop support for Node.js v12 and require Node.js v14
+  - we’re using this package only with Node.js and not in browser environments and this change may also have effects in the browser that we can’t determine at this point
+
+
 ## [1.29.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-10-20
 
 ### Added
