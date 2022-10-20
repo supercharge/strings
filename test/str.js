@@ -3,7 +3,7 @@
 const Path = require('path')
 const Str = require('../dist')
 const { test } = require('uvu')
-const expect = require('expect')
+const { expect } = require('expect')
 const { promises: Fs } = require('fs')
 
 test('get', () => {
@@ -89,8 +89,8 @@ test('uppercase', () => {
 test('isUpper', () => {
   expect(Str().isUpper()).toBe(true)
   expect(Str('').isUpper()).toBe(true)
-  expect(Str(null).isLower()).toBe(true)
-  expect(Str(undefined).isLower()).toBe(true)
+  expect(Str(null).isUpper()).toBe(true)
+  expect(Str(undefined).isUpper()).toBe(true)
 
   expect(Str('SUPERCHARGE').isUpper()).toBe(true)
   expect(Str('sUPERCHARGE').isUpper()).toBe(false)
@@ -118,10 +118,25 @@ test('isLower', () => {
   expect(Str('').isLower()).toBe(true)
   expect(Str(null).isLower()).toBe(true)
   expect(Str(undefined).isLower()).toBe(true)
+  expect(Str('123').isLower()).toBe(true)
   expect(Str('supercharge').isLower()).toBe(true)
+  expect(Str('super_charge').isLower()).toBe(true)
 
   expect(Str('sUPERCHARGE').isLower()).toBe(false)
   expect(Str('SUPERCHARGE').isLower()).toBe(false)
+})
+
+test('isLowerLetters', () => {
+  expect(Str('supercharge').isLowerLetters()).toBe(true)
+  expect(Str('super_charge').isLowerLetters()).toBe(true)
+
+  expect(Str().isLowerLetters()).toBe(false)
+  expect(Str('').isLowerLetters()).toBe(false)
+  expect(Str(null).isLowerLetters()).toBe(false)
+  expect(Str(undefined).isLowerLetters()).toBe(false)
+  expect(Str('123').isLowerLetters()).toBe(false)
+  expect(Str('sUPERCHARGE').isLowerLetters()).toBe(false)
+  expect(Str('SUPERCHARGE').isLowerLetters()).toBe(false)
 })
 
 test('lcFirst', () => {
@@ -334,6 +349,16 @@ test('equals', () => {
 
   expect(Str('Super').equals()).toBe(false)
   expect(Str('Super').equals('super')).toBe(false)
+})
+
+test('equals Str instance', () => {
+  expect(Str().equals(Str(''))).toBe(true)
+  expect(Str('').equals(Str(''))).toBe(true)
+  expect(Str(null).equals(Str(''))).toBe(true)
+  expect(Str('Supercharge').equals(Str('Supercharge'))).toBe(true)
+
+  expect(Str('Super').equals(Str())).toBe(false)
+  expect(Str('Super').equals(Str('super'))).toBe(false)
 })
 
 test('equalsIgnoreCase', () => {

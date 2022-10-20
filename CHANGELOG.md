@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [1.29.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-10-20
+
+### Added
+- `equals(string | Str)`: you can now pass a `Str` instance for comparisons
+- `notEquals(string | Str)`: you can now pass a `Str` instance for comparisons
+- `isLowerLetters()`: determine whether the wrapped string is lowercase and consists of letters only
+
+### Updated
+- bump deps
+
+
 ## [1.28.0](https://github.com/supercharge/strings/compare/v1.27.1...v1.28.0) - 2022-05-30
 
 ### Added

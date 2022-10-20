@@ -249,8 +249,10 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  equals (value: string): boolean {
-    return this.value === value
+  equals (value: string | Str): boolean {
+    return value instanceof Str
+      ? this.value === value.get()
+      : this.value === value
   }
 
   /**
@@ -273,7 +275,7 @@ export class Str {
    *
    * @returns {Boolean}
    */
-  notEquals (value: string): boolean {
+  notEquals (value: string | Str): boolean {
     return !this.equals(value)
   }
 
@@ -337,7 +339,7 @@ export class Str {
    * @returns {Boolean}
    */
   isCamel (): boolean {
-    return this.equals(this.camel().get())
+    return this.equals(this.camel())
   }
 
   /**
@@ -364,7 +366,16 @@ export class Str {
    * @returns {Boolean}
    */
   isLowercase (): boolean {
-    return this.value === this.lower().get()
+    return this.equals(this.lower())
+  }
+
+  /**
+   * Determine whether the string is lowercase and consists of letters only.
+   *
+   * @returns {Boolean}
+   */
+  isLowerLetters (): boolean {
+    return this.equals(this.lower()) && this.notEquals(this.upper())
   }
 
   /**
@@ -422,7 +433,7 @@ export class Str {
    * @returns {Boolean}
    */
   isUppercase (): boolean {
-    return this.value === this.upper().get()
+    return this.equals(this.upper())
   }
 
   /**
