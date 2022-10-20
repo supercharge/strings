@@ -3,8 +3,8 @@
 const Path = require('path')
 const Str = require('../dist')
 const { test } = require('uvu')
-const expect = require('expect')
-const { promises: Fs } = require('fs')
+const Fs = require('fs/promises')
+const { expect } = require('expect')
 
 test('get', () => {
   expect(Str('supercharge').get()).toEqual('supercharge')
