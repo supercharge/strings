@@ -1,9 +1,9 @@
 'use strict'
 
 const Path = require('path')
-const Str = require('../dist')
 const { test } = require('uvu')
 const Fs = require('fs/promises')
+const { Str } = require('../dist')
 const { expect } = require('expect')
 
 test('get', () => {

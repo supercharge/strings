@@ -56,4 +56,5 @@ strings.isSymbol = (input?: any): input is symbol => {
   return strings().isSymbol(input)
 }
 
-export = strings
+export default strings
+export { strings as Str }
