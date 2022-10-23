@@ -5,6 +5,7 @@ import { RandomStringBuilderCallback } from './contracts'
 import { RandomStringConfig } from './random-string-config'
 import { RandomStringBuilder } from './random-string-builder'
 import { RandomStringGenerator } from './random-string-generator'
+import { StringReplacer } from './string-replacer'
 
 export class Str {
   /**
@@ -549,7 +550,7 @@ export class Str {
     }
 
     while (this.startsWith(characters)) {
-      this.value = this.replace(characters, '').get()
+      this.value = this.replace(characters).with('').get()
     }
 
     return new Str(this.value)
@@ -686,10 +687,15 @@ export class Str {
    *
    * @returns {Str}
    */
+  replace (searchValue: string | RegExp): StringReplacer
   replace (searchValue: string | RegExp, replaceValue: string): Str
   replace (searchValue: { [Symbol.replace](string: string, replaceValue: string): string }, replaceValue: string): Str
   replace (searchValue: { [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string }, replacer: (substring: string, ...args: any[]) => string): Str
-  replace (searchValue: any, replacer: any): Str {
+  replace (searchValue: any, replacer?: any): Str | StringReplacer {
+    if (replacer == null) {
+      return new StringReplacer(this, searchValue)
+    }
+
     return new Str(
       this.value.replace(searchValue, replacer)
     )
@@ -703,7 +709,13 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceAll (searchValue: string | RegExp, replace: string): Str {
+  replaceAll (searchValue: string | RegExp): StringReplacer
+  replaceAll (searchValue: string | RegExp, replace: string): Str
+  replaceAll (searchValue: string | RegExp, replace?: string): Str | StringReplacer {
+    if (replace == null) {
+      return new StringReplacer(this, searchValue).all()
+    }
+
     const replacer = new RegExp(searchValue, 'g')
 
     return new Str(
@@ -719,11 +731,17 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceLast (searchValue: string, replace: string): Str {
-    return this.notContains(searchValue)
+  replaceLast (searchValue: string | RegExp): StringReplacer
+  replaceLast (searchValue: string | RegExp, replace: string): Str
+  replaceLast (searchValue: string | RegExp, replace?: string): Str | StringReplacer {
+    if (replace == null) {
+      return new StringReplacer(this, searchValue).last()
+    }
+
+    return this.notContains(searchValue.toString())
       ? this
       : new Str(
-        this.beforeLast(searchValue).get() + replace + this.afterLast(searchValue).get()
+        this.beforeLast(searchValue.toString()).get() + replace + this.afterLast(searchValue.toString()).get()
       )
   }
 

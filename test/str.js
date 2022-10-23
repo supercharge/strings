@@ -203,6 +203,8 @@ test('camel', () => {
   expect(Str('supercharge').camel().get()).toEqual('supercharge')
   expect(Str('superCharge').camel().get()).toEqual('superCharge')
   expect(Str('supercharge is awesome').camel().get()).toEqual('superchargeIsAwesome')
+  expect(Str('SUPERCHARGE IS AWESOME').camel().get()).toEqual('superchargeIsAwesome')
+  expect(Str('SUPERCHARGE-IS-AWESOME').camel().get()).toEqual('superchargeIsAwesome')
   expect(Str('supercharge_IS_AwesoMe').camel().get()).toEqual('superchargeIsAwesoMe')
   expect(Str('SUPERCHARGE_is_AWESOME').camel().get()).toEqual('superchargeIsAwesome')
   expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').camel().get()).toEqual('superchargeIsAwesome')
@@ -224,6 +226,8 @@ test('studly / pascal', () => {
   expect(Str('XmlHTTPRequest').pascal().get()).toEqual('XmlHttpRequest')
   expect(Str('thisIsInCamelCase').pascal().get()).toEqual('ThisIsInCamelCase')
   expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
+  expect(Str('SUPERCHARGE IS AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
+  expect(Str('SUPERCHARGE-IS-AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
   expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAWesoMe')
   expect(Str('supercharge_IS_AweSoME').pascal().get()).toEqual('SuperchargeIsAweSoMe')
   expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
@@ -357,6 +361,10 @@ test('replaceAll', () => {
       .camel()
       .get()
   ).toEqual('superchargeIsAwesome')
+
+  expect(
+    Str('super super super super.').replace('super').all().with('charge').get()
+  ).toEqual('charge charge charge charge.')
 })
 
 test('equals', () => {
@@ -591,6 +599,10 @@ test('replace', () => {
   expect(Str('supercharge has a blue house and a blue car').replace(/blue/g, 'red').get()).toEqual('supercharge has a red house and a red car')
   expect(Str('Supercharge is nice').replace('nice', 'sweet').get()).toEqual('Supercharge is sweet')
   expect(Str('Apples are round, and apples are juicy.').replace('are', 'is').get()).toEqual('Apples is round, and apples are juicy.')
+
+  expect(
+    Str('Apples are round, and apples are juicy.').replace('apples').with('bananas').get()
+  ).toEqual('Apples are round, and bananas are juicy.')
 })
 
 test('start', () => {
@@ -617,6 +629,13 @@ test('replaceLast()', () => {
   expect(Str('Supercharge is supercharge').replaceLast('supercharge', 'awesome indeed').get()).toEqual('Supercharge is awesome indeed')
 
   expect(Str('supercharge').replaceLast('sweet', 'awesome').get()).toEqual('supercharge')
+
+  expect(
+    Str('Supercharge is supercharge').replaceLast('supercharge').with('awesome indeed').get()
+  ).toEqual('Supercharge is awesome indeed')
+  expect(
+    Str('supercharge').replaceLast('awesome').with('other').get()
+  ).toEqual('supercharge')
 })
 
 test('chars', () => {
