@@ -5,12 +5,12 @@ import { RandomStringBuilder as RandomStringBuilderContract } from './contracts'
 
 export class RandomStringBuilder implements RandomStringBuilderContract {
   /**
-   * Stores the view config.
+   * Stores the random string config.
    */
   private readonly config: RandomStringConfig
 
   /**
-   * Create a new view config builder instance.
+   * Create a new random string builder instance.
    */
   constructor (config: RandomStringConfig) {
     this.config = config

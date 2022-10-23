@@ -6,17 +6,17 @@ import { RandomStringConfig } from './random-string-config'
 
 export class RandomStringGenerator {
   /**
-   * Stores the view config.
+   * Stores the Str instance.
    */
   private readonly Str: typeof Str
 
   /**
-   * Stores the view config.
+   * Stores the random-string config object.
    */
   private readonly config: RandomStringConfig
 
   /**
-   * Create a new view config builder instance.
+   * Create a new random string generator instance.
    */
   constructor (Strings: typeof Str, config: RandomStringConfig) {
     this.Str = Strings
