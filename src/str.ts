@@ -26,6 +26,15 @@ export class Str {
   }
 
   /**
+   * Returns the RegEx pattern for alpha-numeric characters.
+   *
+   * @returns {RegExp}
+   */
+  private get ALPHANUMERIC_PATTERN (): RegExp {
+    return /[A-Za-z0-9\u00C0-\u00FF]/
+  }
+
+  /**
    * Returns the byte order mark (BOM) character code.
    *
    * @returns {Number}
@@ -157,8 +166,12 @@ export class Str {
    */
   camel (): Str {
     return new Str(
-      this.splitCamel().join(' ')
-    ).studly().lcFirst()
+      this
+        .replaceAll(/[_-]+/, ' ')
+        .splitCamel()
+        .map(word => new Str(word).lower().ucFirst().get())
+        .join('')
+    ).lcFirst()
   }
 
   /**
@@ -404,7 +417,7 @@ export class Str {
    * @param input
    */
   isAlphaNumeric (input?: any): boolean {
-    return this.isString(input) && input.match(/^[0-9a-zA-Z]*$/) !== null
+    return this.isString(input) && input.length > 0 && input.match(/^[A-Za-z0-9\u00C0-\u00FF]*$/) !== null
   }
 
   /**
@@ -532,9 +545,7 @@ export class Str {
    */
   ltrim (characters: string = ''): Str {
     if (!characters) {
-      return new Str(
-        this.value.trimLeft()
-      )
+      return new Str(this.value.trimStart())
     }
 
     while (this.startsWith(characters)) {
@@ -670,14 +681,17 @@ export class Str {
   /**
    * Replace the first occurrence of the string.
    *
-   * @param {String} search
-   * @param {String} replace
+   * @param {String} searchValue
+   * @param {String} replaceValue
    *
    * @returns {Str}
    */
-  replace (search: string | RegExp, replace: string): Str {
+  replace (searchValue: string | RegExp, replaceValue: string): Str
+  replace (searchValue: { [Symbol.replace](string: string, replaceValue: string): string }, replaceValue: string): Str
+  replace (searchValue: { [Symbol.replace](string: string, replacer: (substring: string, ...args: any[]) => string): string }, replacer: (substring: string, ...args: any[]) => string): Str
+  replace (searchValue: any, replacer: any): Str {
     return new Str(
-      this.value.replace(search, replace)
+      this.value.replace(searchValue, replacer)
     )
   }
 
@@ -689,8 +703,8 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceAll (search: string | RegExp, replace: string): Str {
-    const replacer = new RegExp(search, 'g')
+  replaceAll (searchValue: string | RegExp, replace: string): Str {
+    const replacer = new RegExp(searchValue, 'g')
 
     return new Str(
       this.value.replace(replacer, replace)
@@ -705,11 +719,11 @@ export class Str {
    *
    * @returns {Str}
    */
-  replaceLast (search: string, replace: string): Str {
-    return this.notContains(search)
+  replaceLast (searchValue: string, replace: string): Str {
+    return this.notContains(searchValue)
       ? this
       : new Str(
-        this.beforeLast(search).get() + replace + this.afterLast(search).get()
+        this.beforeLast(searchValue).get() + replace + this.afterLast(searchValue).get()
       )
   }
 
@@ -735,9 +749,7 @@ export class Str {
    */
   rtrim (characters: string = ''): Str {
     if (!characters) {
-      return new Str(
-        this.value.trimRight()
-      )
+      return new Str(this.value.trimEnd())
     }
 
     while (this.endsWith(characters)) {
@@ -942,11 +954,7 @@ export class Str {
    * @returns {Str}
    */
   studly (): Str {
-    return new Str(
-      this.value.replace(/[_-]+/g, ' ')
-    )
-      .title()
-      .strip()
+    return this.camel().ucFirst()
   }
 
   /**
@@ -971,10 +979,19 @@ export class Str {
   title (): Str {
     return new Str(
       this
-        .lowercase()
         .split(' ')
         .filter(word => word)
-        .map(word => word[0].toUpperCase() + word.slice(1))
+        .map(word => new Str(word))
+        .map(word => {
+          if (!word.isUpper()) {
+            word = word
+              .lower()
+              // Find and uppercase first word character, skip over *modifiers*
+              .replace(this.ALPHANUMERIC_PATTERN, (char) => char.toUpperCase())
+          }
+
+          return word.get()
+        })
         .join(' ')
     )
   }

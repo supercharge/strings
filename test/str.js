@@ -186,9 +186,15 @@ test('title', () => {
   expect(Str().title().get()).toEqual('')
   expect(Str('Title').title().get()).toEqual('Title')
 
+  expect(Str('keep NASA capitalized').title().get()).toEqual('Keep NASA Capitalized')
+  expect(Str('keep *asteriskS arounD wordS*').title().get()).toEqual('Keep *Asterisks Around Words*')
+  expect(Str('keep *asterisks around words*').title().get()).toEqual('Keep *Asterisks Around Words*')
+  expect(Str('keep _underscores around words_').title().get()).toEqual('Keep _Underscores Around Words_')
+
+  expect(Str('Supercharge. awesome.').title().get()).toEqual('Supercharge. Awesome.')
   expect(Str('supercharge is awesome').title().get()).toEqual('Supercharge Is Awesome')
-  expect(Str('supercharge IS AWesoME').title().get()).toEqual('Supercharge Is Awesome')
-  expect(Str('SUPERCHARGE IS AWESOME').title().get()).toEqual('Supercharge Is Awesome')
+  expect(Str('supercharge Is AWesoME').title().get()).toEqual('Supercharge Is Awesome')
+  expect(Str('SUPERCHARGE IS AWESOME').title().get()).toEqual('SUPERCHARGE IS AWESOME')
 
   expect(Str('superchargeIsAwesome').title().get()).toEqual('Superchargeisawesome')
 })
@@ -205,16 +211,23 @@ test('camel', () => {
 test('camel should handle acronyms', () => {
   expect(Str('superCHARGE').camel().get()).toEqual('superCharge')
   expect(Str('super CHARGE').camel().get()).toEqual('superCharge')
+  expect(Str('super_charge').camel().get()).toEqual('superCharge')
+  expect(Str('super-charge').camel().get()).toEqual('superCharge')
 
   expect(Str('XMLHttpRequest').camel().get()).toEqual('xmlHttpRequest')
   expect(Str('XmlHTTPRequest').camel().get()).toEqual('xmlHttpRequest')
 })
 
-test('studly', () => {
-  expect(Str('supercharge is awesome').studly().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('supercharge_IS_AWesoME').studly().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE_is_AWESOME').studly().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').studly().get()).toEqual('SuperchargeIsAwesome')
+test('studly / pascal', () => {
+  expect(Str('User_Model').pascal().get()).toEqual('UserModel')
+  expect(Str('XMLHttpRequest').pascal().get()).toEqual('XmlHttpRequest')
+  expect(Str('XmlHTTPRequest').pascal().get()).toEqual('XmlHttpRequest')
+  expect(Str('thisIsInCamelCase').pascal().get()).toEqual('ThisIsInCamelCase')
+  expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
+  expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAWesoMe')
+  expect(Str('supercharge_IS_AweSoME').pascal().get()).toEqual('SuperchargeIsAweSoMe')
+  expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
+  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
 })
 
 test('trim', () => {
@@ -445,19 +458,25 @@ test('isString', () => {
 })
 
 test('isAlphaNumeric', () => {
-  expect(Str.isAlphaNumeric('')).toBe(true)
   expect(Str.isAlphaNumeric('1')).toBe(true)
   expect(Str.isAlphaNumeric('Ab12')).toBe(true)
-  expect(Str.isAlphaNumeric(String())).toBe(true)
   expect(Str.isAlphaNumeric('Supercharge')).toBe(true)
+  expect(Str.isAlphaNumeric('äöüßáàâ')).toBe(true)
+  expect(Str.isAlphaNumeric(
+    Str.random(builder => builder.characters().numbers())
+  )).toBe(true)
 
   expect(Str.isAlphaNumeric()).toBe(false)
+  expect(Str.isAlphaNumeric('')).toBe(false)
   expect(Str.isAlphaNumeric(1)).toBe(false)
   expect(Str.isAlphaNumeric({})).toBe(false)
   expect(Str.isAlphaNumeric(null)).toBe(false)
-  expect(Str.isAlphaNumeric('aä')).toBe(false)
   expect(Str.isAlphaNumeric('abc#')).toBe(false)
   expect(Str.isAlphaNumeric('abc!')).toBe(false)
+  expect(Str.isAlphaNumeric(String())).toBe(false)
+  expect(Str.isAlphaNumeric(
+    Str.random(builder => builder.symbols())
+  )).toBe(false)
 })
 
 test('limit', () => {
@@ -549,11 +568,7 @@ test('parseCallback', () => {
 })
 
 test('pascal', () => {
-  expect(Str('supercharge is awesome').pascal().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('supercharge_IS_AWesoME').pascal().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE_is_AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
-  expect(Str('SUPERCHARGE_is_AWESOME!').pascal().get()).toEqual('SuperchargeIsAwesome!')
-  expect(Str('SUPERCHARGE  -_- is -_-  -_-     AWESOME').pascal().get()).toEqual('SuperchargeIsAwesome')
+  // this is an alias for .studly() and tests are in "studly"
 })
 
 test('prepend', () => {
