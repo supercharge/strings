@@ -3,6 +3,9 @@
 
 ## [2.0.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-1x-xx
 
+### Added
+- `words`: keeps words consisting of alpha-numeric characters. Previously, also symbols like comma or exclamation mark were kept as words
+
 ### Updated
 - bump dependencies
 

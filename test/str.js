@@ -784,6 +784,7 @@ test('words', async () => {
   expect(Str('Supercharge is awesome').words()).toEqual(['Supercharge', 'is', 'awesome'])
   expect(Str('supercharge_is_awesome').words()).toEqual(['supercharge', 'is', 'awesome'])
   expect(Str('supercharge-is-awesome').words()).toEqual(['supercharge', 'is', 'awesome'])
+  expect(Str('supercharge is awesome!').words()).toEqual(['supercharge', 'is', 'awesome'])
 
   expect(Str('SuperchargeIsAwesome').words()).toEqual(['Supercharge', 'Is', 'Awesome'])
   expect(Str(`
