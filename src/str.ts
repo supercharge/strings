@@ -861,7 +861,7 @@ export class Str {
       // this RegEx comes from https://stackoverflow.com/a/62527131
       .split(/([^\p{L}\d]+|(?<=\p{L})(?=\d)|(?<=\d)(?=\p{L})|(?<=[\p{Ll}\d])(?=\p{Lu})|(?<=\p{Lu})(?=\p{Lu}\p{Ll})|(?<=[\p{L}\d])(?=\p{Lu}\p{Ll}))/gu)
       .map(word => word.trim())
-      .filter(word => !!word)
+      .filter(word => word.match(new RegExp(this.ALPHANUMERIC_PATTERN, 'g')))
   }
 
   /**

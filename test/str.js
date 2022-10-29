@@ -784,11 +784,16 @@ test('words', async () => {
   expect(Str('Supercharge is awesome').words()).toEqual(['Supercharge', 'is', 'awesome'])
 
   expect(Str('SuperchargeIsAwesome').words()).toEqual(['Supercharge', 'Is', 'Awesome'])
+  expect(Str(`
+    Hey pal,
+
+    Supercharge is awesome!
+  `).words()).toEqual(['Hey', 'pal', 'Supercharge', 'is', 'awesome'])
 
   const textWithLineBreaks = Path.resolve(__dirname, 'fixtures', 'text-with-line-breaks.md')
   expect(
     Str(await Fs.readFile(textWithLineBreaks)).words()
-  ).toEqual(['##', 'Headline', 'Intro', 'Text'])
+  ).toEqual(['Headline', 'Intro', 'Text'])
 })
 
 test('lines', async () => {
