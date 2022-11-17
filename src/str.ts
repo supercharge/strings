@@ -455,6 +455,10 @@ export class Str {
    * @returns {Str}
    */
   lcFirst (): Str {
+    if (this.isEmpty()) {
+      return this
+    }
+
     return new Str(
       this.value[0].toLowerCase() + this.value.slice(1)
     )
@@ -1024,6 +1028,10 @@ export class Str {
    * @returns {Str}
    */
   ucFirst (): Str {
+    if (this.isEmpty()) {
+      return this
+    }
+
     return new Str(
       this.value[0].toUpperCase() + this.value.slice(1)
     )

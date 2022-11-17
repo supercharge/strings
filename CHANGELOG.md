@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [1.29.1](https://github.com/supercharge/strings/compare/v1.29.0...v1.29.1) - 2022-11-17
+
+### Fixed
+- `lcFirst`: won’t fail for empty strings
+- `ucFirst`: won’t fail for empty strings
+
+
 ## [1.29.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-10-20
 
 ### Added

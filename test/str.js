@@ -98,6 +98,10 @@ test('isUpper', () => {
 })
 
 test('ucFirst', () => {
+  expect(Str().ucFirst().get()).toEqual('')
+  expect(Str('').ucFirst().get()).toEqual('')
+  expect(Str(null).ucFirst().get()).toEqual('')
+
   expect(Str('supercharge').ucFirst().get()).toEqual('Supercharge')
   expect(Str('sUPERCHARGE').ucFirst().get()).toEqual('SUPERCHARGE')
   expect(Str('sUPERCHARGE     IS AWESOME').ucFirst().get()).toEqual('SUPERCHARGE     IS AWESOME')
@@ -140,6 +144,10 @@ test('isLowerLetters', () => {
 })
 
 test('lcFirst', () => {
+  expect(Str().lcFirst().get()).toEqual('')
+  expect(Str('').lcFirst().get()).toEqual('')
+  expect(Str(null).lcFirst().get()).toEqual('')
+
   expect(Str('Supercharge').lcFirst().get()).toEqual('supercharge')
   expect(Str('SUPERCHARGE').lcFirst().get()).toEqual('sUPERCHARGE')
   expect(Str('SUPERCHARGE     IS AWESOME').lcFirst().get()).toEqual('sUPERCHARGE     IS AWESOME')
@@ -696,11 +704,17 @@ test('at', () => {
 })
 
 test('isCamel', () => {
-  expect(Str('helloWorld').isCamel()).toBe(true)
+  expect(Str().isCamel()).toBe(true)
+  expect(Str('').isCamel()).toBe(true)
+  expect(Str(null).isCamel()).toBe(true)
   expect(Str('hello').isCamel()).toBe(true)
-  expect(Str('hello world').isCamel()).toBe(false)
+  expect(Str('helloWorld').isCamel()).toBe(true)
+
+  expect(Str('HelloWorld').isCamel()).toBe(false)
   expect(Str('HelloworlD').isCamel()).toBe(false)
   expect(Str('HELLOWORLD').isCamel()).toBe(false)
+  expect(Str('hello world').isCamel()).toBe(false)
+  expect(Str('Hello World').isCamel()).toBe(false)
 })
 
 test('isUuid', async () => {
