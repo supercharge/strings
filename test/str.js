@@ -405,7 +405,7 @@ test('startsWith', () => {
 
 test('endsWith', () => {
   expect(Str('Supercharge').endsWith('charge')).toBe(true)
-  expect(Str('Supercharge').endsWith('Chare')).toBe(false)
+  expect(Str('Supercharge').endsWith('Charge')).toBe(false)
 
   expect(Str('abc').endsWith('abc', 3)).toBe(true)
   expect(Str('abc').endsWith('abc', 4)).toBe(true)
