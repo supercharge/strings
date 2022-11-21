@@ -14,6 +14,14 @@
   - we’re using this package only with Node.js and not in browser environments and this change may also have effects in the browser that we can’t determine at this point
 
 
+
+## [1.29.1](https://github.com/supercharge/strings/compare/v1.29.0...v1.29.1) - 2022-11-18
+
+### Fixed
+- `lcFirst`: won’t fail for empty strings
+- `ucFirst`: won’t fail for empty strings
+
+
 ## [1.29.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-10-20
 
 ### Added

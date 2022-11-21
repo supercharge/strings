@@ -469,6 +469,10 @@ export class Str {
    * @returns {Str}
    */
   lcFirst (): Str {
+    if (this.isEmpty()) {
+      return this
+    }
+
     return new Str(
       this.value[0].toLowerCase() + this.value.slice(1)
     )
@@ -536,8 +540,8 @@ export class Str {
   }
 
   /**
-   * Removes the whitespace from the front of the string when
-   * no argument is present. It trims the given `characters`
+   * Removes whitespaces from the front/start of the string when
+   * no argument is present. It trims the provided `characters`
    * from the left of the string if you pass along a value.
    *
    * @param {String} characters
@@ -757,9 +761,9 @@ export class Str {
   }
 
   /**
-   * Removes the whitespace from the end of the string when
-   * no argument is present. It trims the given `characters`
-   * from the left of the string if you pass along a value.
+ * Removes whitespaces from the tail or end of the string when
+ * no argument is present. It trims the provided `characters`
+ * from the left of the string if you pass along a value.
    *
    * @param {String} characters
    *
@@ -1059,6 +1063,10 @@ export class Str {
    * @returns {Str}
    */
   ucFirst (): Str {
+    if (this.isEmpty()) {
+      return this
+    }
+
     return new Str(
       this.value[0].toUpperCase() + this.value.slice(1)
     )
