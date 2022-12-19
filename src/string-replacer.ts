@@ -69,13 +69,13 @@ export class StringReplacer {
   with (replacer: any): Str {
     switch (true) {
       case this.shouldReplaceAll:
-        return this.strings.replaceAll(this.searchValue, replacer)
+        return this.strings.replaceAll(this.searchValue, replacer ?? '')
 
       case this.shouldReplaceLast:
-        return this.strings.replaceLast(this.searchValue, replacer)
+        return this.strings.replaceLast(this.searchValue, replacer ?? '')
 
       default:
-        return this.strings.replace(this.searchValue, replacer)
+        return this.strings.replace(this.searchValue, replacer ?? '')
     }
   }
 }
