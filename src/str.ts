@@ -97,11 +97,11 @@ export class Str {
   /**
    * Append the given values to the string.
    *
-   * @param {String|String[]} values
+   * @param {any} values
    *
    * @return {Str}
    */
-  append (...values: string[] | string[][]): Str {
+  append (...values: any[] | any[][]): Str {
     return new Str(
       this.value + ([] as string[]).concat(...values).join('')
     )
@@ -554,7 +554,7 @@ export class Str {
     }
 
     while (this.startsWith(characters)) {
-      this.value = this.replace(characters).with('').get()
+      this.value = this.slice(characters.length).get()
     }
 
     return new Str(this.value)
@@ -636,11 +636,11 @@ export class Str {
   /**
    * Prepend the given values to the string.
    *
-   * @param {String|String[]} values
+   * @param {any[]} values
    *
    * @return {Str}
    */
-  prepend (...values: string[] | string[][]): Str {
+  prepend (...values: any[] | any[][]): Str {
     return new Str(
       ([] as string[]).concat(...values).join('') + this.value
     )
@@ -775,7 +775,7 @@ export class Str {
     }
 
     while (this.endsWith(characters)) {
-      this.value = this.replaceLast(characters, '').get()
+      this.value = this.replaceLast(characters).with('').get()
     }
 
     return new Str(this.value)

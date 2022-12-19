@@ -40,7 +40,12 @@ test('afterLast', () => {
 })
 
 test('append', () => {
+  expect(Str().append().get()).toEqual('')
+  expect(Str().append(null).get()).toEqual('')
+
   expect(Str('supercharge').append().get()).toEqual('supercharge')
+  expect(Str('supercharge').append(null).get()).toEqual('supercharge')
+
   expect(Str('supercharge is').append(' awesome').get()).toEqual('supercharge is awesome')
   expect(Str('supercharge').append(' is', ' awesome').get()).toEqual('supercharge is awesome')
   expect(Str('supercharge').append([' is', ' awesome']).get()).toEqual('supercharge is awesome')
@@ -102,6 +107,10 @@ test('ucFirst', () => {
   expect(Str('').ucFirst().get()).toEqual('')
   expect(Str(null).ucFirst().get()).toEqual('')
 
+  expect(Str('a').ucFirst().get()).toEqual('A')
+  expect(Str('ab').ucFirst().get()).toEqual('Ab')
+  expect(Str('AB').ucFirst().get()).toEqual('AB')
+
   expect(Str('supercharge').ucFirst().get()).toEqual('Supercharge')
   expect(Str('sUPERCHARGE').ucFirst().get()).toEqual('SUPERCHARGE')
   expect(Str('sUPERCHARGE     IS AWESOME').ucFirst().get()).toEqual('SUPERCHARGE     IS AWESOME')
@@ -147,6 +156,10 @@ test('lcFirst', () => {
   expect(Str().lcFirst().get()).toEqual('')
   expect(Str('').lcFirst().get()).toEqual('')
   expect(Str(null).lcFirst().get()).toEqual('')
+
+  expect(Str('A').lcFirst().get()).toEqual('a')
+  expect(Str('ab').lcFirst().get()).toEqual('ab')
+  expect(Str('AB').lcFirst().get()).toEqual('aB')
 
   expect(Str('Supercharge').lcFirst().get()).toEqual('supercharge')
   expect(Str('SUPERCHARGE').lcFirst().get()).toEqual('sUPERCHARGE')
@@ -355,6 +368,10 @@ test('random', () => {
 
 test('replaceAll', () => {
   expect(
+    Str('Supercharge Is Super Awesome').replaceAll().with().get()
+  ).toEqual('Supercharge Is Super Awesome')
+
+  expect(
     Str('Supercharge Is Super Awesome').replaceAll(' ', '-').get()
   ).toEqual('Supercharge-Is-Super-Awesome')
 
@@ -442,6 +459,7 @@ test('ltrim', () => {
   expect(Str('Supercharge').ltrim('abc').get()).toEqual('Supercharge')
   expect(Str('/supercharge').ltrim('/').get()).toEqual('supercharge')
   expect(Str('///supercharge').ltrim('/').get()).toEqual('supercharge')
+  expect(Str('///supercharge').ltrim('//').get()).toEqual('/supercharge')
 
   expect(Str('   Supercharge').ltrim('Supercharge').get()).toEqual('   Supercharge')
   expect(Str('   supercharge   ').ltrim('Supercharge').get()).toEqual('   supercharge   ')
@@ -588,7 +606,15 @@ test('pascal', () => {
 })
 
 test('prepend', () => {
+  expect(Str().prepend().get()).toEqual('')
+  expect(Str().prepend(null).get()).toEqual('')
+
   expect(Str('supercharge').prepend().get()).toEqual('supercharge')
+  expect(Str('supercharge').prepend(null).get()).toEqual('supercharge')
+
+  expect(Str('supercharge').prepend(123).get()).toEqual('123supercharge')
+  expect(Str('supercharge').prepend(['ARRAY']).get()).toEqual('ARRAYsupercharge')
+
   expect(Str('is awesome').prepend('supercharge ').get()).toEqual('supercharge is awesome')
   expect(Str(' awesome').prepend('supercharge', ' is').get()).toEqual('supercharge is awesome')
   expect(Str(' awesome').prepend(['supercharge', ' is']).get()).toEqual('supercharge is awesome')
