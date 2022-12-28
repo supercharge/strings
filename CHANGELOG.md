@@ -1,13 +1,16 @@
 # Changelog
 
 
-## [2.0.0](https://github.com/supercharge/strings/compare/v1.28.0...v1.29.0) - 2022-1x-xx
+## [2.0.0](https://github.com/supercharge/strings/compare/v1.29.1...v2.0.0) - 2022-12-28
 
 ### Added
 - `words`: keeps words consisting of alpha-numeric characters. Previously, also symbols like comma or exclamation mark were kept as words
 
 ### Updated
 - bump dependencies
+- provide named export `Str` used via
+  - `import { Str } from '@supercharge/strings'`
+  - `const { Str } = require('@supercharge/strings')`
 
 ### Breaking Changes
 - drop support for Node.js v12 and require Node.js v14
