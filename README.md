@@ -50,7 +50,9 @@ Using `@supercharge/strings` is pretty straightforward. Pass a string to the imp
 For example, you may want to trim a string and then title-case it:
 
 ```js
-const Str = require('@supercharge/strings')
+const { Str } = require('@supercharge/strings')
+// or 
+import { Str } = from '@supercharge/strings'
 
 const title = Str('  Supercharge is sweet!').trim().title().get()
 
